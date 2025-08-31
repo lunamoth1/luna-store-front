@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { statusColors, statuses } from "../../constants";
 import { Status } from "../../types/statusDropDown";
-import "./statusDropdown.css";
+import "./statusDropDown.css";
 
 interface StatusDropDownProps {
 	status: Status;
