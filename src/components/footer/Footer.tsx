@@ -1,0 +1,35 @@
+import { Link } from "react-router-dom";
+import Tiktok from "../../assets/icons/Tiktok";
+import Instagram from "../../assets/icons/Instagram";
+import "./footer.css";
+
+const Footer: React.FC = () => {
+	return (
+		<footer className="footer">
+			<div className="footer-line" />
+			<div className="footer-container">
+				<ul>
+					<li>
+						<Link to="/partners">Partners</Link>
+					</li>
+					<li>
+						<Link to="/shipping">Shipping</Link>
+					</li>
+				</ul>
+				<div className="footer-social-container">
+					<Link
+						to="https://www.instagram.com/lunamothxx"
+						className="footer-social-icon"
+					>
+						<Instagram fill={"#ffffff"} />
+					</Link>
+					<Link to="#" className="footer-social-icon">
+						<Tiktok fill={"#ffffff"} />
+					</Link>
+				</div>
+			</div>
+		</footer>
+	);
+};
+
+export default Footer;

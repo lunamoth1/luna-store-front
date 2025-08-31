@@ -1,0 +1,151 @@
+.product-photo-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 480px;
+}
+
+.product-photo-main {
+	width: 480px;
+	aspect-ratio: 1 / 1;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.269);
+	margin-bottom: 1rem;
+	border-radius: 4px;
+}
+
+.product-photo-thumbnail-container {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 480px;
+	width: 100%;
+	gap: 12.5px;
+	justify-content: start;
+}
+
+.product-photo-thumbnails {
+	width: 80px;
+	aspect-ratio: 1 / 1;
+	cursor: pointer;
+	border: 3px solid #ffffff;
+	transition: opacity 0.3s ease;
+	border-radius: 4px;
+}
+
+.product-photo-thumbnails:hover {
+	opacity: 0.85;
+}
+
+.product-photo-thumbnails.active {
+	border: 3px solid #201644;
+	border-radius: 3px;
+}
+
+@media (max-width: 1150px) {
+	.product-photo-main {
+		width: 440px;
+	}
+	.product-photo-thumbnails {
+		width: 74px;
+		border: 2px solid #ffffff;
+	}
+	.product-photo-thumbnails.active {
+		border: 2px solid #201644;
+	}
+}
+
+@media (max-width: 1082px) {
+	.product-photo-main {
+		width: 420px;
+	}
+	.product-photo-thumbnails {
+		width: 70px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.product-photo-main {
+		width: 400px;
+	}
+	.product-photo-thumbnails {
+		width: 66px;
+	}
+}
+
+@media (max-width: 960px) {
+	.product-photo-main {
+		width: 380px;
+	}
+	.product-photo-thumbnails {
+		width: 62px;
+	}
+}
+
+@media (max-width: 900px) {
+	.product-photo-main {
+		width: 360px;
+	}
+	.product-photo-thumbnails {
+		width: 58px;
+	}
+}
+
+@media (max-width: 852px) {
+	.product-photo-main {
+		width: 340px;
+	}
+	.product-photo-thumbnails {
+		width: 54px;
+	}
+}
+
+@media (max-width: 777px) {
+	.product-photo-main {
+		width: 320px;
+	}
+	.product-photo-thumbnails {
+		width: 54px;
+	}
+}
+
+@media (max-width: 700px) {
+	.product-photo-container {
+		flex-direction: row;
+		height: 340px;
+		gap: 2rem;
+		max-width: 542px;
+		align-self: center;
+	}
+	.product-photo-thumbnail-container {
+		gap: 8px;
+		align-self: start;
+	}
+}
+
+@media (max-width: 508px) {
+	.product-photo-container {
+		height: 340px;
+		gap: 1rem;
+	}
+}
+
+@media (max-width: 492px) {
+	.product-photo-container {
+		flex-direction: column;
+		height: 420px;
+	}
+	.product-photo-thumbnail-container {
+		justify-content: center;
+	}
+}
+
+@media (max-width: 485px) {
+	.product-photo-container {
+		height: 480px;
+	}
+}
+
+@media (max-width: 337px) {
+	.product-photo-main {
+		width: 300px;
+	}
+}
