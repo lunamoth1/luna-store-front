@@ -5,18 +5,26 @@ import "./statusDropDown.css";
 
 interface StatusDropDownProps {
 	status: Status;
+	onStatusChange: (status: Status) => void;
 }
 
-const StatusDropDown: React.FC<StatusDropDownProps> = ({ status }) => {
+const StatusDropDown: React.FC<StatusDropDownProps> = ({
+	status,
+	onStatusChange,
+}) => {
 	const [orderStatus, setOrderStatus] = useState<Status>(status);
 	const [isOpen, setIsOpen] = useState(false);
 
+	const dropDownHandler = () => setIsOpen(!isOpen);
+	const statusChangeHandler = (status: Status) => {
+		setOrderStatus(status);
+		onStatusChange(status);
+		setIsOpen(false);
+	};
+
 	return (
 		<div className="status-dropdown-container">
-			<button
-				className="status-dropdown-button"
-				onClick={() => setIsOpen(!isOpen)}
-			>
+			<button className="status-dropdown-button" onClick={dropDownHandler}>
 				<span
 					className="status-dropdown-circle"
 					style={{ backgroundColor: statusColors[orderStatus] }}
@@ -29,10 +37,7 @@ const StatusDropDown: React.FC<StatusDropDownProps> = ({ status }) => {
 						<li
 							key={status}
 							className="status-dropdown-item"
-							onClick={() => {
-								setOrderStatus(status);
-								setIsOpen(false);
-							}}
+							onClick={() => statusChangeHandler(status)}
 						>
 							<span
 								className="status-dropdown-circle"

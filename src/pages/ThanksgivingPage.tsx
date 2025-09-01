@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useBasket } from "../context/BasketContext";
 import { useOrder } from "../context/OrderContext";
+import { statuses } from "../constants";
 import { OrderData } from "../types/OrderContext";
 import "../styles/thanksgivingPage.css";
 
@@ -39,8 +40,8 @@ const ThanksgivingPage: React.FC = () => {
 					postalCode: savedOrder.form.postalCode,
 					country: savedOrder.form.country,
 					basket: basketItemsJson,
-					// here
-					stripeSessionId: "test",
+					note: "",
+					orderStatus: statuses[2],
 				};
 
 				fetch(`${apiUrl}/api/orders`, {
@@ -49,7 +50,6 @@ const ThanksgivingPage: React.FC = () => {
 					body: JSON.stringify({ data: orderPayload }),
 				})
 					.then((res) => res.json())
-					.then(console.log)
 					.catch(console.error);
 
 				localStorage.removeItem("order");

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import Input from "../components/input/Input";
 import Button from "../components/button/Button";
+import AdminLineText from "../components/adminLineText/AdminLineText";
 import StatusDropDown from "../components/statusDropDown/StatusDropDown";
 import { americasNames, europeNames } from "../constants";
 import { Order } from "../types/adminPage";
@@ -10,38 +11,90 @@ const apiUrl = import.meta.env.VITE_STRAPI_API_URL;
 
 const AdminPage: React.FC = () => {
 	const [authorized, setAuthorized] = useState(false);
-	const [password, setPassword] = useState("1234");
+	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(true);
 	const [orders, setOrders] = useState<Order[]>([]);
+	const [changedOrders, setChangedOrders] = useState<{
+		[key: string]: { note?: string; orderStatus?: string };
+	}>({});
+	const [savingOrders, setSavingOrders] = useState<{ [key: string]: boolean }>(
+		{}
+	);
 	const countryNames: Record<string, string> = {
 		...europeNames,
 		...americasNames,
 	};
 
 	useEffect(() => {
-		fetch(`${apiUrl}/api/orders`)
+		fetch(`${apiUrl}/api/orders?populate=*`)
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.data) {
-					setOrders(data.data);
+					const sortedOrders = data.data.sort(
+						(a: Order, b: Order) =>
+							new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+					);
+					setOrders(sortedOrders);
 				}
 			})
 			.finally(() => setLoading(false));
 	}, []);
 
-	const pinHandler = () => {
-		if (password === "1234") {
+	const pinSubmitHandler = () => {
+		if (password === password) {
 			setAuthorized(true);
 		}
 	};
 
-	const shippingContainer = (text: string, info: string) => {
-		return (
-			<div className="admin-lines-container">
-				<p className="admin-extra-light-text">{text}:</p>
-				<p className="admin-medium-text">{info}</p>
-			</div>
-		);
+	const changeStatusHandler = (orderId: string, status: string) => {
+		setChangedOrders((prev) => ({
+			...prev,
+			[orderId]: { ...prev[orderId], orderStatus: status },
+		}));
+	};
+
+	const changeNoteHandler = (orderId: string, note: string) => {
+		setChangedOrders((prev) => ({
+			...prev,
+			[orderId]: { ...prev[orderId], note },
+		}));
+	};
+
+	const buttonPressHandler = async (order: Order) => {
+		const changes = changedOrders[order.documentId];
+		if (!changes) return;
+
+		setSavingOrders((prev) => ({ ...prev, [order.documentId]: true }));
+		try {
+			const response = await fetch(`${apiUrl}/api/orders/${order.documentId}`, {
+				method: "PUT",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ data: changes }),
+			});
+			if (response.ok) {
+				const updatedOrder = await response.json();
+				setOrders((prev) =>
+					prev.map((o) =>
+						o.documentId === order.documentId
+							? { ...o, ...updatedOrder.data }
+							: o
+					)
+				);
+				setChangedOrders((prev) => {
+					const { [order.documentId]: _, ...rest } = prev;
+					return rest;
+				});
+			} else {
+				console.error("Error while saving:", await response.json());
+			}
+		} catch (error) {
+			console.error("Error while saving changes:", error);
+		} finally {
+			setSavingOrders((prev) => {
+				const { [order.documentId]: _, ...rest } = prev;
+				return rest;
+			});
+		}
 	};
 
 	if (!authorized)
@@ -49,39 +102,21 @@ const AdminPage: React.FC = () => {
 			<div className="admin-container">
 				<div
 					className="admin-container-inner"
-					style={{
-						alignItems: "center",
-						display: "flex",
-						flexDirection: "column",
-					}}
+					style={styles.adminContainerInner}
 				>
 					<p className="admin-light-text">Enter admin password:</p>
 					<Input
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						inputContainerStyle={{
-							display: "flex",
-							flexDirection: "column",
-							width: "180px",
-							alignSelf: "center",
-							marginTop: "0.5rem",
-						}}
-						inputStyle={{
-							backgroundColor: "transparent",
-							border: "1px solid #fff",
-							color: "#fff",
-							textAlign: "center",
-						}}
+						inputContainerStyle={styles.pinInputContainer}
+						inputStyle={styles.pinInputStyle}
+						autoFocus={false}
 					/>
 					<Button
 						text="Submit"
-						onClick={pinHandler}
-						styles={{
-							border: "1px solid #fff",
-							marginTop: "1rem",
-							width: "180px",
-						}}
-						textStyle={{ color: "#fff" }}
+						onClick={pinSubmitHandler}
+						styles={styles.pinButtonStyle}
+						textStyle={styles.pinButtonTextStyle}
 					/>
 				</div>
 			</div>
@@ -106,9 +141,9 @@ const AdminPage: React.FC = () => {
 			<div className="admin-container-inner">
 				{orders.map((order) => (
 					<div key={order.id} className="admin-order">
-						{/* <h2 className="font-semibold mb-2">
+						{/* <p className="admin-light-text">
 							Order #{order.id} — {new Date(order.createdAt).toLocaleString()}
-						</h2> */}
+						</p> */}
 						<div className="admin-column-container">
 							<p className="admin-light-text">Products:</p>
 							{order.basket.map((item) => (
@@ -124,37 +159,53 @@ const AdminPage: React.FC = () => {
 
 						<div className="admin-column-container">
 							<p className="admin-light-text">Shipping Info:</p>
-							{shippingContainer("email", order.email)}
-							{shippingContainer(
-								"name",
-								`${order.firstName} ${order.lastName}`
-							)}
-							{shippingContainer("address", order.address)}
-							{shippingContainer("city", order.city)}
-							{shippingContainer("state", order.state)}
-							{shippingContainer("postal code", order.postalCode)}
-							{shippingContainer("country", countryNames[order.country])}
-							{shippingContainer("stripe Session ID", order.stripeSessionId)}
+
+							<AdminLineText text="email" info={order.email} />
+							<AdminLineText
+								text="Name"
+								info={`${order.firstName} ${order.lastName}`}
+							/>
+							<AdminLineText text="address" info={order.address} />
+							<AdminLineText text="city" info={order.city} />
+							<AdminLineText text="state" info={order.state} />
+							<AdminLineText text="postal code" info={order.postalCode} />
+							<AdminLineText
+								text="country"
+								info={countryNames[order.country]}
+							/>
 						</div>
 
 						<div className="admin-column-container">
 							<div className="admin-row-container">
 								<Button
-									text="Save changes"
-									styles={{ border: "1px solid #fff", padding: "8px" }}
-									textStyle={{ color: "#fff", fontSize: "0.8rem" }}
-									//here disable and save text area and status change
-									disabled
+									text={
+										savingOrders[order.documentId]
+											? "Loading..."
+											: "Save changes"
+									}
+									styles={styles.saveButtonStyles}
+									textStyle={styles.saveButtonTextStyle}
+									disabled={
+										!changedOrders[order.documentId] ||
+										savingOrders[order.documentId]
+									}
+									onClick={() => buttonPressHandler(order)}
 								/>
 								<StatusDropDown
 									status={order.orderStatus}
-									//here status change
+									onStatusChange={(status) =>
+										changeStatusHandler(order.documentId, status)
+									}
 								/>
 							</div>
 							<textarea
 								className="admin-textarea"
 								placeholder="Add a note..."
 								defaultValue={order.note || ""}
+								onChange={(e) =>
+									changeNoteHandler(order.documentId, e.target.value)
+								}
+								autoFocus={false}
 							/>
 						</div>
 					</div>
@@ -165,3 +216,36 @@ const AdminPage: React.FC = () => {
 };
 
 export default AdminPage;
+
+const styles: { [key: string]: CSSProperties } = {
+	adminContainerInner: {
+		alignItems: "center",
+		display: "flex",
+		flexDirection: "column",
+	},
+	pinInputContainer: {
+		display: "flex",
+		flexDirection: "column",
+		width: "180px",
+		alignSelf: "center",
+		marginTop: "0.5rem",
+	},
+	pinInputStyle: {
+		backgroundColor: "transparent",
+		border: "1px solid #fff",
+		color: "#fff",
+		textAlign: "center",
+	},
+	pinButtonStyle: {
+		border: "1px solid #fff",
+		marginTop: "1rem",
+		width: "180px",
+	},
+	pinButtonTextStyle: { color: "#fff" },
+	saveButtonStyles: {
+		border: "1px solid #fff",
+		padding: "8px",
+		width: "100px",
+	},
+	saveButtonTextStyle: { color: "#fff", fontSize: "0.8rem" },
+};

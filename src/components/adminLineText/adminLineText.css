@@ -1,0 +1,20 @@
+.admin-lines-text-container {
+	display: flex;
+	gap: 1rem;
+}
+
+.admin-lines-text-extra-light-text {
+	color: white;
+	font-size: 1rem;
+	font-weight: 200;
+	margin: 0;
+	padding: 0;
+}
+
+.admin-lines-text-medium-text {
+	color: #fff;
+	font-size: 1rem;
+	font-weight: 500;
+	margin: 0;
+	padding: 0;
+}

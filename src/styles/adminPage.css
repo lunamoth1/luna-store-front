@@ -42,23 +42,10 @@
 	margin-bottom: 0.5rem;
 }
 
-.admin-lines-container {
-	display: flex;
-	gap: 1rem;
-}
-
 .admin-medium-text {
 	color: #fff;
 	font-size: 1rem;
 	font-weight: 500;
-	margin: 0;
-	padding: 0;
-}
-
-.admin-extra-light-text {
-	color: white;
-	font-size: 1rem;
-	font-weight: 200;
 	margin: 0;
 	padding: 0;
 }
