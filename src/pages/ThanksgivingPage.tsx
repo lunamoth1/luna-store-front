@@ -39,8 +39,6 @@ const ThanksgivingPage: React.FC = () => {
 					postalCode: savedOrder.form.postalCode,
 					country: savedOrder.form.country,
 					basket: basketItemsJson,
-					// here
-					stripeSessionId: "test",
 				};
 
 				fetch(`${apiUrl}/api/orders`, {

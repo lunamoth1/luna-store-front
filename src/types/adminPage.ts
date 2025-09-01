@@ -4,7 +4,7 @@ import { Status } from "./statusDropDown";
 
 export type Order = {
 	id: number;
-	stripeSessionId: string;
+	documentId: string;
 	basket: BasketItem[];
 	createdAt: string;
 	note: string;

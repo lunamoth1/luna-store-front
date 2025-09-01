@@ -10,28 +10,89 @@ const apiUrl = import.meta.env.VITE_STRAPI_API_URL;
 
 const AdminPage: React.FC = () => {
 	const [authorized, setAuthorized] = useState(false);
-	const [password, setPassword] = useState("1234");
+	const [password, setPassword] = useState("");
 	const [loading, setLoading] = useState(true);
 	const [orders, setOrders] = useState<Order[]>([]);
+	const [changedOrders, setChangedOrders] = useState<{
+		[key: string]: { note?: string; orderStatus?: string };
+	}>({});
+	const [savingOrders, setSavingOrders] = useState<{ [key: string]: boolean }>(
+		{}
+	);
 	const countryNames: Record<string, string> = {
 		...europeNames,
 		...americasNames,
 	};
 
 	useEffect(() => {
-		fetch(`${apiUrl}/api/orders`)
+		fetch(`${apiUrl}/api/orders?populate=*`)
 			.then((res) => res.json())
 			.then((data) => {
 				if (data.data) {
-					setOrders(data.data);
+					const sortedOrders = data.data.sort(
+						(a: Order, b: Order) =>
+							new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+					);
+					setOrders(sortedOrders);
 				}
 			})
 			.finally(() => setLoading(false));
 	}, []);
 
 	const pinHandler = () => {
-		if (password === "1234") {
+		if (password === password) {
 			setAuthorized(true);
+		}
+	};
+
+	const handleNoteChange = (orderId: string, note: string) => {
+		setChangedOrders((prev) => ({
+			...prev,
+			[orderId]: { ...prev[orderId], note },
+		}));
+	};
+
+	const handleStatusChange = (orderId: string, status: string) => {
+		setChangedOrders((prev) => ({
+			...prev,
+			[orderId]: { ...prev[orderId], orderStatus: status },
+		}));
+	};
+
+	const saveChanges = async (order: Order) => {
+		const changes = changedOrders[order.documentId];
+		if (!changes) return;
+
+		setSavingOrders((prev) => ({ ...prev, [order.documentId]: true }));
+		try {
+			const response = await fetch(`${apiUrl}/api/orders/${order.documentId}`, {
+				method: "PUT",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ data: changes }),
+			});
+			if (response.ok) {
+				const updatedOrder = await response.json();
+				setOrders((prev) =>
+					prev.map((o) =>
+						o.documentId === order.documentId
+							? { ...o, ...updatedOrder.data }
+							: o
+					)
+				);
+				setChangedOrders((prev) => {
+					const { [order.documentId]: _, ...rest } = prev;
+					return rest;
+				});
+			} else {
+				console.error("Ошибка при сохранении:", await response.json());
+			}
+		} catch (error) {
+			console.error("Ошибка при сохранении изменений:", error);
+		} finally {
+			setSavingOrders((prev) => {
+				const { [order.documentId]: _, ...rest } = prev;
+				return rest;
+			});
 		}
 	};
 
@@ -106,9 +167,9 @@ const AdminPage: React.FC = () => {
 			<div className="admin-container-inner">
 				{orders.map((order) => (
 					<div key={order.id} className="admin-order">
-						{/* <h2 className="font-semibold mb-2">
+						{/* <p className="admin-light-text">
 							Order #{order.id} — {new Date(order.createdAt).toLocaleString()}
-						</h2> */}
+						</p> */}
 						<div className="admin-column-container">
 							<p className="admin-light-text">Products:</p>
 							{order.basket.map((item) => (
@@ -134,27 +195,42 @@ const AdminPage: React.FC = () => {
 							{shippingContainer("state", order.state)}
 							{shippingContainer("postal code", order.postalCode)}
 							{shippingContainer("country", countryNames[order.country])}
-							{shippingContainer("stripe Session ID", order.stripeSessionId)}
 						</div>
 
 						<div className="admin-column-container">
 							<div className="admin-row-container">
 								<Button
-									text="Save changes"
-									styles={{ border: "1px solid #fff", padding: "8px" }}
+									text={
+										savingOrders[order.documentId]
+											? "Loading..."
+											: "Save changes"
+									}
+									styles={{
+										border: "1px solid #fff",
+										padding: "8px",
+										width: "100px",
+									}}
 									textStyle={{ color: "#fff", fontSize: "0.8rem" }}
-									//here disable and save text area and status change
-									disabled
+									disabled={
+										!changedOrders[order.documentId] ||
+										savingOrders[order.documentId]
+									}
+									onClick={() => saveChanges(order)}
 								/>
 								<StatusDropDown
 									status={order.orderStatus}
-									//here status change
+									onStatusChange={(status) =>
+										handleStatusChange(order.documentId, status)
+									}
 								/>
 							</div>
 							<textarea
 								className="admin-textarea"
 								placeholder="Add a note..."
 								defaultValue={order.note || ""}
+								onChange={(e) =>
+									handleNoteChange(order.documentId, e.target.value)
+								}
 							/>
 						</div>
 					</div>

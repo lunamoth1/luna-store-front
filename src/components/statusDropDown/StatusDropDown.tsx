@@ -5,9 +5,13 @@ import "./statusDropDown.css";
 
 interface StatusDropDownProps {
 	status: Status;
+	onStatusChange: (status: Status) => void;
 }
 
-const StatusDropDown: React.FC<StatusDropDownProps> = ({ status }) => {
+const StatusDropDown: React.FC<StatusDropDownProps> = ({
+	status,
+	onStatusChange,
+}) => {
 	const [orderStatus, setOrderStatus] = useState<Status>(status);
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -31,6 +35,7 @@ const StatusDropDown: React.FC<StatusDropDownProps> = ({ status }) => {
 							className="status-dropdown-item"
 							onClick={() => {
 								setOrderStatus(status);
+								onStatusChange(status);
 								setIsOpen(false);
 							}}
 						>
