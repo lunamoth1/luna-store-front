@@ -10,38 +10,38 @@ const Header: React.FC = () => {
 	const itemCount = basket.reduce((sum, item) => sum + item.quantity, 0);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-	const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+	const toggleMenuHandler = () => setIsMenuOpen(!isMenuOpen);
 
 	return (
 		<header className="header">
 			<div className="header-container">
 				<img src={logo} className="header-logo" alt="Logo" loading="lazy" />
 
-				<div className="header-burger-menu" onClick={toggleMenu}>
+				<div className="header-burger-menu" onClick={toggleMenuHandler}>
 					<span />
 					<span />
 					<span />
 				</div>
 
 				<nav className={`header-nav ${isMenuOpen ? "open" : ""}`}>
-					<button className="header-close-menu" onClick={toggleMenu}>
+					<button className="header-close-menu" onClick={toggleMenuHandler}>
 						<span />
 						<span />
 					</button>
 
 					<ul className="nav-left">
 						<li>
-							<NavLink to="/" onClick={toggleMenu} end>
+							<NavLink to="/" onClick={toggleMenuHandler} end>
 								Home
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/shop" onClick={toggleMenu}>
+							<NavLink to="/shop" onClick={toggleMenuHandler}>
 								Shop
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/events" onClick={toggleMenu}>
+							<NavLink to="/events" onClick={toggleMenuHandler}>
 								Events
 							</NavLink>
 						</li>
@@ -49,14 +49,14 @@ const Header: React.FC = () => {
 
 					<ul className="nav-right">
 						<li>
-							<NavLink to="/contacts" onClick={toggleMenu}>
+							<NavLink to="/contacts" onClick={toggleMenuHandler}>
 								Contacts
 							</NavLink>
 						</li>
 						<li>
 							<NavLink
 								to="/basket"
-								onClick={toggleMenu}
+								onClick={toggleMenuHandler}
 								className={({ isActive }) => (isActive ? "active" : "")}
 							>
 								{({ isActive }) => (

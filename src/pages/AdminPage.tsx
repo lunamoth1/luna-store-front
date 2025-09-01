@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import Input from "../components/input/Input";
 import Button from "../components/button/Button";
+import AdminLineText from "../components/adminLineText/AdminLineText";
 import StatusDropDown from "../components/statusDropDown/StatusDropDown";
 import { americasNames, europeNames } from "../constants";
 import { Order } from "../types/adminPage";
@@ -39,27 +40,27 @@ const AdminPage: React.FC = () => {
 			.finally(() => setLoading(false));
 	}, []);
 
-	const pinHandler = () => {
+	const pinSubmitHandler = () => {
 		if (password === password) {
 			setAuthorized(true);
 		}
 	};
 
-	const handleNoteChange = (orderId: string, note: string) => {
-		setChangedOrders((prev) => ({
-			...prev,
-			[orderId]: { ...prev[orderId], note },
-		}));
-	};
-
-	const handleStatusChange = (orderId: string, status: string) => {
+	const changeStatusHandler = (orderId: string, status: string) => {
 		setChangedOrders((prev) => ({
 			...prev,
 			[orderId]: { ...prev[orderId], orderStatus: status },
 		}));
 	};
 
-	const saveChanges = async (order: Order) => {
+	const changeNoteHandler = (orderId: string, note: string) => {
+		setChangedOrders((prev) => ({
+			...prev,
+			[orderId]: { ...prev[orderId], note },
+		}));
+	};
+
+	const buttonPressHandler = async (order: Order) => {
 		const changes = changedOrders[order.documentId];
 		if (!changes) return;
 
@@ -84,10 +85,10 @@ const AdminPage: React.FC = () => {
 					return rest;
 				});
 			} else {
-				console.error("Ошибка при сохранении:", await response.json());
+				console.error("Error while saving:", await response.json());
 			}
 		} catch (error) {
-			console.error("Ошибка при сохранении изменений:", error);
+			console.error("Error while saving changes:", error);
 		} finally {
 			setSavingOrders((prev) => {
 				const { [order.documentId]: _, ...rest } = prev;
@@ -96,53 +97,26 @@ const AdminPage: React.FC = () => {
 		}
 	};
 
-	const shippingContainer = (text: string, info: string) => {
-		return (
-			<div className="admin-lines-container">
-				<p className="admin-extra-light-text">{text}:</p>
-				<p className="admin-medium-text">{info}</p>
-			</div>
-		);
-	};
-
 	if (!authorized)
 		return (
 			<div className="admin-container">
 				<div
 					className="admin-container-inner"
-					style={{
-						alignItems: "center",
-						display: "flex",
-						flexDirection: "column",
-					}}
+					style={styles.adminContainerInner}
 				>
 					<p className="admin-light-text">Enter admin password:</p>
 					<Input
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						inputContainerStyle={{
-							display: "flex",
-							flexDirection: "column",
-							width: "180px",
-							alignSelf: "center",
-							marginTop: "0.5rem",
-						}}
-						inputStyle={{
-							backgroundColor: "transparent",
-							border: "1px solid #fff",
-							color: "#fff",
-							textAlign: "center",
-						}}
+						inputContainerStyle={styles.pinInputContainer}
+						inputStyle={styles.pinInputStyle}
+						autoFocus={false}
 					/>
 					<Button
 						text="Submit"
-						onClick={pinHandler}
-						styles={{
-							border: "1px solid #fff",
-							marginTop: "1rem",
-							width: "180px",
-						}}
-						textStyle={{ color: "#fff" }}
+						onClick={pinSubmitHandler}
+						styles={styles.pinButtonStyle}
+						textStyle={styles.pinButtonTextStyle}
 					/>
 				</div>
 			</div>
@@ -185,16 +159,20 @@ const AdminPage: React.FC = () => {
 
 						<div className="admin-column-container">
 							<p className="admin-light-text">Shipping Info:</p>
-							{shippingContainer("email", order.email)}
-							{shippingContainer(
-								"name",
-								`${order.firstName} ${order.lastName}`
-							)}
-							{shippingContainer("address", order.address)}
-							{shippingContainer("city", order.city)}
-							{shippingContainer("state", order.state)}
-							{shippingContainer("postal code", order.postalCode)}
-							{shippingContainer("country", countryNames[order.country])}
+
+							<AdminLineText text="email" info={order.email} />
+							<AdminLineText
+								text="Name"
+								info={`${order.firstName} ${order.lastName}`}
+							/>
+							<AdminLineText text="address" info={order.address} />
+							<AdminLineText text="city" info={order.city} />
+							<AdminLineText text="state" info={order.state} />
+							<AdminLineText text="postal code" info={order.postalCode} />
+							<AdminLineText
+								text="country"
+								info={countryNames[order.country]}
+							/>
 						</div>
 
 						<div className="admin-column-container">
@@ -205,22 +183,18 @@ const AdminPage: React.FC = () => {
 											? "Loading..."
 											: "Save changes"
 									}
-									styles={{
-										border: "1px solid #fff",
-										padding: "8px",
-										width: "100px",
-									}}
-									textStyle={{ color: "#fff", fontSize: "0.8rem" }}
+									styles={styles.saveButtonStyles}
+									textStyle={styles.saveButtonTextStyle}
 									disabled={
 										!changedOrders[order.documentId] ||
 										savingOrders[order.documentId]
 									}
-									onClick={() => saveChanges(order)}
+									onClick={() => buttonPressHandler(order)}
 								/>
 								<StatusDropDown
 									status={order.orderStatus}
 									onStatusChange={(status) =>
-										handleStatusChange(order.documentId, status)
+										changeStatusHandler(order.documentId, status)
 									}
 								/>
 							</div>
@@ -229,8 +203,9 @@ const AdminPage: React.FC = () => {
 								placeholder="Add a note..."
 								defaultValue={order.note || ""}
 								onChange={(e) =>
-									handleNoteChange(order.documentId, e.target.value)
+									changeNoteHandler(order.documentId, e.target.value)
 								}
+								autoFocus={false}
 							/>
 						</div>
 					</div>
@@ -241,3 +216,36 @@ const AdminPage: React.FC = () => {
 };
 
 export default AdminPage;
+
+const styles: { [key: string]: CSSProperties } = {
+	adminContainerInner: {
+		alignItems: "center",
+		display: "flex",
+		flexDirection: "column",
+	},
+	pinInputContainer: {
+		display: "flex",
+		flexDirection: "column",
+		width: "180px",
+		alignSelf: "center",
+		marginTop: "0.5rem",
+	},
+	pinInputStyle: {
+		backgroundColor: "transparent",
+		border: "1px solid #fff",
+		color: "#fff",
+		textAlign: "center",
+	},
+	pinButtonStyle: {
+		border: "1px solid #fff",
+		marginTop: "1rem",
+		width: "180px",
+	},
+	pinButtonTextStyle: { color: "#fff" },
+	saveButtonStyles: {
+		border: "1px solid #fff",
+		padding: "8px",
+		width: "100px",
+	},
+	saveButtonTextStyle: { color: "#fff", fontSize: "0.8rem" },
+};

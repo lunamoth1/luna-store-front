@@ -9,6 +9,7 @@ interface InputProps {
 	name?: string;
 	inputContainerStyle?: React.CSSProperties;
 	inputStyle?: React.CSSProperties;
+	autoFocus?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -19,6 +20,7 @@ const Input: React.FC<InputProps> = ({
 	name,
 	inputContainerStyle,
 	inputStyle,
+	autoFocus,
 }) => {
 	return (
 		<div className="input-container" style={inputContainerStyle}>
@@ -30,6 +32,7 @@ const Input: React.FC<InputProps> = ({
 				onChange={onChange}
 				className="input-field"
 				style={inputStyle}
+				autoFocus={autoFocus}
 			/>
 		</div>
 	);

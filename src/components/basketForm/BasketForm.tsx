@@ -41,7 +41,7 @@ const BasketForm: React.FC<BasketFormProps> = () => {
 		return { price: priceID, quantity };
 	});
 
-	const handleChange = (
+	const changeHandler = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
 	) => {
 		const updatedForm = { ...form, [e.target.name]: e.target.value };
@@ -57,7 +57,7 @@ const BasketForm: React.FC<BasketFormProps> = () => {
 				type="email"
 				name="email"
 				value={form.email}
-				onChange={handleChange}
+				onChange={changeHandler}
 			/>
 
 			<p className="basket-form-title">Shipping Information</p>
@@ -66,13 +66,13 @@ const BasketForm: React.FC<BasketFormProps> = () => {
 					label="First Name"
 					name="firstName"
 					value={form.firstName}
-					onChange={handleChange}
+					onChange={changeHandler}
 				/>
 				<Input
 					label="Last Name"
 					name="lastName"
 					value={form.lastName}
-					onChange={handleChange}
+					onChange={changeHandler}
 				/>
 			</div>
 
@@ -80,7 +80,7 @@ const BasketForm: React.FC<BasketFormProps> = () => {
 				label="Address"
 				name="address"
 				value={form.address}
-				onChange={handleChange}
+				onChange={changeHandler}
 			/>
 
 			<div className="basket-form-double-container">
@@ -88,13 +88,13 @@ const BasketForm: React.FC<BasketFormProps> = () => {
 					label="City"
 					name="city"
 					value={form.city}
-					onChange={handleChange}
+					onChange={changeHandler}
 				/>
 				<Input
 					label="State"
 					name="state"
 					value={form.state}
-					onChange={handleChange}
+					onChange={changeHandler}
 				/>
 			</div>
 
@@ -103,12 +103,12 @@ const BasketForm: React.FC<BasketFormProps> = () => {
 					label="Postal Code"
 					name="postalCode"
 					value={form.postalCode}
-					onChange={handleChange}
+					onChange={changeHandler}
 				/>
 				<InputDropDown
 					label="Country"
 					value={form.country}
-					onChange={handleChange}
+					onChange={changeHandler}
 					optionValues={shippedCountries}
 					countryNames={countryNames}
 				/>

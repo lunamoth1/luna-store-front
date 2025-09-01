@@ -18,8 +18,8 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 	const currencySymbol = currency === usd ? "$" : "€";
 	const price = currency === usd ? product.priceUS : product.priceEU;
 
-	const increaseQuantity = () => setQuantity((prev) => prev + 1);
-	const decreaseQuantity = () =>
+	const increaseQuantityHandler = () => setQuantity((prev) => prev + 1);
+	const decreaseQuantityHandler = () =>
 		setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
 	const handleAddToBasket = () => addToBasket(product, quantity);
@@ -38,7 +38,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 					<label htmlFor="quantity">Quantity:</label>
 					<p
 						className="product-info-quantity-symbol"
-						onClick={decreaseQuantity}
+						onClick={decreaseQuantityHandler}
 					>
 						-
 					</p>
@@ -51,7 +51,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 					/>
 					<p
 						className="product-info-quantity-symbol"
-						onClick={increaseQuantity}
+						onClick={increaseQuantityHandler}
 					>
 						+
 					</p>
