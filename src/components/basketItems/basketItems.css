@@ -12,20 +12,14 @@
 
 .basket-items-medium-text {
 	font-size: 16px;
-	color: #000000;
-	padding: 0;
-	margin: 0;
+	color: #000;
 	margin-top: 1rem;
-	font-weight: 400;
 	transition: opacity 0.3s ease;
 }
 
 .basket-items-regular-text {
 	font-size: 1rem;
-	color: #000000;
-	font-weight: 200;
-	padding: 0;
-	margin: 0;
+	color: #000;
 }
 
 @media (max-width: 920px) {

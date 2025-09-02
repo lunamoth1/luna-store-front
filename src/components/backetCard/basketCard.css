@@ -68,14 +68,12 @@
 	font-size: 1rem;
 	color: #000;
 	font-weight: 400;
-	margin: 0;
 }
 
 .basket-card-regular-text {
 	font-size: 1rem;
 	color: #000;
 	font-weight: 200;
-	margin: 0;
 }
 
 @media (max-width: 1024px) {

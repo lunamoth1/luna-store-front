@@ -10,7 +10,7 @@
 
 .shop-nav-shop-link {
 	display: flex;
-	margin: 0 0 6px 0;
+	margin-bottom: 6px;
 }
 
 .shop-nav-shop-link-active {
@@ -18,8 +18,6 @@
 }
 
 .shop-nav-shop-link-text {
-	padding: 0;
-	margin: 0;
 	font-size: 14px;
 	color: #000;
 	font-family: "KyivTypeSerif", serif;
@@ -34,8 +32,6 @@
 	display: flex;
 	flex-direction: column;
 	list-style: none;
-	margin: 0;
-	padding: 0;
 }
 
 .shop-nav-container ul li {
