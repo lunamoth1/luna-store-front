@@ -10,6 +10,12 @@ const Footer: React.FC = () => {
 			<div className="footer-container">
 				<ul>
 					<li>
+						<Link to="/events">Events</Link>
+					</li>
+					<li>
+						<Link to="/contacts">Contacts</Link>
+					</li>
+					<li>
 						<Link to="/partners">Partners</Link>
 					</li>
 					<li>

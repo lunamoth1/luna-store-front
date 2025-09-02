@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { SpinnerCircularFixed } from "spinners-react";
 import { useProductStore } from "../store/productStore";
 import { useCurrency } from "../context/CurrencyContext";
-import Category from "../components/category/Category";
+import { useCategory } from "../context/CategoryContext";
 import ProductCard from "../components/productCard/ProductCard";
-import { categories } from "../constants";
 import "../styles/shopPage.css";
 
 const ShopPage: React.FC = () => {
 	const { refreshLocation } = useCurrency();
+	const { category } = useCategory();
 	const { products, fetchProducts, isLoading, error } = useProductStore();
-	const [category, setCategory] = useState<string>(categories[0].toLowerCase());
 
 	useEffect(() => {
 		refreshLocation();
@@ -48,10 +47,10 @@ const ShopPage: React.FC = () => {
 
 	return (
 		<div className="shop-container">
-			<Category category={category.toLowerCase()} setCategory={setCategory} />
 			<section className="shop-grid">
 				{products.map(
 					(product) =>
+						category &&
 						product.categories.includes(category.toLowerCase()) && (
 							<ProductCard product={product} key={product.article} />
 						)

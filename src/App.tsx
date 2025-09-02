@@ -10,12 +10,16 @@ import PartnersPage from "./pages/PartnersPage";
 import ProductPage from "./pages/ProductPage";
 import ThanksgivingPage from "./pages/ThanksgivingPage";
 import AdminPage from "./pages/AdminPage";
-import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
+import HeaderLogo from "./components/headerLogo/HeaderLogo";
+import ShopNavigation from "./components/shopNavigation/ShopNavigation";
 import { OrderProvider } from "./context/OrderContext";
 import { BasketProvider } from "./context/BasketContext";
 import { CurrencyProvider } from "./context/CurrencyContext";
+import { CategoryProvider } from "./context/CategoryContext";
+
 import "./styles/appPage.css";
+import "./assets/fonts/fonts.css";
 
 const AppRoutes: React.FC = () => {
 	const location = useLocation();
@@ -23,8 +27,9 @@ const AppRoutes: React.FC = () => {
 
 	return (
 		<div className="container">
-			{!hideHeaderFooter && <Header />}
+			{!hideHeaderFooter && <HeaderLogo />}
 			<main className="main">
+				{!hideHeaderFooter && <ShopNavigation />}
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/shop" element={<ShopPage />} />
@@ -53,7 +58,9 @@ const App: React.FC = () => {
 			<CurrencyProvider>
 				<OrderProvider>
 					<BrowserRouter>
-						<AppRoutes />
+						<CategoryProvider>
+							<AppRoutes />
+						</CategoryProvider>
 					</BrowserRouter>
 				</OrderProvider>
 			</CurrencyProvider>

@@ -1,11 +1,11 @@
 .shop-container {
-	max-width: 1200px;
-	margin: 0 auto;
+	max-width: 1140px;
+	width: 100%;
 }
 
 .shop-message-container {
 	display: flex;
-	margin: 12rem 0 10rem;
+	margin: 4rem 0 0;
 	justify-content: center;
 }
 
@@ -19,72 +19,7 @@
 
 .shop-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-	gap: 2rem;
+	grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
+	gap: 36px;
 	width: 100%;
-	margin: 0 auto 5rem;
-}
-
-@media (max-width: 1300px) {
-	.shop-grid {
-		grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-		gap: 3rem;
-		width: calc(340px * 3 + 9rem);
-	}
-}
-
-@media (max-width: 1200px) {
-	.shop-grid {
-		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-		gap: 2rem;
-		width: calc(320px * 3 + 6rem);
-	}
-}
-
-@media (max-width: 1100px) {
-	.shop-grid {
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-		gap: 2rem;
-		width: calc(300px * 3 + 4rem);
-	}
-}
-
-@media (max-width: 990px) {
-	.shop-grid {
-		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-		gap: 2rem;
-		width: calc(320px * 2 + 2rem);
-	}
-}
-
-@media (max-width: 860px) {
-	.shop-grid {
-		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-		gap: 2rem;
-		width: calc(320px * 2 + 2rem);
-	}
-}
-
-@media (max-width: 745px) {
-	.shop-grid {
-		grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-		width: calc(340px + 1rem);
-	}
-}
-
-@media (max-width: 649px) {
-	.shop-grid {
-		padding: 0 1rem;
-		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-		width: calc(100% - 2rem);
-	}
-}
-
-@media (max-width: 400px) {
-	.shop-grid {
-		grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-	}
-	.shop-message-error {
-		font-size: 1.1rem;
-	}
 }

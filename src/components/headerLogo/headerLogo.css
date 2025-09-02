@@ -1,0 +1,12 @@
+.header-logo-container {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem 0 2rem;
+}
+
+.header-logo-img {
+	width: clamp(160px, 30vw, 300px);
+	height: auto;
+}

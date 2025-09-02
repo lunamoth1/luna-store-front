@@ -1,39 +1,13 @@
 .events-container {
-	max-width: 1200px;
-	margin: 3rem auto;
+	max-width: 1140px;
+	width: 100%;
 }
 
 .events-text {
 	font-size: 1.2rem;
-	padding: 0 4rem;
+	padding: 0;
 	margin: 0;
 	font-weight: 200;
 	line-height: 1.5;
-	color: #000000;
-}
-
-@media (max-width: 1024px) {
-	.events-text {
-		padding: 0 2.5rem;
-	}
-}
-
-@media (max-width: 750px) {
-	.events-container {
-		margin: 2rem auto;
-	}
-	.events-text {
-		font-size: 1.1rem;
-		padding: 0 1.5rem;
-	}
-}
-
-@media (max-width: 440px) {
-	.events-container {
-		margin: 1rem auto;
-	}
-	.events-text {
-		font-size: 1rem;
-		padding: 0 1rem;
-	}
+	color: #000;
 }

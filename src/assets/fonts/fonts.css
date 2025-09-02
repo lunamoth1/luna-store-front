@@ -1,0 +1,27 @@
+@font-face {
+	font-family: "KyivTypeSerif";
+	src: url("./KyivTypeSerif-Light.otf") format("opentype");
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "KyivTypeSerif";
+	src: url("./KyivTypeSerif-Regular.otf") format("opentype");
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "KyivTypeSerif";
+	src: url("./KyivTypeSerif-Medium.otf") format("opentype");
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "KyivTypeSerif";
+	src: url("./KyivTypeSerif-Bold.otf") format("opentype");
+	font-weight: 700;
+	font-style: normal;
+}
