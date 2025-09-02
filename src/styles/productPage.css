@@ -1,13 +1,13 @@
 .product-page-container {
-	max-width: 1200px;
+	max-width: 1140px;
 	width: 100%;
-	margin: 2rem auto 6rem;
+	background-color: antiquewhite;
 }
 
 .product-page-nav {
 	font-size: 1rem;
 	color: #3a3a3a;
-	margin: 0 0 2rem;
+	margin-bottom: 2rem;
 	font-weight: 200;
 }
 
@@ -46,7 +46,7 @@
 @media (max-width: 1082px) {
 	.product-page-nav {
 		font-size: 0.9rem;
-		margin: 0 0 2rem;
+		margin-bottom: 2rem;
 	}
 }
 
@@ -59,7 +59,7 @@
 @media (max-width: 800px) {
 	.product-page-nav {
 		font-size: 0.8rem;
-		margin: 0 0 1.5rem;
+		margin-bottom: 1.5rem;
 	}
 }
 
