@@ -4,12 +4,16 @@ import { useProductStore } from "../store/productStore";
 import { useCurrency } from "../context/CurrencyContext";
 import { useCategory } from "../context/CategoryContext";
 import ProductCard from "../components/productCard/ProductCard";
+import data from "../testData/products.json";
 import "../styles/shopPage.css";
+
+const prod = import.meta.env.VITE_ENVIRONMENT === "prod";
 
 const ShopPage: React.FC = () => {
 	const { refreshLocation } = useCurrency();
 	const { category } = useCategory();
 	const { products, fetchProducts, isLoading, error } = useProductStore();
+	const dataArr = prod ? products : data.data;
 
 	useEffect(() => {
 		refreshLocation();
@@ -48,7 +52,7 @@ const ShopPage: React.FC = () => {
 	return (
 		<div className="shop-container">
 			<section className="shop-grid">
-				{products.map(
+				{dataArr.map(
 					(product) =>
 						category &&
 						product.categories.includes(category.toLowerCase()) && (
