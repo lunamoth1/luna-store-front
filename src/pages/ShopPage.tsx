@@ -4,7 +4,6 @@ import { useProductStore } from "../store/productStore";
 import { useCurrency } from "../context/CurrencyContext";
 import { useCategory } from "../context/CategoryContext";
 import ProductCard from "../components/productCard/ProductCard";
-import data from "../testData/products.json";
 import "../styles/shopPage.css";
 
 const ShopPage: React.FC = () => {
@@ -49,7 +48,7 @@ const ShopPage: React.FC = () => {
 	return (
 		<div className="shop-container">
 			<section className="shop-grid">
-				{data.data.map(
+				{products.map(
 					(product) =>
 						category &&
 						product.categories.includes(category.toLowerCase()) && (
