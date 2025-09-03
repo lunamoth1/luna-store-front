@@ -378,22 +378,391 @@
 		{
 			"id": 25,
 			"documentId": "frp3vg93zzzw6hfca56qicyn",
-			"name": "test",
-			"description": "test",
-			"priceUS": 1,
-			"priceEU": 1,
+			"name": "Black Soap",
+			"description": "Purify and refresh with this handcrafted botanical soap made with shea butter, bamboo charcoal, and pink sea salt. Lightly scented with jasmine and topped with dried rose, peony, and jasmine petals for a natural, elegant finish.",
+			"priceUS": 15,
+			"priceEU": 13,
 			"article": "test1",
 			"priceIdUs": "test",
 			"priceIdEu": "test",
-			"categories": "gothic - rituals - wall art - vintage",
-			"ingredients": "test",
-			"additional": "test",
+			"categories": "gothic - rituals",
+			"ingredients": "Butyrospermum Parkii (Shea) Butter, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Jasminum Officinale (Jasmine) Extract,  Bamboo Charcoal powder, Sodium Hydroxide, Aqua (Water), Maris Sal (Pink Sea Salt), Rosa Centifolia (Rose) Flower, Paeonia Lactiflora (Peony) Flower, Jasminum Officinale (Jasmine) Flower.",
+			"additional": "Vegan • Handmade • No synthetic fragrance",
 			"createdAt": "2025-09-02T16:38:16.489Z",
 			"updatedAt": "2025-09-02T16:43:16.574Z",
 			"publishedAt": "2025-09-02T16:43:19.855Z",
 			"image": [
 				{
 					"id": 6,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 7,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 8,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 9,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 1,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 2,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 3,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 4,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 5,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 61,
 					"documentId": "y9aag783wjmfb2ojwu0fhqud",
 					"name": "test_qm4uwb.png",
 					"alternativeText": null,
@@ -453,7 +822,7 @@
 			"publishedAt": "2025-09-02T16:44:33.501Z",
 			"image": [
 				{
-					"id": 6,
+					"id": 63,
 					"documentId": "y9aag783wjmfb2ojwu0fhqud",
 					"name": "test_qm4uwb.png",
 					"alternativeText": null,
@@ -513,7 +882,7 @@
 			"publishedAt": "2025-09-02T16:44:33.501Z",
 			"image": [
 				{
-					"id": 6,
+					"id": 64,
 					"documentId": "y9aag783wjmfb2ojwu0fhq3d",
 					"name": "test_qm4uwb.png",
 					"alternativeText": null,
@@ -574,7 +943,7 @@
 			"publishedAt": "2025-09-02T16:44:49.751Z",
 			"image": [
 				{
-					"id": 6,
+					"id": 65,
 					"documentId": "y9aag783wjmfb2ojwu0fhqud",
 					"name": "test_qm4uwb.png",
 					"alternativeText": null,
@@ -634,7 +1003,7 @@
 			"publishedAt": "2025-09-02T16:45:22.537Z",
 			"image": [
 				{
-					"id": 6,
+					"id": 66,
 					"documentId": "y9aag783wjmfb2ojwu0fhqud",
 					"name": "test_qm4uwb.png",
 					"alternativeText": null,

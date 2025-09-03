@@ -1,11 +1,13 @@
 .home-container {
 	max-width: 1140px;
 	width: 100%;
+	margin-bottom: 6rem;
+	margin-right: 1rem;
 }
 
 .home-text {
 	font-size: 1.2rem;
-	font-weight: 200;
+	font-weight: 300;
 	line-height: 1.5;
 	color: #000;
 }

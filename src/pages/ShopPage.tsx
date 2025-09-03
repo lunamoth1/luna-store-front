@@ -20,36 +20,36 @@ const ShopPage: React.FC = () => {
 		fetchProducts();
 	}, [fetchProducts]);
 
-	// if (error) {
-	// 	return (
-	// 		<div className="shop-container">
-	// 			<div className="shop-message-container">
-	// 				<p className="shop-message-error">{error}</p>
-	// 			</div>
-	// 		</div>
-	// 	);
-	// }
+	if (error) {
+		return (
+			<div className="shop-container">
+				<div className="shop-message-container">
+					<p className="shop-message-error">{error}</p>
+				</div>
+			</div>
+		);
+	}
 
-	// if (isLoading) {
-	// 	return (
-	// 		<div className="shop-container">
-	// 			<div className="shop-message-container">
-	// 				<SpinnerCircularFixed
-	// 					size={60}
-	// 					thickness={50}
-	// 					speed={100}
-	// 					color="#000"
-	// 					secondaryColor="#E8E8E8"
-	// 				/>
-	// 			</div>
-	// 		</div>
-	// 	);
-	// }
+	if (isLoading) {
+		return (
+			<div className="shop-container">
+				<div className="shop-message-container">
+					<SpinnerCircularFixed
+						size={60}
+						thickness={50}
+						speed={100}
+						color="#000"
+						secondaryColor="#E8E8E8"
+					/>
+				</div>
+			</div>
+		);
+	}
 
 	return (
 		<div className="shop-container">
 			<section className="shop-grid">
-				{data.data.map(
+				{products.map(
 					(product) =>
 						category &&
 						product.categories.includes(category.toLowerCase()) && (

@@ -1,11 +1,13 @@
 .partners-container {
 	max-width: 1140px;
 	width: 100%;
+	margin-bottom: 6rem;
+	margin-right: 1rem;
 }
 
 .partners-title {
 	font-size: 1.2rem;
-	font-weight: 200;
+	font-weight: 300;
 	line-height: 1.5;
 	color: #000;
 }

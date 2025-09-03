@@ -1,6 +1,8 @@
 .shop-nav-container {
 	max-width: 100px;
+	min-width: 80px;
 	width: 100%;
+	margin: 0 1rem;
 }
 
 .shop-nav-container a {
@@ -40,7 +42,6 @@
 	cursor: pointer;
 	text-transform: uppercase;
 	font-family: "KyivTypeSerif", serif;
-	font-weight: 400;
 }
 
 .shop-nav-container ul li.active {
@@ -51,4 +52,5 @@
 	margin-top: 40px;
 	display: flex;
 	align-items: center;
+	margin-bottom: 6rem;
 }

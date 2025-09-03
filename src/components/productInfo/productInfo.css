@@ -3,7 +3,6 @@
 	color: #000000;
 	margin: 0.5rem 0 2rem;
 	text-align: center;
-	font-weight: 400;
 }
 
 .product-info-description {
@@ -53,7 +52,7 @@
 	margin: 0 0.5rem;
 	align-items: center;
 	text-align: center;
-	font-family: "Montserrat", sans-serif;
+	font-family: "KyivTypeSerif", serif;
 	font-weight: 300;
 	border-radius: 0;
 	-webkit-appearance: none;

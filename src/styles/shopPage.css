@@ -1,6 +1,7 @@
 .shop-container {
 	max-width: 1140px;
 	width: 100%;
+	margin-bottom: 6rem;
 }
 
 .shop-message-container {
@@ -11,13 +12,14 @@
 
 .shop-message-error {
 	color: #ee0606;
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 1.2rem;
 }
 
 .shop-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(258px, max-content));
+	justify-content: center;
 	gap: 36px;
 	width: 100%;
 }
