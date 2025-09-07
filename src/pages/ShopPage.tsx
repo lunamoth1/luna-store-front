@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { SpinnerCircularFixed } from "spinners-react";
 import { useProductStore } from "../store/productStore";
 import { useCurrency } from "../context/CurrencyContext";
-import Category from "../components/category/Category";
+import { useCategory } from "../context/CategoryContext";
 import ProductCard from "../components/productCard/ProductCard";
-import { categories } from "../constants";
 import "../styles/shopPage.css";
+// import data from "../testData/products.json";
 
 const ShopPage: React.FC = () => {
 	const { refreshLocation } = useCurrency();
+	const { category } = useCategory();
 	const { products, fetchProducts, isLoading, error } = useProductStore();
-	const [category, setCategory] = useState<string>(categories[0].toLowerCase());
 
 	useEffect(() => {
 		refreshLocation();
@@ -23,9 +23,7 @@ const ShopPage: React.FC = () => {
 	if (error) {
 		return (
 			<div className="shop-container">
-				<div className="shop-message-container">
-					<p className="shop-message-error">{error}</p>
-				</div>
+				<p className="shop-message-error">{error}</p>
 			</div>
 		);
 	}
@@ -33,7 +31,7 @@ const ShopPage: React.FC = () => {
 	if (isLoading) {
 		return (
 			<div className="shop-container">
-				<div className="shop-message-container">
+				<div className="shop-loading-container">
 					<SpinnerCircularFixed
 						size={60}
 						thickness={50}
@@ -48,10 +46,10 @@ const ShopPage: React.FC = () => {
 
 	return (
 		<div className="shop-container">
-			<Category category={category.toLowerCase()} setCategory={setCategory} />
 			<section className="shop-grid">
 				{products.map(
 					(product) =>
+						category &&
 						product.categories.includes(category.toLowerCase()) && (
 							<ProductCard product={product} key={product.article} />
 						)

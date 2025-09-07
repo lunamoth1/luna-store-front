@@ -1,6 +1,7 @@
 .basket-items-container {
 	max-width: 500px;
 	width: 100%;
+	overflow: hidden;
 }
 
 .basket-items-info-container {
@@ -12,20 +13,16 @@
 
 .basket-items-medium-text {
 	font-size: 16px;
-	color: #000000;
-	padding: 0;
-	margin: 0;
+	color: #000;
 	margin-top: 1rem;
-	font-weight: 400;
 	transition: opacity 0.3s ease;
+	font-weight: 400;
 }
 
 .basket-items-regular-text {
 	font-size: 1rem;
-	color: #000000;
-	font-weight: 200;
-	padding: 0;
-	margin: 0;
+	color: #000;
+	font-weight: 300;
 }
 
 @media (max-width: 920px) {

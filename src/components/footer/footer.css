@@ -3,7 +3,6 @@
 	background: #161616;
 	border-top: 8px solid #393939;
 	color: #fff;
-	font-weight: 200;
 }
 
 .footer-line {
@@ -30,19 +29,16 @@
 	align-items: center;
 	justify-content: center;
 	list-style: none;
-	padding: 0;
-	margin: 1rem 0;
-	gap: 1rem;
 }
 
 .footer-container ul li a {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0.5rem 1rem;
+	padding: 3px 1rem;
 	color: #fff;
 	text-decoration: none;
-	font-size: 1rem;
+	font-size: 12px;
 	transition: opacity 0.3s ease;
 }
 
@@ -53,8 +49,8 @@
 .footer-social-container {
 	display: flex;
 	justify-content: center;
-	gap: 1.5rem;
-	margin: 1.5rem 0;
+	flex-direction: column;
+	margin-top: 10px;
 }
 
 .footer-social-icon {

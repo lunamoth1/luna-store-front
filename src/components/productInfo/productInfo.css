@@ -3,13 +3,12 @@
 	color: #000000;
 	margin: 0.5rem 0 2rem;
 	text-align: center;
-	font-weight: 400;
 }
 
 .product-info-description {
 	font-size: 1.2rem;
 	color: #000000;
-	margin: 0 0 4rem;
+	margin-bottom: 4rem;
 	text-align: center;
 	font-weight: 300;
 }
@@ -17,7 +16,7 @@
 .product-info-price {
 	font-size: 1.5rem;
 	color: #000000;
-	margin: 0 0 4rem;
+	margin-bottom: 4rem;
 	text-align: center;
 	font-weight: 300;
 }
@@ -27,7 +26,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	margin: 0 0 4rem;
+	margin-bottom: 4rem;
 	gap: 5rem;
 }
 
@@ -53,7 +52,7 @@
 	margin: 0 0.5rem;
 	align-items: center;
 	text-align: center;
-	font-family: "Montserrat", sans-serif;
+	font-family: "KyivTypeSerif", serif;
 	font-weight: 300;
 	border-radius: 0;
 	-webkit-appearance: none;
@@ -66,7 +65,6 @@
 	color: #000;
 	padding: 1rem;
 	cursor: pointer;
-	margin: 0;
 	font-weight: 300;
 	transition: opacity 0.3s ease;
 }
@@ -79,7 +77,6 @@
 .product-info-quantity input::-webkit-outer-spin-button,
 .product-info-quantity input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
-	margin: 0;
 }
 
 /* Скрываем стрелки для Firefox */
@@ -91,7 +88,7 @@
 .product-info-ingredients {
 	font-size: 1rem;
 	color: #3a3a3a;
-	margin: 0 0 3rem;
+	margin-bottom: 3rem;
 	text-align: center;
 	font-weight: 300;
 }
@@ -99,7 +96,7 @@
 .product-info-additional {
 	font-size: 1rem;
 	color: #3a3a3a;
-	margin: 0 0 2rem;
+	margin-bottom: 2rem;
 	text-align: center;
 	font-weight: 300;
 }

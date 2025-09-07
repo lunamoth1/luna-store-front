@@ -1,6 +1,12 @@
+import { categoriesType } from "../types/CategoryContext";
 import { Status } from "../types/statusDropDown";
 
-export const categories = ["Gothic", "Rituals", "Wall Art", "Vintage"];
+export const categories: categoriesType[] = [
+	"Gothic",
+	"Rituals",
+	"Wall Art",
+	"Vintage",
+];
 
 export const usd = "USD";
 export const eur = "EUR";

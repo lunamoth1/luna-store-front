@@ -1,15 +1,13 @@
 .shipping-container {
-	max-width: 1200px;
-	margin: 3rem auto;
+	max-width: 1140px;
+	width: 100%;
+	margin-bottom: 6rem;
+	margin-right: 1rem;
 }
 
 .shipping-title {
-	font-size: 1.2rem;
-	padding: 0 4rem;
-	margin: 0;
-	font-weight: 200;
+	font-size: 12px;
+	font-weight: 300;
 	line-height: 1.5;
-	color: #000000;
-
-	text-align: center;
+	color: #000;
 }

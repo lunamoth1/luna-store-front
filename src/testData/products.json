@@ -1,0 +1,1052 @@
+{
+	"data": [
+		{
+			"id": 16,
+			"documentId": "sskvo55ktvz3fbf05c0h9wng",
+			"name": "Black Soap",
+			"description": "Purify and refresh with this handcrafted botanical soap made with shea butter, bamboo charcoal, and pink sea salt. Lightly scented with jasmine and topped with dried rose, peony, and jasmine petals for a natural, elegant finish.",
+			"priceUS": 15,
+			"priceEU": 13,
+			"article": "SOA1",
+			"priceIdUs": "price_1RybdUBXjb96yBtIZmM6QubZ",
+			"priceIdEu": "price_1Rygb3BXjb96yBtIQuvnV6gh",
+			"categories": "gothic - rituals",
+			"ingredients": "Butyrospermum Parkii (Shea) Butter, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Jasminum Officinale (Jasmine) Extract,  Bamboo Charcoal powder, Sodium Hydroxide, Aqua (Water), Maris Sal (Pink Sea Salt), Rosa Centifolia (Rose) Flower, Paeonia Lactiflora (Peony) Flower, Jasminum Officinale (Jasmine) Flower.",
+			"additional": "Vegan • Handmade • No synthetic fragrance",
+			"createdAt": "2025-08-24T15:42:34.716Z",
+			"updatedAt": "2025-08-25T20:38:25.709Z",
+			"publishedAt": "2025-08-25T20:38:27.240Z",
+			"image": [
+				{
+					"id": 8,
+					"documentId": "usrs36ld9d78jalpbrqyfdqx",
+					"name": "SOA1-1_tdmhxt.jpg",
+					"alternativeText": null,
+					"caption": null,
+					"width": 1280,
+					"height": 1280,
+					"formats": {
+						"large": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154260/large_SOA_1_1_tdmhxt_9ef6f44ec0.jpg",
+							"hash": "large_SOA_1_1_tdmhxt_9ef6f44ec0",
+							"mime": "image/jpeg",
+							"name": "large_SOA1-1_tdmhxt.jpg",
+							"path": null,
+							"size": 173.67,
+							"width": 1000,
+							"height": 1000,
+							"sizeInBytes": 173666,
+							"provider_metadata": {
+								"public_id": "large_SOA_1_1_tdmhxt_9ef6f44ec0",
+								"resource_type": "image"
+							}
+						},
+						"small": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154260/small_SOA_1_1_tdmhxt_9ef6f44ec0.jpg",
+							"hash": "small_SOA_1_1_tdmhxt_9ef6f44ec0",
+							"mime": "image/jpeg",
+							"name": "small_SOA1-1_tdmhxt.jpg",
+							"path": null,
+							"size": 52.87,
+							"width": 500,
+							"height": 500,
+							"sizeInBytes": 52873,
+							"provider_metadata": {
+								"public_id": "small_SOA_1_1_tdmhxt_9ef6f44ec0",
+								"resource_type": "image"
+							}
+						},
+						"medium": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154260/medium_SOA_1_1_tdmhxt_9ef6f44ec0.jpg",
+							"hash": "medium_SOA_1_1_tdmhxt_9ef6f44ec0",
+							"mime": "image/jpeg",
+							"name": "medium_SOA1-1_tdmhxt.jpg",
+							"path": null,
+							"size": 104.81,
+							"width": 750,
+							"height": 750,
+							"sizeInBytes": 104805,
+							"provider_metadata": {
+								"public_id": "medium_SOA_1_1_tdmhxt_9ef6f44ec0",
+								"resource_type": "image"
+							}
+						},
+						"thumbnail": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154259/thumbnail_SOA_1_1_tdmhxt_9ef6f44ec0.jpg",
+							"hash": "thumbnail_SOA_1_1_tdmhxt_9ef6f44ec0",
+							"mime": "image/jpeg",
+							"name": "thumbnail_SOA1-1_tdmhxt.jpg",
+							"path": null,
+							"size": 7.45,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 7447,
+							"provider_metadata": {
+								"public_id": "thumbnail_SOA_1_1_tdmhxt_9ef6f44ec0",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "SOA_1_1_tdmhxt_9ef6f44ec0",
+					"ext": ".jpg",
+					"mime": "image/jpeg",
+					"size": 274.76,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154259/SOA_1_1_tdmhxt_9ef6f44ec0.jpg",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "SOA_1_1_tdmhxt_9ef6f44ec0",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T20:37:40.743Z",
+					"updatedAt": "2025-08-25T20:37:40.743Z",
+					"publishedAt": "2025-08-25T20:37:40.744Z"
+				},
+				{
+					"id": 10,
+					"documentId": "fwqkc85fb060mf2lda9gvmcj",
+					"name": "SOA1-2_hzxib0.jpg",
+					"alternativeText": null,
+					"caption": null,
+					"width": 1280,
+					"height": 1280,
+					"formats": {
+						"large": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154291/large_SOA_1_2_hzxib0_9f05f18d9d.jpg",
+							"hash": "large_SOA_1_2_hzxib0_9f05f18d9d",
+							"mime": "image/jpeg",
+							"name": "large_SOA1-2_hzxib0.jpg",
+							"path": null,
+							"size": 241.7,
+							"width": 1000,
+							"height": 1000,
+							"sizeInBytes": 241702,
+							"provider_metadata": {
+								"public_id": "large_SOA_1_2_hzxib0_9f05f18d9d",
+								"resource_type": "image"
+							}
+						},
+						"small": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154292/small_SOA_1_2_hzxib0_9f05f18d9d.jpg",
+							"hash": "small_SOA_1_2_hzxib0_9f05f18d9d",
+							"mime": "image/jpeg",
+							"name": "small_SOA1-2_hzxib0.jpg",
+							"path": null,
+							"size": 68.3,
+							"width": 500,
+							"height": 500,
+							"sizeInBytes": 68298,
+							"provider_metadata": {
+								"public_id": "small_SOA_1_2_hzxib0_9f05f18d9d",
+								"resource_type": "image"
+							}
+						},
+						"medium": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154292/medium_SOA_1_2_hzxib0_9f05f18d9d.jpg",
+							"hash": "medium_SOA_1_2_hzxib0_9f05f18d9d",
+							"mime": "image/jpeg",
+							"name": "medium_SOA1-2_hzxib0.jpg",
+							"path": null,
+							"size": 142.4,
+							"width": 750,
+							"height": 750,
+							"sizeInBytes": 142397,
+							"provider_metadata": {
+								"public_id": "medium_SOA_1_2_hzxib0_9f05f18d9d",
+								"resource_type": "image"
+							}
+						},
+						"thumbnail": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154291/thumbnail_SOA_1_2_hzxib0_9f05f18d9d.jpg",
+							"hash": "thumbnail_SOA_1_2_hzxib0_9f05f18d9d",
+							"mime": "image/jpeg",
+							"name": "thumbnail_SOA1-2_hzxib0.jpg",
+							"path": null,
+							"size": 8.8,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 8796,
+							"provider_metadata": {
+								"public_id": "thumbnail_SOA_1_2_hzxib0_9f05f18d9d",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "SOA_1_2_hzxib0_9f05f18d9d",
+					"ext": ".jpg",
+					"mime": "image/jpeg",
+					"size": 383.89,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154291/SOA_1_2_hzxib0_9f05f18d9d.jpg",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "SOA_1_2_hzxib0_9f05f18d9d",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T20:38:12.623Z",
+					"updatedAt": "2025-08-25T20:38:12.623Z",
+					"publishedAt": "2025-08-25T20:38:12.624Z"
+				},
+				{
+					"id": 9,
+					"documentId": "a8r31dw903fch2nfq75rr5tb",
+					"name": "SOA1-4_q1peom.jpg",
+					"alternativeText": null,
+					"caption": null,
+					"width": 1280,
+					"height": 1280,
+					"formats": {
+						"large": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154291/large_SOA_1_4_q1peom_27c1c2eac0.jpg",
+							"hash": "large_SOA_1_4_q1peom_27c1c2eac0",
+							"mime": "image/jpeg",
+							"name": "large_SOA1-4_q1peom.jpg",
+							"path": null,
+							"size": 192.06,
+							"width": 1000,
+							"height": 1000,
+							"sizeInBytes": 192055,
+							"provider_metadata": {
+								"public_id": "large_SOA_1_4_q1peom_27c1c2eac0",
+								"resource_type": "image"
+							}
+						},
+						"small": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154291/small_SOA_1_4_q1peom_27c1c2eac0.jpg",
+							"hash": "small_SOA_1_4_q1peom_27c1c2eac0",
+							"mime": "image/jpeg",
+							"name": "small_SOA1-4_q1peom.jpg",
+							"path": null,
+							"size": 62.16,
+							"width": 500,
+							"height": 500,
+							"sizeInBytes": 62161,
+							"provider_metadata": {
+								"public_id": "small_SOA_1_4_q1peom_27c1c2eac0",
+								"resource_type": "image"
+							}
+						},
+						"medium": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154291/medium_SOA_1_4_q1peom_27c1c2eac0.jpg",
+							"hash": "medium_SOA_1_4_q1peom_27c1c2eac0",
+							"mime": "image/jpeg",
+							"name": "medium_SOA1-4_q1peom.jpg",
+							"path": null,
+							"size": 119.6,
+							"width": 750,
+							"height": 750,
+							"sizeInBytes": 119597,
+							"provider_metadata": {
+								"public_id": "medium_SOA_1_4_q1peom_27c1c2eac0",
+								"resource_type": "image"
+							}
+						},
+						"thumbnail": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154290/thumbnail_SOA_1_4_q1peom_27c1c2eac0.jpg",
+							"hash": "thumbnail_SOA_1_4_q1peom_27c1c2eac0",
+							"mime": "image/jpeg",
+							"name": "thumbnail_SOA1-4_q1peom.jpg",
+							"path": null,
+							"size": 8.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 8739,
+							"provider_metadata": {
+								"public_id": "thumbnail_SOA_1_4_q1peom_27c1c2eac0",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "SOA_1_4_q1peom_27c1c2eac0",
+					"ext": ".jpg",
+					"mime": "image/jpeg",
+					"size": 297.06,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154290/SOA_1_4_q1peom_27c1c2eac0.jpg",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "SOA_1_4_q1peom_27c1c2eac0",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T20:38:12.328Z",
+					"updatedAt": "2025-08-25T20:38:12.328Z",
+					"publishedAt": "2025-08-25T20:38:12.329Z"
+				},
+				{
+					"id": 11,
+					"documentId": "m0rwyjy5f9kxs66hhlbupij1",
+					"name": "SOA1-3_utk406.jpg",
+					"alternativeText": null,
+					"caption": null,
+					"width": 1280,
+					"height": 1280,
+					"formats": {
+						"large": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154291/large_SOA_1_3_utk406_f662e3b6c7.jpg",
+							"hash": "large_SOA_1_3_utk406_f662e3b6c7",
+							"mime": "image/jpeg",
+							"name": "large_SOA1-3_utk406.jpg",
+							"path": null,
+							"size": 222.39,
+							"width": 1000,
+							"height": 1000,
+							"sizeInBytes": 222387,
+							"provider_metadata": {
+								"public_id": "large_SOA_1_3_utk406_f662e3b6c7",
+								"resource_type": "image"
+							}
+						},
+						"small": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154292/small_SOA_1_3_utk406_f662e3b6c7.jpg",
+							"hash": "small_SOA_1_3_utk406_f662e3b6c7",
+							"mime": "image/jpeg",
+							"name": "small_SOA1-3_utk406.jpg",
+							"path": null,
+							"size": 68.88,
+							"width": 500,
+							"height": 500,
+							"sizeInBytes": 68876,
+							"provider_metadata": {
+								"public_id": "small_SOA_1_3_utk406_f662e3b6c7",
+								"resource_type": "image"
+							}
+						},
+						"medium": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154291/medium_SOA_1_3_utk406_f662e3b6c7.jpg",
+							"hash": "medium_SOA_1_3_utk406_f662e3b6c7",
+							"mime": "image/jpeg",
+							"name": "medium_SOA1-3_utk406.jpg",
+							"path": null,
+							"size": 135.78,
+							"width": 750,
+							"height": 750,
+							"sizeInBytes": 135780,
+							"provider_metadata": {
+								"public_id": "medium_SOA_1_3_utk406_f662e3b6c7",
+								"resource_type": "image"
+							}
+						},
+						"thumbnail": {
+							"ext": ".jpg",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154291/thumbnail_SOA_1_3_utk406_f662e3b6c7.jpg",
+							"hash": "thumbnail_SOA_1_3_utk406_f662e3b6c7",
+							"mime": "image/jpeg",
+							"name": "thumbnail_SOA1-3_utk406.jpg",
+							"path": null,
+							"size": 9.54,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 9535,
+							"provider_metadata": {
+								"public_id": "thumbnail_SOA_1_3_utk406_f662e3b6c7",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "SOA_1_3_utk406_f662e3b6c7",
+					"ext": ".jpg",
+					"mime": "image/jpeg",
+					"size": 345.65,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756154291/SOA_1_3_utk406_f662e3b6c7.jpg",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "SOA_1_3_utk406_f662e3b6c7",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T20:38:12.752Z",
+					"updatedAt": "2025-08-25T20:38:12.752Z",
+					"publishedAt": "2025-08-25T20:38:12.752Z"
+				}
+			]
+		},
+		{
+			"id": 25,
+			"documentId": "frp3vg93zzzw6hfca56qicyn",
+			"name": "Black Soap",
+			"description": "Purify and refresh with this handcrafted botanical soap made with shea butter, bamboo charcoal, and pink sea salt. Lightly scented with jasmine and topped with dried rose, peony, and jasmine petals for a natural, elegant finish.",
+			"priceUS": 15,
+			"priceEU": 13,
+			"article": "test1",
+			"priceIdUs": "test",
+			"priceIdEu": "test",
+			"categories": "gothic - rituals",
+			"ingredients": "Butyrospermum Parkii (Shea) Butter, Melaleuca Alternifolia (Tea Tree) Leaf Oil, Jasminum Officinale (Jasmine) Extract,  Bamboo Charcoal powder, Sodium Hydroxide, Aqua (Water), Maris Sal (Pink Sea Salt), Rosa Centifolia (Rose) Flower, Paeonia Lactiflora (Peony) Flower, Jasminum Officinale (Jasmine) Flower.",
+			"additional": "Vegan • Handmade • No synthetic fragrance",
+			"createdAt": "2025-09-02T16:38:16.489Z",
+			"updatedAt": "2025-09-02T16:43:16.574Z",
+			"publishedAt": "2025-09-02T16:43:19.855Z",
+			"image": [
+				{
+					"id": 6,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 7,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 8,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 9,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 1,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 2,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 3,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 4,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 5,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				},
+				{
+					"id": 61,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				}
+			]
+		},
+		{
+			"id": 26,
+			"documentId": "wh0h7vcakffq8y1ud5z5weex",
+			"name": "test",
+			"description": "test",
+			"priceUS": 1,
+			"priceEU": 1,
+			"article": "test4",
+			"priceIdUs": "test",
+			"priceIdEu": "test",
+			"categories": "gothic - rituals",
+			"ingredients": "test",
+			"additional": "test",
+			"createdAt": "2025-09-02T16:41:46.248Z",
+			"updatedAt": "2025-09-02T16:44:29.816Z",
+			"publishedAt": "2025-09-02T16:44:33.501Z",
+			"image": [
+				{
+					"id": 63,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				}
+			]
+		},
+		{
+			"id": 27,
+			"documentId": "wh0h7vcakffq8y1ud5z5weex",
+			"name": "test",
+			"description": "test",
+			"priceUS": 1,
+			"priceEU": 1,
+			"article": "test5",
+			"priceIdUs": "test",
+			"priceIdEu": "test",
+			"categories": "gothic - rituals",
+			"ingredients": "test",
+			"additional": "test",
+			"createdAt": "2025-09-02T16:41:46.248Z",
+			"updatedAt": "2025-09-02T16:44:29.816Z",
+			"publishedAt": "2025-09-02T16:44:33.501Z",
+			"image": [
+				{
+					"id": 64,
+					"documentId": "y9aag783wjmfb2ojwu0fhq3d",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				}
+			]
+		},
+
+		{
+			"id": 27,
+			"documentId": "zx6tcji88g45ot09r0f6935s",
+			"name": "test",
+			"description": "test",
+			"priceUS": 1,
+			"priceEU": 1,
+			"article": "test3",
+			"priceIdUs": "test",
+			"priceIdEu": "test",
+			"categories": "gothic - vintage",
+			"ingredients": "test",
+			"additional": "test",
+			"createdAt": "2025-09-02T16:41:03.823Z",
+			"updatedAt": "2025-09-02T16:44:46.600Z",
+			"publishedAt": "2025-09-02T16:44:49.751Z",
+			"image": [
+				{
+					"id": 65,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				}
+			]
+		},
+		{
+			"id": 28,
+			"documentId": "y3y6acxj2nc5lbsvhmy9ebr2",
+			"name": "test",
+			"description": "test",
+			"priceUS": 1,
+			"priceEU": 2,
+			"article": "test2",
+			"priceIdUs": "test",
+			"priceIdEu": "test",
+			"categories": "gothic - wall art - vintage",
+			"ingredients": "test",
+			"additional": "test",
+			"createdAt": "2025-09-02T16:40:25.967Z",
+			"updatedAt": "2025-09-02T16:45:18.480Z",
+			"publishedAt": "2025-09-02T16:45:22.537Z",
+			"image": [
+				{
+					"id": 66,
+					"documentId": "y9aag783wjmfb2ojwu0fhqud",
+					"name": "test_qm4uwb.png",
+					"alternativeText": null,
+					"caption": null,
+					"width": 480,
+					"height": 480,
+					"formats": {
+						"thumbnail": {
+							"ext": ".png",
+							"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138333/thumbnail_test_qm4uwb_9b9f1a97b1.png",
+							"hash": "thumbnail_test_qm4uwb_9b9f1a97b1",
+							"mime": "image/png",
+							"name": "thumbnail_test_qm4uwb.png",
+							"path": null,
+							"size": 2.74,
+							"width": 156,
+							"height": 156,
+							"sizeInBytes": 2744,
+							"provider_metadata": {
+								"public_id": "thumbnail_test_qm4uwb_9b9f1a97b1",
+								"resource_type": "image"
+							}
+						}
+					},
+					"hash": "test_qm4uwb_9b9f1a97b1",
+					"ext": ".png",
+					"mime": "image/png",
+					"size": 1.74,
+					"url": "https://res.cloudinary.com/dyoeikmem/image/upload/v1756138334/test_qm4uwb_9b9f1a97b1.png",
+					"previewUrl": null,
+					"provider": "cloudinary",
+					"provider_metadata": {
+						"public_id": "test_qm4uwb_9b9f1a97b1",
+						"resource_type": "image"
+					},
+					"createdAt": "2025-08-25T16:12:14.476Z",
+					"updatedAt": "2025-09-02T16:41:39.424Z",
+					"publishedAt": "2025-08-25T16:12:14.477Z"
+				}
+			]
+		}
+	],
+	"meta": {
+		"pagination": { "page": 1, "pageSize": 25, "pageCount": 1, "total": 5 }
+	}
+}
