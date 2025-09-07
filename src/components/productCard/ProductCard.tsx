@@ -21,11 +21,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 			className="product-card-container"
 		>
 			<img src={product.image[0].url} alt={product.name} />
-			<p className="product-card-name">{product.name}</p>
 			<p className="product-card-price">
 				{currencySymbol}
 				{price}
 			</p>
+			<p className="product-card-name">{product.name}</p>
 		</Link>
 	);
 };

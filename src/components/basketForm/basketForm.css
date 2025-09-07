@@ -4,7 +4,6 @@
 	gap: 2rem;
 	max-width: 600px;
 	width: 100%;
-	margin-bottom: 2rem;
 }
 
 .basket-form-double-container {
@@ -16,9 +15,7 @@
 
 .basket-form-title {
 	font-size: 1.1rem;
-	font-weight: 400;
 	margin: 2rem 0 0 0;
-	padding: 0;
 }
 
 .basket-form-title:nth-child(1) {

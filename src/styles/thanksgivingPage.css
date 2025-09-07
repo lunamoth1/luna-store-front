@@ -1,58 +1,21 @@
 .thanksgiving-container {
-	max-width: 1200px;
-	margin: 3rem auto;
+	max-width: 1140px;
+	width: 100%;
+	margin-bottom: 6rem;
+	margin-right: 1rem;
 }
 
 .thanksgiving-title {
-	font-size: 1.8rem;
-	font-weight: 300;
+	font-size: 18px;
+	font-weight: 400;
 	color: #000000;
 	margin-bottom: 2rem;
 	margin-top: 0;
-	padding: 0 4rem;
 }
 
 .thanksgiving-text {
-	font-size: 1.2rem;
+	font-size: 12px;
 	margin-bottom: 0.5rem;
 	color: #000000;
-	font-weight: 200;
-	padding: 0 4rem;
-}
-
-@media (max-width: 1024px) {
-	.thanksgiving-title {
-		padding: 0 2.5rem;
-	}
-	.thanksgiving-text {
-		padding: 0 2.5rem;
-	}
-}
-
-@media (max-width: 750px) {
-	.thanksgiving-container {
-		margin: 2rem auto;
-	}
-	.thanksgiving-title {
-		font-size: 1.5rem;
-		padding: 0 1.5rem;
-	}
-	.thanksgiving-text {
-		font-size: 1.1rem;
-		padding: 0 1.5rem;
-	}
-}
-
-@media (max-width: 440px) {
-	.thanksgiving-container {
-		margin: 1rem auto;
-	}
-	.thanksgiving-title {
-		font-size: 1.3rem;
-		padding: 0 1rem;
-	}
-	.thanksgiving-text {
-		font-size: 1rem;
-		padding: 0 1rem;
-	}
+	font-weight: 300;
 }
