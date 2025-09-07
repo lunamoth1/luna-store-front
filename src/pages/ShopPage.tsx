@@ -23,9 +23,7 @@ const ShopPage: React.FC = () => {
 	if (error) {
 		return (
 			<div className="shop-container">
-				<div className="shop-message-container">
-					<p className="shop-message-error">{error}</p>
-				</div>
+				<p className="shop-message-error">{error}</p>
 			</div>
 		);
 	}
@@ -33,7 +31,7 @@ const ShopPage: React.FC = () => {
 	if (isLoading) {
 		return (
 			<div className="shop-container">
-				<div className="shop-message-container">
+				<div className="shop-loading-container">
 					<SpinnerCircularFixed
 						size={60}
 						thickness={50}

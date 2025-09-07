@@ -4,8 +4,9 @@
 	margin-bottom: 6rem;
 }
 
-.shop-message-container {
+.shop-loading-container {
 	display: flex;
+	justify-content: center;
 }
 
 .shop-message-error {
