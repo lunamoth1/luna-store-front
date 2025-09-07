@@ -27,10 +27,10 @@ const Footer: React.FC = () => {
 						to="https://www.instagram.com/lunamothxx"
 						className="footer-social-icon"
 					>
-						<Instagram fill={"#ffffff"} />
+						<Instagram fill={"#fff"} />
 					</Link>
 					<Link to="#" className="footer-social-icon">
-						<Tiktok fill={"#ffffff"} />
+						<Tiktok fill={"#fff"} />
 					</Link>
 				</div>
 			</div>

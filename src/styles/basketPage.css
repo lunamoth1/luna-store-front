@@ -8,10 +8,8 @@
 }
 
 .basket-empty-text {
-	font-size: 1.2rem;
-	text-align: center;
+	font-size: 12px;
 	color: #000;
-	margin-top: 2rem;
 }
 
 .basket-container-inner {

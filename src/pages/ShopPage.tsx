@@ -4,8 +4,8 @@ import { useProductStore } from "../store/productStore";
 import { useCurrency } from "../context/CurrencyContext";
 import { useCategory } from "../context/CategoryContext";
 import ProductCard from "../components/productCard/ProductCard";
-import data from "../testData/products.json";
 import "../styles/shopPage.css";
+// import data from "../testData/products.json";
 
 const ShopPage: React.FC = () => {
 	const { refreshLocation } = useCurrency();
