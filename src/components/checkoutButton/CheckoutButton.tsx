@@ -29,8 +29,8 @@ const CheckoutButton = ({
 				quantity: item.quantity,
 			})),
 			mode: "payment",
-			successUrl: `${frontendUrl}/thanksgiving?success=true`,
-			cancelUrl: `${frontendUrl}/basket`,
+			successUrl: `https://${frontendUrl}/thanksgiving?success=true`,
+			cancelUrl: `https://${frontendUrl}/basket`,
 			customerEmail: email,
 		});
 	};
