@@ -5,7 +5,6 @@ import { useCurrency } from "../context/CurrencyContext";
 import { useCategory } from "../context/CategoryContext";
 import ProductCard from "../components/productCard/ProductCard";
 import "../styles/shopPage.css";
-// import data from "../testData/products.json";
 
 const ShopPage: React.FC = () => {
 	const { refreshLocation } = useCurrency();
@@ -15,10 +14,6 @@ const ShopPage: React.FC = () => {
 	useEffect(() => {
 		refreshLocation();
 	}, []);
-
-	useEffect(() => {
-		fetchProducts();
-	}, [fetchProducts]);
 
 	if (error) {
 		return (

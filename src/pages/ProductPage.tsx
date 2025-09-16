@@ -1,19 +1,44 @@
 import React, { useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useParams } from "react-router-dom";
+import { SpinnerCircularFixed } from "spinners-react";
+import { useProductStore } from "../store/productStore";
 import ProductPhoto from "../components/productPhoto/ProductPhoto";
 import ProductInfo from "../components/productInfo/ProductInfo";
-import { Product } from "../types/ProductPage";
 import "../styles/productPage.css";
 
 const ProductPage: React.FC = () => {
 	const location = useLocation();
-	const product: Product = location.state?.product;
+	const { id } = useParams<{ id: string }>();
+	const { products, isLoading, error } = useProductStore();
+
+	const product =
+		location.state?.product ||
+		products.find((p) => p.id === parseInt(id || "")) ||
+		null;
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
 
-	if (!product) return <div>Error</div>;
+	if (isLoading) {
+		return (
+			<div className="product-page-center-container">
+				<SpinnerCircularFixed
+					size={60}
+					thickness={50}
+					speed={100}
+					color="#000"
+					secondaryColor="#E8E8E8"
+				/>
+			</div>
+		);
+	}
+	if (error)
+		return <div className="product-page-center-container">{error}</div>;
+	if (!product)
+		return (
+			<div className="product-page-center-container">Error loading product</div>
+		);
 
 	return (
 		<div className="product-page-container">
