@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useProductStore } from "./store/productStore";
 import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
 import EventsPage from "./pages/EventsPage";
@@ -17,7 +18,6 @@ import { OrderProvider } from "./context/OrderContext";
 import { BasketProvider } from "./context/BasketContext";
 import { CurrencyProvider } from "./context/CurrencyContext";
 import { CategoryProvider } from "./context/CategoryContext";
-
 import "./styles/appPage.css";
 import "./assets/fonts/fonts.css";
 
@@ -53,6 +53,12 @@ const AppRoutes: React.FC = () => {
 };
 
 const App: React.FC = () => {
+	const { fetchProducts } = useProductStore();
+
+	useEffect(() => {
+		fetchProducts();
+	}, [fetchProducts]);
+
 	return (
 		<BasketProvider>
 			<CurrencyProvider>
