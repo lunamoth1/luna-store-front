@@ -14,9 +14,7 @@ import {
 } from "../../constants";
 import "./basketForm.css";
 
-interface BasketFormProps {}
-
-const BasketForm: React.FC<BasketFormProps> = () => {
+const BasketForm: React.FC = () => {
 	const { basket } = useBasket();
 	const { currency } = useCurrency();
 	const { setOrder } = useOrder();

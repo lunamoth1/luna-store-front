@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useBasket } from "../context/BasketContext";
 import { useOrder } from "../context/OrderContext";
 import { statuses } from "../constants";
-import { OrderData } from "../types/OrderContext";
+import { BasketElement } from "../types/BasketContext";
 import "../styles/thanksgivingPage.css";
 
 const apiUrl = import.meta.env.VITE_STRAPI_API_URL;
@@ -14,22 +14,20 @@ const ThanksgivingPage: React.FC = () => {
 	useEffect(() => {
 		const urlParams = new URLSearchParams(window.location.search);
 		if (urlParams.get("success") === "true") {
-			const savedOrder: OrderData = JSON.parse(
-				localStorage.getItem("order") || "{}"
-			);
-
-			if (savedOrder) {
-				const basketItemsJson = savedOrder.basketItems.map((item) => ({
-					id: item.id,
-					quantity: item.quantity,
-					product: {
-						id: item.product.id,
-						name: item.product.name,
-						priceUS: item.product.priceUS,
-						priceEU: item.product.priceEU,
-					},
-				}));
-
+			const savedOrder = JSON.parse(localStorage.getItem("order") || "{}");
+			if (savedOrder && savedOrder.basketItems?.length) {
+				const basketItemsJson = savedOrder.basketItems.map(
+					(item: BasketElement) => ({
+						id: item.id,
+						quantity: item.quantity,
+						product: {
+							id: item.product.id,
+							name: item.product.name,
+							priceUS: item.product.priceUS,
+							priceEU: item.product.priceEU,
+						},
+					})
+				);
 				const orderPayload = {
 					email: savedOrder.form.email,
 					firstName: savedOrder.form.firstName,
@@ -43,15 +41,17 @@ const ThanksgivingPage: React.FC = () => {
 					note: "",
 					orderStatus: statuses[2],
 				};
-
 				fetch(`${apiUrl}/api/orders`, {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({ data: orderPayload }),
 				})
-					.then((res) => res.json())
-					.catch(console.error);
-
+					.then((res) => {
+						if (!res.ok) throw new Error(`Error: ${res.status}`);
+						return res.json();
+					})
+					.then((data) => console.log("Order submitted"))
+					.catch((err) => console.error("Failed:", err));
 				localStorage.removeItem("order");
 				clearBasket();
 				clearOrder();

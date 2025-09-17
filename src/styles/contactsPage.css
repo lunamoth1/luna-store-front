@@ -5,9 +5,27 @@
 	margin-right: 1rem;
 }
 
-.contacts-title {
+.contacts-medium {
+	font-size: 12px;
+	font-weight: 500;
+	color: #000;
+	line-height: 20px;
+}
+
+.contacts-light {
 	font-size: 12px;
 	font-weight: 300;
-	line-height: 1.5;
 	color: #000;
+	line-height: 20px;
+}
+
+.contacts-margin {
+	margin-bottom: 1rem;
+}
+
+.contacts-link {
+	font-size: 12px;
+	color: #000;
+	text-decoration: underline;
+	font-weight: 300;
 }
