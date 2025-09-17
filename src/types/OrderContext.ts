@@ -1,4 +1,5 @@
-import { BasketItem } from "./BasketContext";
+import { BasketElement } from "./BasketContext";
+import { BasketItem } from "./ProductPage";
 
 export interface OrderForm {
 	email: string;
@@ -13,11 +14,15 @@ export interface OrderForm {
 
 export interface OrderData {
 	form: OrderForm;
-	basketItems: BasketItem[];
+	basketItems: BasketElement[];
 }
 
 export interface OrderContextProps {
 	order: OrderData | null;
 	setOrder: (data: OrderData) => void;
 	clearOrder: () => void;
+	initOrderFromBasket: (
+		items: BasketElement[],
+		partialForm?: Partial<OrderForm>
+	) => OrderData;
 }

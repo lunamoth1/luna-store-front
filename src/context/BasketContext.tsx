@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { Product } from "../types/ProductPage";
-import { BasketContextType, BasketItem } from "../types/BasketContext";
+import { BasketContextType, BasketElement } from "../types/BasketContext";
 
 const BasketContext = createContext<BasketContextType | undefined>(undefined);
 
 export const BasketProvider: React.FC<{ children: React.ReactNode }> = ({
 	children,
 }) => {
-	const [basket, setBasket] = useState<BasketItem[]>(() => {
+	const [basket, setBasket] = useState<BasketElement[]>(() => {
 		const savedBasket = localStorage.getItem("basket");
 		return savedBasket ? JSON.parse(savedBasket) : [];
 	});
