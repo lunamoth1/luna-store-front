@@ -2,24 +2,20 @@ import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { useOrder } from "../../context/OrderContext";
 import { useBasket } from "../../context/BasketContext";
+import { useCurrency } from "../../context/CurrencyContext";
 import Button from "../button/Button";
-import { BasketItem } from "../../types/ProductPage";
+import { usd } from "../../constants";
 
 interface CheckoutButtonProps {
-	basketItems: BasketItem[];
 	email?: string;
 	disabled?: boolean;
 }
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
-const frontendUrl = import.meta.env.VITE_FRONTEND_URL;
 
-const CheckoutButton: React.FC<CheckoutButtonProps> = ({
-	basketItems,
-	email,
-	disabled,
-}) => {
+const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 	const { order, setOrder, initOrderFromBasket } = useOrder();
+	const { currency } = useCurrency();
 	const { basket } = useBasket();
 
 	const checkoutHandler = async () => {
@@ -33,24 +29,44 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({
 				console.warn("Failed to local-save order before redirect", e);
 			}
 
-			JSON.parse(localStorage.getItem("order") || "{}");
-
 			const stripe = await stripePromise;
 			if (!stripe) {
 				console.error("Stripe failed to initialize");
 				return;
 			}
 
-			await stripe.redirectToCheckout({
-				lineItems: basketItems.map((item) => ({
-					price: item.price,
-					quantity: item.quantity,
-				})),
-				mode: "payment",
-				successUrl: `${frontendUrl}/thanksgiving?success=true`,
-				cancelUrl: `${frontendUrl}/basket`,
-				customerEmail: email,
-			});
+			const response = await fetch(
+				`${import.meta.env.VITE_STRAPI_API_URL}/api/checkout`,
+				{
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						basketItems: basket.map((item) => ({
+							name: item.product.name,
+							price:
+								currency === usd
+									? item.product.priceUS * 100
+									: item.product.priceEU * 100,
+							quantity: item.quantity,
+						})),
+						email,
+						shippingCost: 100,
+						currency: currency === usd ? "usd" : "eur",
+					}),
+				}
+			);
+
+			const data = await response.json();
+
+			if (!data.id) {
+				console.error("Failed to create Stripe session:", data);
+				return;
+			}
+
+			const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
+			if (error) {
+				console.error("Stripe checkout error:", error.message);
+			}
 		} catch (err) {
 			console.error("Checkout error:", err);
 		}

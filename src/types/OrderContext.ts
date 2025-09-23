@@ -1,5 +1,4 @@
 import { BasketElement } from "./BasketContext";
-import { BasketItem } from "./ProductPage";
 
 export interface OrderForm {
 	email: string;
