@@ -25,9 +25,3 @@ export interface Product {
 	ingredients: string;
 	additional: string;
 }
-
-// interface for Strapi
-export interface BasketItem {
-	price: string;
-	quantity: number;
-}

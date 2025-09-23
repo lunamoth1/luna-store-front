@@ -32,13 +32,6 @@ const BasketForm: React.FC = () => {
 		country: "",
 	});
 
-	const basketItems = basket.map((item) => {
-		const quantity = item.quantity;
-		const priceID =
-			currency === usd ? item.product.priceIdUs : item.product.priceIdEu;
-		return { price: priceID, quantity };
-	});
-
 	const changeHandler = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
 	) => {
@@ -112,7 +105,6 @@ const BasketForm: React.FC = () => {
 				/>
 			</div>
 			<CheckoutButton
-				basketItems={basketItems}
 				email={form.email}
 				disabled={
 					!form.email ||

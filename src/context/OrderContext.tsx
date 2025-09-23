@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { OrderContextProps, OrderData, OrderForm } from "../types/OrderContext";
 import { BasketElement } from "../types/BasketContext";
-import { BasketItem } from "../types/ProductPage";
 
 const STORAGE_KEY = "order";
 
@@ -20,7 +19,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
 				setOrderState(parsed);
 			}
 		} catch (err) {
-			console.warn("Ошибка при загрузке order из localStorage", err);
+			console.warn("Error loading order from localStorage", err);
 		}
 	}, []);
 
@@ -32,7 +31,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
 				localStorage.removeItem(STORAGE_KEY);
 			}
 		} catch (err) {
-			console.warn("Ошибка при сохранении order в localStorage", err);
+			console.warn("Error saving order to localStorage", err);
 		}
 	}, [order]);
 
