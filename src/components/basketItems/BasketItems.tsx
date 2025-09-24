@@ -20,9 +20,9 @@ const BasketItems: React.FC = () => {
 				item.quantity,
 		0
 	);
-	const shippingPrice = deliveryType.find(
-		(d) => d.id === order?.form.delivery
-	)?.price;
+	const shippingPrice =
+		deliveryType.find((d) => d.id === order?.form.delivery)?.price ||
+		deliveryType[0].price;
 	const taxesPrice = subtotalPrice * taxesPercent;
 	const totalPrice = subtotalPrice + taxesPrice + (shippingPrice || 0);
 
