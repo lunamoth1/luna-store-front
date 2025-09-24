@@ -26,18 +26,18 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 
 	return (
 		<div>
-			<p className="product-info-name">{product.name}</p>
-			<p className="product-info-description">{product.description}</p>
-			<p className="product-info-price">
+			<p className="productInfoName">{product.name}</p>
+			<p className="productInfoDescription">{product.description}</p>
+			<p className="productInfoPrice">
 				{currencySymbol}
 				{price.toFixed(2)}
 			</p>
 
-			<div className="product-info-buy-container">
-				<div className="product-info-quantity">
+			<div className="productInfoBuyContainer">
+				<div className="productInfoQuantity">
 					<label htmlFor="quantity">Quantity:</label>
 					<p
-						className="product-info-quantity-symbol"
+						className="productInfoQuantitySymbol"
 						onClick={decreaseQuantityHandler}
 					>
 						-
@@ -50,7 +50,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 						onChange={(e) => setQuantity(Number(e.target.value))}
 					/>
 					<p
-						className="product-info-quantity-symbol"
+						className="productInfoQuantitySymbol"
 						onClick={increaseQuantityHandler}
 					>
 						+
@@ -60,12 +60,12 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 			</div>
 
 			{product.ingredients && (
-				<p className="product-info-ingredients">
+				<p className="productInfoIngredients">
 					Ingredients: {product.ingredients}
 				</p>
 			)}
 			{product.additional && (
-				<p className="product-info-additional">{product.additional}</p>
+				<p className="productInfoAdditional">{product.additional}</p>
 			)}
 		</div>
 	);

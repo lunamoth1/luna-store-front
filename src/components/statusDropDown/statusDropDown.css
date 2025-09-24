@@ -1,8 +1,8 @@
-.status-dropdown-container {
+.statusDropdownContainer {
 	width: 140px;
 }
 
-.status-dropdown-button {
+.statusDropdownButton {
 	display: flex;
 	align-items: center;
 	padding: 8px;
@@ -20,14 +20,14 @@
 	position: relative;
 }
 
-.status-dropdown-circle {
+.statusDropdownCircle {
 	width: 12px;
 	height: 12px;
 	border-radius: 50%;
 	margin-right: 8px;
 }
 
-.status-dropdown-list {
+.statusDropdownList {
 	border: 1px solid #fff;
 	background-color: #252525;
 	list-style: none;
@@ -40,13 +40,13 @@
 	box-sizing: border-box;
 }
 
-.status-dropdown-item {
+.statusDropdownItem {
 	display: flex;
 	align-items: center;
 	padding: 8px;
 	cursor: pointer;
 }
 
-.status-dropdown-item:hover {
+.statusDropdownItem:hover {
 	background-color: #373737;
 }

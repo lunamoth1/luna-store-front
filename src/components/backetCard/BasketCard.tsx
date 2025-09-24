@@ -18,29 +18,29 @@ const BasketCard: React.FC<BasketCardProps> = ({ item }) => {
 	const price = currency === usd ? priceUS : priceEU;
 
 	return (
-		<div className="basket-card-container">
-			<img src={image[0].url} alt={name} className="basket-card-image" />
-			<div className="basket-card-info-container">
-				<div className="basket-card-name-price-container">
-					<p className="basket-card-medium-text">{name}</p>
-					<p className="basket-card-medium-text">
+		<div className="basketCardContainer">
+			<img src={image[0].url} alt={name} className="basketCardImage" />
+			<div className="basketCardInfoContainer">
+				<div className="basketCardNamePriceContainer">
+					<p className="basketCardMediumText">{name}</p>
+					<p className="basketCardMediumText">
 						{currencySymbol}
 						{price}
 					</p>
 				</div>
-				<div className="basket-card-quantity-container">
-					<p className="basket-card-regular-text">Quantity:</p>
+				<div className="basketCardQuantityContainer">
+					<p className="basketCardRegularText">Quantity:</p>
 
-					<div className="basket-card-quantity-button-container">
+					<div className="basketCardQuantityButtonContainer">
 						<button
-							className="basket-card-quantity-button"
+							className="basketCardQuantityButton"
 							onClick={() => updateQuantity(id, item.quantity - 1)}
 						>
 							-
 						</button>
-						<span className="basket-card-quantity">{quantity}</span>
+						<span className="basketCardQuantity">{quantity}</span>
 						<button
-							className="basket-card-quantity-button"
+							className="basketCardQuantityButton"
 							onClick={() => updateQuantity(id, item.quantity + 1)}
 						>
 							+

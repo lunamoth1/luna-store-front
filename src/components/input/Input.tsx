@@ -23,14 +23,14 @@ const Input: React.FC<InputProps> = ({
 	autoFocus,
 }) => {
 	return (
-		<div className="input-container" style={inputContainerStyle}>
-			{label && <p className="input-label">{label}</p>}
+		<div className="inputContainer" style={inputContainerStyle}>
+			{label && <p className="inputLabel">{label}</p>}
 			<input
 				type={type}
 				name={name}
 				value={value}
 				onChange={onChange}
-				className="input-field"
+				className="inputField"
 				style={inputStyle}
 				autoFocus={autoFocus}
 			/>

@@ -1,4 +1,4 @@
-.basket-card-container {
+.basketCardContainer {
 	display: flex;
 	align-items: center;
 	width: 100%;
@@ -6,14 +6,14 @@
 	margin-bottom: 4rem;
 }
 
-.basket-card-image {
+.basketCardImage {
 	width: 120px;
 	height: 120px;
 	margin-right: 1.5rem;
 	object-fit: cover;
 }
 
-.basket-card-info-container {
+.basketCardInfoContainer {
 	display: flex;
 	flex: 1;
 	flex-direction: column;
@@ -21,21 +21,21 @@
 	gap: 1rem;
 }
 
-.basket-card-name-price-container {
+.basketCardNamePriceContainer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: 2rem;
 }
 
-.basket-card-quantity-container {
+.basketCardQuantityContainer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: 2rem;
 }
 
-.basket-card-quantity-button {
+.basketCardQuantityButton {
 	background: transparent;
 	border: none;
 	cursor: pointer;
@@ -49,90 +49,90 @@
 	appearance: none;
 }
 
-.basket-card-quantity-button:hover {
+.basketCardQuantityButton:hover {
 	opacity: 0.7;
 }
 
-.basket-card-quantity-button-container {
+.basketCardQuantityButtonContainer {
 	margin-right: -16px;
 }
 
-.basket-card-quantity {
+.basketCardQuantity {
 	color: #000;
 	font-size: 1rem;
 	font-weight: 300;
 }
 
-.basket-card-medium-text {
+.basketCardMediumText {
 	font-size: 1rem;
 	color: #000;
 	font-weight: 400;
 }
 
-.basket-card-regular-text {
+.basketCardRegularText {
 	font-size: 1rem;
 	color: #000;
 	font-weight: 300;
 }
 
 @media (max-width: 1024px) {
-	.basket-card-image {
+	.basketCardImage {
 		width: 100px;
 		height: 100px;
 		margin-right: 1rem;
 	}
 
-	.basket-card-info-container {
+	.basketCardInfoContainer {
 		gap: 0.5rem;
 	}
 }
 
 @media (max-width: 920px) {
-	.basket-card-container {
+	.basketCardContainer {
 		max-width: 600px;
 	}
-	.basket-card-image {
+	.basketCardImage {
 		width: 120px;
 		height: 120px;
 	}
 }
 
 @media (max-width: 520px) {
-	.basket-card-image {
+	.basketCardImage {
 		width: 100px;
 		height: 100px;
 	}
 }
 
 @media (max-width: 440px) {
-	.basket-card-container {
+	.basketCardContainer {
 		margin-bottom: 2rem;
 	}
 
-	.basket-card-image {
+	.basketCardImage {
 		width: 80px;
 		height: 80px;
 		margin-right: 0.5rem;
 	}
 
-	.basket-card-quantity-button {
+	.basketCardQuantityButton {
 		font-size: 0.875rem;
 		padding: 6px 12px;
 	}
 
-	.basket-card-quantity-button-container {
+	.basketCardQuantityButtonContainer {
 		margin-right: -10px;
 	}
 
-	.basket-card-medium-text,
-	.basket-card-regular-text,
-	.basket-card-quantity {
+	.basketCardMediumText,
+	.basketCardRegularText,
+	.basketCardQuantity {
 		font-size: 0.875rem;
 	}
 }
 
 @media (max-width: 326px) {
-	.basket-card-container {
+	.basketCardContainer {
 		max-width: 310px;
 	}
 }

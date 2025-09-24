@@ -6,8 +6,8 @@ import "./footer.css";
 const Footer: React.FC = () => {
 	return (
 		<footer className="footer">
-			<div className="footer-line" />
-			<div className="footer-container">
+			<div className="footerLine" />
+			<div className="footerContainer">
 				<ul>
 					<li>
 						<Link to="/events">Events</Link>
@@ -22,14 +22,14 @@ const Footer: React.FC = () => {
 						<Link to="/shipping">Shipping</Link>
 					</li>
 				</ul>
-				<div className="footer-social-container">
+				<div className="footerSocialContainer">
 					<Link
 						to="https://www.instagram.com/lunamothxx"
-						className="footer-social-icon"
+						className="footerSocialIcon"
 					>
 						<Instagram fill={"#fff"} />
 					</Link>
-					<Link to="#" className="footer-social-icon">
+					<Link to="#" className="footerSocialIcon">
 						<Tiktok fill={"#fff"} />
 					</Link>
 				</div>

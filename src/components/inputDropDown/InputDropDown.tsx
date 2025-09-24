@@ -17,14 +17,14 @@ const InputDropDown: React.FC<InputDropDownProps> = ({
 	countryNames,
 }) => {
 	return (
-		<div className="input-dd-container">
-			{label && <p className="input-dd-label">{label}</p>}
+		<div className="inputDdContainer">
+			{label && <p className="inputDdLabel">{label}</p>}
 			<select
 				id="country"
 				name="country"
 				value={value}
 				onChange={onChange}
-				className="input-dd-input"
+				className="inputDdInput"
 			>
 				<option value="" disabled>
 					Select a country

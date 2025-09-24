@@ -62,15 +62,15 @@ const ThanksgivingPage: React.FC = () => {
 	}, []);
 
 	return (
-		<div className="thanksgiving-container">
-			<h1 className="thanksgiving-title">Thank you for your purchase!</h1>
-			<p className="thanksgiving-text">
+		<div className="thanksgivingContainer">
+			<h1 className="thanksgivingTitle">Thank you for your purchase!</h1>
+			<p className="thanksgivingText">
 				We appreciate your support and hope you enjoy your new items.
 			</p>
-			<p className="thanksgiving-text">
+			<p className="thanksgivingText">
 				If you have any questions or feedback, feel free to reach out to us.
 			</p>
-			<p className="thanksgiving-text">We are always here to help you.</p>
+			<p className="thanksgivingText">We are always here to help you.</p>
 		</div>
 	);
 };

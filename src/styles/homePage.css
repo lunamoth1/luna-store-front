@@ -1,17 +1,18 @@
-.home-container {
+.homeContainer {
 	max-width: 1140px;
 	width: 100%;
 	margin-bottom: 6rem;
 	margin-right: 1rem;
+	margin-left: 1rem;
 }
 
-.home-text {
+.homeText {
 	font-size: 12px;
 	font-weight: 300;
 	line-height: 1.5;
 	color: #000;
 }
 
-.home-text:nth-child(3) {
+.homeText:nth-child(3) {
 	margin-bottom: 3rem;
 }

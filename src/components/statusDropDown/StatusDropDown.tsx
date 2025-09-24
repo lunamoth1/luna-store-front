@@ -23,24 +23,24 @@ const StatusDropDown: React.FC<StatusDropDownProps> = ({
 	};
 
 	return (
-		<div className="status-dropdown-container">
-			<button className="status-dropdown-button" onClick={dropDownHandler}>
+		<div className="statusDropdownContainer">
+			<button className="statusDropdownButton" onClick={dropDownHandler}>
 				<span
-					className="status-dropdown-circle"
+					className="statusDropdownCircle"
 					style={{ backgroundColor: statusColors[orderStatus] }}
 				/>
 				{orderStatus}
 			</button>
 			{isOpen && (
-				<ul className="status-dropdown-list">
+				<ul className="statusDropdownList">
 					{statuses.map((status) => (
 						<li
 							key={status}
-							className="status-dropdown-item"
+							className="statusDropdownItem"
 							onClick={() => statusChangeHandler(status)}
 						>
 							<span
-								className="status-dropdown-circle"
+								className="statusDropdownCircle"
 								style={{ backgroundColor: statusColors[status] }}
 							/>
 							{status}

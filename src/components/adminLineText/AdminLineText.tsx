@@ -8,9 +8,9 @@ interface AdminLineTextProps {
 
 const AdminLineText: React.FC<AdminLineTextProps> = ({ text, info }) => {
 	return (
-		<div className="admin-lines-text-container">
-			<p className="admin-lines-text-extra-light-text">{text}:</p>
-			<p className="admin-lines-text-medium-text">{info}</p>
+		<div className="adminLinesTextContainer">
+			<p className="adminLinesTextExtraLightText">{text}:</p>
+			<p className="adminLinesTextMediumText">{info}</p>
 		</div>
 	);
 };

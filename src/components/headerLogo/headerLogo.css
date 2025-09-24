@@ -1,4 +1,4 @@
-.header-logo-container {
+.headerLogoContainer {
 	display: flex;
 	width: 100%;
 	align-items: center;
@@ -6,7 +6,7 @@
 	padding: 1rem 0 3rem;
 }
 
-.header-logo-img {
+.headerLogoImg {
 	width: clamp(160px, 30vw, 300px);
 	height: auto;
 }

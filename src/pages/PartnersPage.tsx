@@ -3,8 +3,8 @@ import "../styles/partnersPage.css";
 
 const PartnersPage: React.FC = () => {
 	return (
-		<div className="partners-container">
-			<h1 className="partners-title">Partners Page</h1>
+		<div className="partnersContainer">
+			<h1 className="partnersTitle">Partners Page</h1>
 		</div>
 	);
 };

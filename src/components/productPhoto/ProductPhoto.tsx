@@ -10,17 +10,17 @@ const ProductPhoto: React.FC<ProductPhotoProps> = ({ photo }) => {
 	const [main, setMain] = useState<number>(0);
 
 	return (
-		<div className="product-photo-container">
+		<div className="productPhotoContainer">
 			<img
-				className="product-photo-main"
+				className="productPhotoMain"
 				src={photo[main].url}
 				alt={photo[main].name}
 			/>
 			{photo.length > 1 && (
-				<div className="product-photo-thumbnail-container">
+				<div className="productPhotoThumbnailContainer">
 					{photo.map((img, index) => (
 						<img
-							className={`product-photo-thumbnails ${
+							className={`productPhotoThumbnails ${
 								index === main ? "active" : ""
 							}`}
 							key={img.id}

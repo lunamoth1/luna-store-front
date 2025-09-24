@@ -22,7 +22,7 @@ const ProductPage: React.FC = () => {
 
 	if (isLoading) {
 		return (
-			<div className="product-page-center-container">
+			<div className="productPageCenterContainer">
 				<SpinnerCircularFixed
 					size={60}
 					thickness={50}
@@ -33,22 +33,21 @@ const ProductPage: React.FC = () => {
 			</div>
 		);
 	}
-	if (error)
-		return <div className="product-page-center-container">{error}</div>;
+	if (error) return <div className="productPageCenterContainer">{error}</div>;
 	if (!product)
 		return (
-			<div className="product-page-center-container">Error loading product</div>
+			<div className="productPageCenterContainer">Error loading product</div>
 		);
 
 	return (
-		<div className="product-page-container">
-			<p className="product-page-nav">
-				<Link className="product-page-nav-link" to="/shop">
+		<div className="productPageContainer">
+			<p className="productPageNav">
+				<Link className="productPageNavLink" to="/shop">
 					shop
 				</Link>{" "}
 				{">"} {product.name}
 			</p>
-			<div className="product-page-product">
+			<div className="productPageProduct">
 				<ProductPhoto photo={product.image} />
 				<ProductInfo product={product} />
 			</div>

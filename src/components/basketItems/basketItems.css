@@ -1,17 +1,17 @@
-.basket-items-container {
+.basketItemsContainer {
 	max-width: 500px;
 	width: 100%;
 	overflow: hidden;
 }
 
-.basket-items-info-container {
+.basketItemsInfoContainer {
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
 	margin-bottom: 1rem;
 }
 
-.basket-items-medium-text {
+.basketItemsMediumText {
 	font-size: 16px;
 	color: #000;
 	margin-top: 1rem;
@@ -19,14 +19,14 @@
 	font-weight: 400;
 }
 
-.basket-items-regular-text {
+.basketItemsRegularText {
 	font-size: 1rem;
 	color: #000;
 	font-weight: 300;
 }
 
 @media (max-width: 920px) {
-	.basket-items-container {
+	.basketItemsContainer {
 		max-width: 600px;
 	}
 }
