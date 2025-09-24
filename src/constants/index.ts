@@ -8,6 +8,8 @@ export const categories: categoriesType[] = [
 	"Vintage",
 ];
 
+export const taxesPercent = 0.097;
+
 export const usd = "USD";
 export const eur = "EUR";
 export const americas = ["US", "CA"];
@@ -26,6 +28,19 @@ export const americasNames: Record<string, string> = {
 	US: "United States",
 	CA: "Canada",
 };
+
+export const deliveryType = [
+	{
+		id: "standard",
+		label: "Standard Delivery",
+		price: 0,
+	},
+	{
+		id: "express",
+		label: "Express Delivery",
+		price: 1,
+	},
+] as const;
 
 export const statusColors: Record<Status, string> = {
 	Received: "#43E26BFF",

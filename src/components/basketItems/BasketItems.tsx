@@ -1,25 +1,30 @@
 import React from "react";
+import { useOrder } from "../../context/OrderContext";
 import { useBasket } from "../../context/BasketContext";
 import { useCurrency } from "../../context/CurrencyContext";
 import BasketCard from "../backetCard/BasketCard";
-import { usd } from "../../constants";
+import { deliveryType, taxesPercent, usd } from "../../constants";
 import "./basketItems.css";
 
 const BasketItems: React.FC = () => {
 	const { basket } = useBasket();
+	const { order } = useOrder();
 	const { currency } = useCurrency();
+
 	const currencySymbol = currency === usd ? "$" : "€";
 
 	const subtotalPrice = basket.reduce(
 		(sum, item) =>
 			sum +
-			(currency === usd
-				? item.product.priceUS
-				: item.product.priceEU * item.quantity),
+			(currency === usd ? item.product.priceUS : item.product.priceEU) *
+				item.quantity,
 		0
 	);
-	const priceWithTaxes = subtotalPrice * 0.097;
-	const totalPrice = subtotalPrice + priceWithTaxes;
+	const shippingPrice = deliveryType.find(
+		(d) => d.id === order?.form.delivery
+	)?.price;
+	const taxesPrice = subtotalPrice * taxesPercent;
+	const totalPrice = subtotalPrice + taxesPrice + (shippingPrice || 0);
 
 	return (
 		<div className="basket-items-container">
@@ -35,13 +40,15 @@ const BasketItems: React.FC = () => {
 			</div>
 			<div className="basket-items-info-container">
 				<p className="basket-items-regular-text">Shipping:</p>
-				<p className="basket-items-regular-text">-</p>
+				<p className="basket-items-regular-text">
+					{currencySymbol} {shippingPrice}
+				</p>
 			</div>
 			<div className="basket-items-info-container">
 				<p className="basket-items-regular-text">Taxes:</p>
 				<p className="basket-items-regular-text">
 					{currencySymbol}
-					{priceWithTaxes.toFixed(2)}
+					{taxesPrice.toFixed(2)}
 				</p>
 			</div>
 			<div className="basket-items-info-container">

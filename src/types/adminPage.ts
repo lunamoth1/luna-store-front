@@ -3,10 +3,10 @@ import { OrderForm } from "./OrderContext";
 import { Status } from "./statusDropDown";
 
 export type Order = {
-	id: number;
-	documentId: string;
+	id?: number;
+	documentId?: string;
 	basket: BasketElement[];
-	createdAt: string;
+	createdAt?: string;
 	note: string;
 	orderStatus: Status;
 } & OrderForm;
