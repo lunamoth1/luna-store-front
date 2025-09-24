@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useBasket } from "../../context/BasketContext";
 import { useCategory } from "../../context/CategoryContext";
@@ -13,42 +14,57 @@ const ShopNavigation: React.FC = () => {
 	const itemCount = basket.reduce((sum, item) => sum + item.quantity, 0);
 	const isShopActive = location.pathname.startsWith("/shop");
 
-	const selectCategoryHandler = (category: categoriesType) =>
-		setCategory(category);
+	const [isOpen, setIsOpen] = useState(false);
+
+	const selectCategoryHandler = (cat: categoriesType) => {
+		setCategory(cat);
+		setIsOpen(false);
+	};
 
 	return (
-		<header className="shop-nav-container">
-			<Link
-				to="/shop"
-				className={`shop-nav-shop-link ${
-					isShopActive ? "shop-nav-shop-link-active" : ""
-				}`}
-				style={{ pointerEvents: isShopActive ? "none" : "auto" }}
+		<>
+			<button
+				className={`shopNavToggle ${isOpen ? "open" : ""}`}
+				onClick={() => setIsOpen(!isOpen)}
 			>
-				<p
-					className={`shop-nav-shop-link-text ${
-						isShopActive ? "shop-nav-shop-link-text-active" : ""
+				{isOpen ? "×" : "☰"}
+			</button>
+
+			<header className={`shopNavContainer ${isOpen ? "open" : ""}`}>
+				<Link
+					to="/shop"
+					className={`shopNavShopLink ${
+						isShopActive ? "shopNavShopLinkActive" : ""
 					}`}
+					style={{ pointerEvents: isShopActive ? "none" : "auto" }}
 				>
-					shop
-				</p>
-			</Link>
-			<ul>
-				{categories.map((cat) => (
-					<Link to="/shop" key={cat}>
-						<li
-							onClick={() => selectCategoryHandler(cat)}
-							className={category === cat ? "active" : ""}
-						>
-							{cat}
-						</li>
-					</Link>
-				))}
-			</ul>
-			<Link to="/basket" className="shop-nav-basket">
-				<Basket className="header-basket-icon" />({itemCount})
-			</Link>
-		</header>
+					<p
+						className={`shopNavShopLinkText ${
+							isShopActive ? "shopNavShopLinkTextActive" : ""
+						}`}
+					>
+						shop
+					</p>
+				</Link>
+
+				<ul>
+					{categories.map((cat) => (
+						<Link to="/shop" key={cat}>
+							<li
+								onClick={() => selectCategoryHandler(cat)}
+								className={category === cat ? "active" : ""}
+							>
+								{cat}
+							</li>
+						</Link>
+					))}
+				</ul>
+
+				<Link to="/basket" className="shopNavBasket">
+					<Basket className="headerBasketIcon" />({itemCount})
+				</Link>
+			</header>
+		</>
 	);
 };
 

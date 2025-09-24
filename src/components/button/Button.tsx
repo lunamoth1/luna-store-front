@@ -18,12 +18,12 @@ const Button: React.FC<Props> = ({
 }) => {
 	return (
 		<button
-			className="button-container"
+			className="buttonContainer"
 			onClick={onClick}
 			style={styles}
 			disabled={disabled}
 		>
-			<p className="button-text" style={textStyle}>
+			<p className="buttonText" style={textStyle}>
 				{text}
 			</p>
 		</button>

@@ -1,11 +1,12 @@
-.thanksgiving-container {
+.thanksgivingContainer {
 	max-width: 1140px;
 	width: 100%;
 	margin-bottom: 6rem;
 	margin-right: 1rem;
+	margin-left: 1rem;
 }
 
-.thanksgiving-title {
+.thanksgivingTitle {
 	font-size: 18px;
 	font-weight: 400;
 	color: #000000;
@@ -13,7 +14,7 @@
 	margin-top: 0;
 }
 
-.thanksgiving-text {
+.thanksgivingText {
 	font-size: 12px;
 	margin-bottom: 0.5rem;
 	color: #000000;

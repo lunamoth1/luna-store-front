@@ -1,4 +1,4 @@
-.admin-container {
+.adminContainer {
 	background-color: #191919;
 	min-height: 100vh;
 	min-width: 100vw;
@@ -9,12 +9,12 @@
 	font-family: "Montserrat", sans-serif;
 }
 
-.admin-container-inner {
+.adminContainerInner {
 	width: 100%;
 	max-width: 1200px;
 }
 
-.admin-order {
+.adminOrder {
 	box-sizing: border-box;
 	border: 1px solid #fff;
 	padding: 1rem;
@@ -24,38 +24,38 @@
 	display: flex;
 }
 
-.admin-order-container {
+.adminOrderContainer {
 	display: flex;
 }
 
-.admin-column-container {
+.adminColumnContainer {
 	display: flex;
 	flex-direction: column;
 	gap: 0.3rem;
 	width: 100%;
 }
 
-.admin-light-text {
+.adminLightText {
 	color: #fff;
 	font-size: 1rem;
 	font-weight: 300;
 	margin-bottom: 0.5rem;
 }
 
-.admin-medium-text {
+.adminMediumText {
 	color: #fff;
 	font-size: 1rem;
 	font-weight: 500;
 }
 
-.admin-quantity-text {
+.adminQuantityText {
 	color: #fff;
 	font-size: 1rem;
 	font-weight: 200;
 	padding: 0 0.5rem;
 }
 
-.admin-textarea {
+.adminTextarea {
 	padding: 0.5rem;
 	flex: auto;
 	min-height: 140px;
@@ -66,46 +66,46 @@
 	font-size: 0.9rem;
 }
 
-.admin-textarea:active,
-.admin-textarea:focus {
+.adminTextarea:active,
+.adminTextarea:focus {
 	outline: none;
 	background-color: #323232;
 }
 
-.admin-row-container {
+.adminRowContainer {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
 
 @media (max-width: 1250px) {
-	.admin-container-inner {
+	.adminContainerInner {
 		padding: 0 1rem;
 	}
 }
 
 @media (max-width: 940px) {
-	.admin-column-container {
+	.adminColumnContainer {
 		margin-right: 1rem;
 	}
-	.admin-column-container:nth-child(3) {
+	.adminColumnContainer:nth-child(3) {
 		margin-right: 0;
 	}
 }
 
 @media (max-width: 866px) {
-	.admin-order {
+	.adminOrder {
 		flex-direction: column;
 		gap: 2rem;
 		align-items: center;
 	}
-	.admin-column-container {
+	.adminColumnContainer {
 		margin-right: 0;
 	}
 }
 
 @media (max-width: 340px) {
-	.admin-container-inner {
+	.adminContainerInner {
 		padding: 0;
 	}
 }

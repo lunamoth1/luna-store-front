@@ -18,14 +18,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 		<Link
 			to={`/product/${product.id}`}
 			state={{ product }}
-			className="product-card-container"
+			className="productCardContainer"
 		>
 			<img src={product.image[0].url} alt={product.name} />
-			<p className="product-card-price">
+			<p className="productCardPrice">
 				{currencySymbol}
 				{price}
 			</p>
-			<p className="product-card-name">{product.name}</p>
+			<p className="productCardName">{product.name}</p>
 		</Link>
 	);
 };

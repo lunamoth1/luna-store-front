@@ -100,12 +100,9 @@ const AdminPage: React.FC = () => {
 
 	if (!authorized)
 		return (
-			<div className="admin-container">
-				<div
-					className="admin-container-inner"
-					style={styles.adminContainerInner}
-				>
-					<p className="admin-light-text">Enter admin password:</p>
+			<div className="adminContainer">
+				<div className="adminContainerInner" style={styles.adminContainerInner}>
+					<p className="adminLightText">Enter admin password:</p>
 					<Input
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
@@ -125,42 +122,42 @@ const AdminPage: React.FC = () => {
 
 	if (loading)
 		return (
-			<div className="admin-container">
-				<p className="admin-light-text">Loading...</p>
+			<div className="adminContainer">
+				<p className="adminLightText">Loading...</p>
 			</div>
 		);
 
 	if (orders.length === 0)
 		return (
-			<div className="admin-container">
-				<p className="admin-light-text">No orders found.</p>
+			<div className="adminContainer">
+				<p className="adminLightText">No orders found.</p>
 			</div>
 		);
 
 	return (
-		<div className="admin-container">
-			<div className="admin-container-inner">
+		<div className="adminContainer">
+			<div className="adminContainerInner">
 				{orders.map((order) => (
-					<div key={order.id} className="admin-order">
+					<div key={order.id} className="adminOrder">
 						{/* <p className="admin-light-text">
 							Order #{order.id} — {new Date(order.createdAt).toLocaleString()}
 						</p> */}
-						<div className="admin-column-container">
-							<p className="admin-light-text">Products:</p>
+						<div className="adminColumnContainer">
+							<p className="adminLightText">Products:</p>
 							{order.basket.map((item) => (
 								<div key={item.id}>
-									<div className="admin-order-container">
-										<p className="admin-medium-text">{item.product.name}</p>
-										<p className="admin-quantity-text"> ({item.id}) x </p>
-										<p className="admin-medium-text">{item.quantity} pieces</p>
+									<div className="adminOrderContainer">
+										<p className="adminMediumText">{item.product.name}</p>
+										<p className="adminQuantityText"> ({item.id}) x </p>
+										<p className="adminMediumText">{item.quantity} pieces</p>
 									</div>
 								</div>
 							))}
 							<AdminLineText text="delivery method" info={order.delivery} />
 						</div>
 
-						<div className="admin-column-container">
-							<p className="admin-light-text">Shipping Info:</p>
+						<div className="adminColumnContainer">
+							<p className="adminLightText">Shipping Info:</p>
 
 							<AdminLineText text="email" info={order.email} />
 							<AdminLineText
@@ -178,8 +175,8 @@ const AdminPage: React.FC = () => {
 							/>
 						</div>
 
-						<div className="admin-column-container">
-							<div className="admin-row-container">
+						<div className="adminColumnContainer">
+							<div className="adminRowContainer">
 								<Button
 									text={
 										savingOrders[order.documentId || ""]
@@ -202,7 +199,7 @@ const AdminPage: React.FC = () => {
 								/>
 							</div>
 							<textarea
-								className="admin-textarea"
+								className="adminTextarea"
 								placeholder="Add a note..."
 								defaultValue={order.note || ""}
 								onChange={(e) =>

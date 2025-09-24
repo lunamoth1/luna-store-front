@@ -1,11 +1,11 @@
-.product-info-name {
+.productInfoName {
 	font-size: 2rem;
 	color: #000000;
 	margin: 0.5rem 0 2rem;
 	text-align: center;
 }
 
-.product-info-description {
+.productInfoDescription {
 	font-size: 1.2rem;
 	color: #000000;
 	margin-bottom: 4rem;
@@ -13,7 +13,7 @@
 	font-weight: 300;
 }
 
-.product-info-price {
+.productInfoPrice {
 	font-size: 1.5rem;
 	color: #000000;
 	margin-bottom: 4rem;
@@ -21,7 +21,7 @@
 	font-weight: 300;
 }
 
-.product-info-buy-container {
+.productInfoBuyContainer {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -30,20 +30,20 @@
 	gap: 5rem;
 }
 
-.product-info-quantity {
+.productInfoQuantity {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	gap: 0.5rem;
 }
 
-.product-info-quantity label {
+.productInfoQuantity label {
 	font-size: 1rem;
 	color: #000000;
 	font-weight: 300;
 }
 
-.product-info-quantity input {
+.productInfoQuantity input {
 	width: 45px;
 	padding: 0.4rem;
 	font-size: 1.1rem;
@@ -60,7 +60,7 @@
 	appearance: none;
 }
 
-.product-info-quantity-symbol {
+.productInfoQuantitySymbol {
 	font-size: 1.2rem;
 	color: #000;
 	padding: 1rem;
@@ -69,23 +69,23 @@
 	transition: opacity 0.3s ease;
 }
 
-.product-info-quantity-symbol:hover {
+.productInfoQuantitySymbol:hover {
 	opacity: 0.7;
 }
 
 /* Скрываем стрелки для Chrome, Safari, Edge */
-.product-info-quantity input::-webkit-outer-spin-button,
-.product-info-quantity input::-webkit-inner-spin-button {
+.productInfoQuantity input::-webkit-outer-spin-button,
+.productInfoQuantity input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 }
 
 /* Скрываем стрелки для Firefox */
-.product-info-quantity input[type="number"] {
+.productInfoQuantity input[type="number"] {
 	-moz-appearance: textfield;
 	appearance: textfield;
 }
 
-.product-info-ingredients {
+.productInfoIngredients {
 	font-size: 1rem;
 	color: #3a3a3a;
 	margin-bottom: 3rem;
@@ -93,7 +93,7 @@
 	font-weight: 300;
 }
 
-.product-info-additional {
+.productInfoAdditional {
 	font-size: 1rem;
 	color: #3a3a3a;
 	margin-bottom: 2rem;
@@ -102,105 +102,105 @@
 }
 
 @media (max-width: 1212px) {
-	.product-info-name {
+	.productInfoName {
 		font-size: 1.8rem;
 	}
-	.product-info-description {
+	.productInfoDescription {
 		font-size: 1.2rem;
 	}
-	.product-info-price {
+	.productInfoPrice {
 		font-size: 1.4rem;
 		margin: 0 0 3rem;
 	}
-	.product-info-ingredients {
+	.productInfoIngredients {
 		font-size: 1rem;
 	}
-	.product-info-additional {
+	.productInfoAdditional {
 		font-size: 1rem;
 	}
 }
 
 @media (max-width: 1100px) {
-	.product-info-name {
+	.productInfoName {
 		font-size: 1.6rem;
 	}
-	.product-info-description {
+	.productInfoDescription {
 		font-size: 1.1rem;
 		margin: 0 0 3rem;
 	}
-	.product-info-price {
+	.productInfoPrice {
 		font-size: 1.3rem;
 		margin: 0 0 2.8rem;
 	}
-	.product-info-ingredients {
+	.productInfoIngredients {
 		font-size: 1rem;
 	}
-	.product-info-additional {
+	.productInfoAdditional {
 		font-size: 1rem;
 	}
 }
 
 @media (max-width: 990px) {
-	.product-info-name {
+	.productInfoName {
 		font-size: 1.5rem;
 		margin: 0.5rem 0 1.8rem;
 	}
-	.product-info-description {
+	.productInfoDescription {
 		font-size: 1rem;
 	}
-	.product-info-price {
+	.productInfoPrice {
 		font-size: 1.2rem;
 		margin: 0 0 2.9rem;
 	}
-	.product-info-buy-container {
+	.productInfoBuyContainer {
 		margin: 0 0 3rem;
 		gap: 4rem;
 	}
-	.product-info-ingredients {
+	.productInfoIngredients {
 		font-size: 0.9rem;
 		margin: 0 0 2.8rem;
 	}
-	.product-info-additional {
+	.productInfoAdditional {
 		font-size: 0.9rem;
 		margin: 0 0 2rem;
 	}
 }
 
 @media (max-width: 874px) {
-	.product-info-name {
+	.productInfoName {
 		font-size: 1.5rem;
 		margin: 0.5rem 0 1.8rem;
 	}
-	.product-info-description {
+	.productInfoDescription {
 		font-size: 1rem;
 		margin: 0 0 2.4rem;
 	}
-	.product-info-price {
+	.productInfoPrice {
 		font-size: 1.1rem;
 		margin: 0 0 1rem;
 	}
-	.product-info-buy-container {
+	.productInfoBuyContainer {
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		margin: 0 0 2.4rem;
 		gap: 1rem;
 	}
-	.product-info-ingredients {
+	.productInfoIngredients {
 		font-size: 0.8rem;
 		margin: 0 0 2rem;
 	}
-	.product-info-additional {
+	.productInfoAdditional {
 		font-size: 0.8rem;
 		margin: 0 0 2rem;
 	}
 }
 
 @media (max-width: 700px) {
-	.product-info-price {
+	.productInfoPrice {
 		margin: 0 0 1.4rem;
 	}
-	.product-info-buy-container {
+	.productInfoBuyContainer {
 		margin: 0 0 2.2rem;
 		gap: 1.4rem;
 	}

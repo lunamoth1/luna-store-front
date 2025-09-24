@@ -5,25 +5,24 @@
 	color: #fff;
 }
 
-.footer-line {
+.footerLine {
 	height: 8px;
 	background-color: #050505;
 }
 
-.footer-container {
+.footerContainer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	padding: 1rem 1rem;
 	text-align: center;
-
 	background: rgba(22, 22, 22, 0.95) url("../../assets/images/floor.png") repeat
 		center / auto;
 	background-blend-mode: multiply;
 }
 
-.footer-container ul {
+.footerContainer ul {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -31,7 +30,7 @@
 	list-style: none;
 }
 
-.footer-container ul li a {
+.footerContainer ul li a {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -42,18 +41,18 @@
 	transition: opacity 0.3s ease;
 }
 
-.footer-container ul li a:hover {
+.footerContainer ul li a:hover {
 	opacity: 0.7;
 }
 
-.footer-social-container {
+.footerSocialContainer {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	margin-top: 10px;
 }
 
-.footer-social-icon {
+.footerSocialIcon {
 	width: 2rem;
 	height: 2rem;
 	display: flex;
@@ -63,6 +62,6 @@
 	transition: opacity 0.3s ease;
 }
 
-.footer-social-icon:hover {
+.footerSocialIcon:hover {
 	opacity: 0.7;
 }

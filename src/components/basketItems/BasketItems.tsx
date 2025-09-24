@@ -27,33 +27,33 @@ const BasketItems: React.FC = () => {
 	const totalPrice = subtotalPrice + taxesPrice + (shippingPrice || 0);
 
 	return (
-		<div className="basket-items-container">
+		<div className="basketItemsContainer">
 			{basket.map((item) => (
 				<BasketCard key={item.id} item={item} />
 			))}
-			<div className="basket-items-info-container">
-				<p className="basket-items-regular-text">Subtotal:</p>
-				<p className="basket-items-regular-text">
+			<div className="basketItemsInfoContainer">
+				<p className="basketItemsRegularText">Subtotal:</p>
+				<p className="basketItemsRegularText">
 					{currencySymbol}
 					{subtotalPrice.toFixed(2)}
 				</p>
 			</div>
-			<div className="basket-items-info-container">
-				<p className="basket-items-regular-text">Shipping:</p>
-				<p className="basket-items-regular-text">
+			<div className="basketItemsInfoContainer">
+				<p className="basketItemsRegularText">Shipping:</p>
+				<p className="basketItemsRegularText">
 					{currencySymbol} {shippingPrice}
 				</p>
 			</div>
-			<div className="basket-items-info-container">
-				<p className="basket-items-regular-text">Taxes:</p>
-				<p className="basket-items-regular-text">
+			<div className="basketItemsInfoContainer">
+				<p className="basketItemsRegularText">Taxes:</p>
+				<p className="basketItemsRegularText">
 					{currencySymbol}
 					{taxesPrice.toFixed(2)}
 				</p>
 			</div>
-			<div className="basket-items-info-container">
-				<p className="basket-items-medium-text">Total:</p>
-				<p className="basket-items-medium-text">
+			<div className="basketItemsInfoContainer">
+				<p className="basketItemsMediumText">Total:</p>
+				<p className="basketItemsMediumText">
 					{currencySymbol}
 					{totalPrice.toFixed(2)}
 				</p>

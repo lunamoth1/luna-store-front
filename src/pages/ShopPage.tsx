@@ -9,7 +9,7 @@ import "../styles/shopPage.css";
 const ShopPage: React.FC = () => {
 	const { refreshLocation } = useCurrency();
 	const { category } = useCategory();
-	const { products, fetchProducts, isLoading, error } = useProductStore();
+	const { products, isLoading, error } = useProductStore();
 
 	useEffect(() => {
 		refreshLocation();
@@ -17,16 +17,16 @@ const ShopPage: React.FC = () => {
 
 	if (error) {
 		return (
-			<div className="shop-container">
-				<p className="shop-message-error">{error}</p>
+			<div className="shopContainer">
+				<p className="shopMessageError">{error}</p>
 			</div>
 		);
 	}
 
 	if (isLoading) {
 		return (
-			<div className="shop-container">
-				<div className="shop-loading-container">
+			<div className="shopContainer">
+				<div className="shopLoadingContainer">
 					<SpinnerCircularFixed
 						size={60}
 						thickness={50}
@@ -40,8 +40,8 @@ const ShopPage: React.FC = () => {
 	}
 
 	return (
-		<div className="shop-container">
-			<section className="shop-grid">
+		<div className="shopContainer">
+			<section className="shopGrid">
 				{products.map(
 					(product) =>
 						category &&
