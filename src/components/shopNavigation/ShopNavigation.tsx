@@ -30,6 +30,10 @@ const ShopNavigation: React.FC = () => {
 				{isOpen ? "×" : "☰"}
 			</button>
 
+			{isOpen && (
+				<div className="shopNavOverlay" onClick={() => setIsOpen(false)} />
+			)}
+
 			<header className={`shopNavContainer ${isOpen ? "open" : ""}`}>
 				<Link
 					to="/shop"

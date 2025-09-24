@@ -4,6 +4,20 @@
 	box-sizing: border-box;
 }
 
+button {
+	background: none;
+	border: none;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+button:focus {
+	outline: none;
+}
+
 body {
 	font-family: "KyivTypeSerif", serif;
 	font-weight: 400;
