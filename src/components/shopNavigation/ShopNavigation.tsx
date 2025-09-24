@@ -52,6 +52,7 @@ const ShopNavigation: React.FC = () => {
 					className={`shopNavShopLink ${
 						isShopActive ? "shopNavShopLinkActive" : ""
 					}`}
+					onClick={() => setIsOpen(false)}
 					style={{ pointerEvents: isShopActive ? "none" : "auto" }}
 				>
 					<p
@@ -76,7 +77,11 @@ const ShopNavigation: React.FC = () => {
 					))}
 				</ul>
 
-				<Link to="/basket" className="shopNavBasket">
+				<Link
+					to="/basket"
+					className="shopNavBasket"
+					onClick={() => setIsOpen(false)}
+				>
 					<Basket className="headerBasketIcon" />({itemCount})
 				</Link>
 			</header>
