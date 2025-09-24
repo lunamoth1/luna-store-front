@@ -19,8 +19,6 @@ export interface Product {
 	publishedAt: string;
 	updatedAt: string;
 	article: string;
-	priceIdEu: string;
-	priceIdUs: string;
 	categories: string;
 	ingredients: string;
 	additional: string;

@@ -4,7 +4,7 @@ import { useOrder } from "../../context/OrderContext";
 import { useBasket } from "../../context/BasketContext";
 import { useCurrency } from "../../context/CurrencyContext";
 import Button from "../button/Button";
-import { usd } from "../../constants";
+import { deliveryType, taxesPercent, usd } from "../../constants";
 
 interface CheckoutButtonProps {
 	email?: string;
@@ -17,6 +17,20 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 	const { order, setOrder, initOrderFromBasket } = useOrder();
 	const { currency } = useCurrency();
 	const { basket } = useBasket();
+
+	const shippingPrice = deliveryType.find(
+		(d) => d.id === order?.form.delivery
+	)?.price;
+
+	const subtotalPrice = basket.reduce(
+		(sum, item) =>
+			sum +
+			(currency === usd ? item.product.priceUS : item.product.priceEU) *
+				item.quantity,
+		0
+	);
+
+	const taxesPrice = subtotalPrice * taxesPercent;
 
 	const checkoutHandler = async () => {
 		try {
@@ -50,7 +64,8 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 							quantity: item.quantity,
 						})),
 						email,
-						shippingCost: 100,
+						shippingCost: shippingPrice ? shippingPrice * 100 : 0,
+						taxAmount: taxesPrice ? Math.round(taxesPrice * 100) : 0,
 						currency: currency === usd ? "usd" : "eur",
 					}),
 				}

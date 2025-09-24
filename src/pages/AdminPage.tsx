@@ -32,7 +32,8 @@ const AdminPage: React.FC = () => {
 				if (data.data) {
 					const sortedOrders = data.data.sort(
 						(a: Order, b: Order) =>
-							new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+							new Date(b.createdAt || "").getTime() -
+							new Date(a.createdAt || "").getTime()
 					);
 					setOrders(sortedOrders);
 				}
@@ -61,10 +62,10 @@ const AdminPage: React.FC = () => {
 	};
 
 	const buttonPressHandler = async (order: Order) => {
-		const changes = changedOrders[order.documentId];
+		const changes = changedOrders[order.documentId || ""];
 		if (!changes) return;
 
-		setSavingOrders((prev) => ({ ...prev, [order.documentId]: true }));
+		setSavingOrders((prev) => ({ ...prev, [order.documentId || ""]: true }));
 		try {
 			const response = await fetch(`${apiUrl}/api/orders/${order.documentId}`, {
 				method: "PUT",
@@ -81,7 +82,7 @@ const AdminPage: React.FC = () => {
 					)
 				);
 				setChangedOrders((prev) => {
-					const { [order.documentId]: _, ...rest } = prev;
+					const { [order.documentId || ""]: _, ...rest } = prev;
 					return rest;
 				});
 			} else {
@@ -91,7 +92,7 @@ const AdminPage: React.FC = () => {
 			console.error("Error while saving changes:", error);
 		} finally {
 			setSavingOrders((prev) => {
-				const { [order.documentId]: _, ...rest } = prev;
+				const { [order.documentId || ""]: _, ...rest } = prev;
 				return rest;
 			});
 		}
@@ -155,6 +156,7 @@ const AdminPage: React.FC = () => {
 									</div>
 								</div>
 							))}
+							<AdminLineText text="delivery method" info={order.delivery} />
 						</div>
 
 						<div className="admin-column-container">
@@ -169,6 +171,7 @@ const AdminPage: React.FC = () => {
 							<AdminLineText text="city" info={order.city} />
 							<AdminLineText text="state" info={order.state} />
 							<AdminLineText text="postal code" info={order.postalCode} />
+
 							<AdminLineText
 								text="country"
 								info={countryNames[order.country]}
@@ -179,22 +182,22 @@ const AdminPage: React.FC = () => {
 							<div className="admin-row-container">
 								<Button
 									text={
-										savingOrders[order.documentId]
+										savingOrders[order.documentId || ""]
 											? "Loading..."
 											: "Save changes"
 									}
 									styles={styles.saveButtonStyles}
 									textStyle={styles.saveButtonTextStyle}
 									disabled={
-										!changedOrders[order.documentId] ||
-										savingOrders[order.documentId]
+										!changedOrders[order.documentId || ""] ||
+										savingOrders[order.documentId || ""]
 									}
 									onClick={() => buttonPressHandler(order)}
 								/>
 								<StatusDropDown
 									status={order.orderStatus}
 									onStatusChange={(status) =>
-										changeStatusHandler(order.documentId, status)
+										changeStatusHandler(order.documentId || "", status)
 									}
 								/>
 							</div>
@@ -203,7 +206,7 @@ const AdminPage: React.FC = () => {
 								placeholder="Add a note..."
 								defaultValue={order.note || ""}
 								onChange={(e) =>
-									changeNoteHandler(order.documentId, e.target.value)
+									changeNoteHandler(order.documentId || "", e.target.value)
 								}
 								autoFocus={false}
 							/>

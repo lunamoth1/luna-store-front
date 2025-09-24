@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useBasket } from "../context/BasketContext";
 import { useOrder } from "../context/OrderContext";
 import { statuses } from "../constants";
+import { Order } from "../types/adminPage";
 import { BasketElement } from "../types/BasketContext";
 import "../styles/thanksgivingPage.css";
 
@@ -28,8 +29,9 @@ const ThanksgivingPage: React.FC = () => {
 						},
 					})
 				);
-				const orderPayload = {
+				const orderPayload: Order = {
 					email: savedOrder.form.email,
+					delivery: savedOrder.form.delivery,
 					firstName: savedOrder.form.firstName,
 					lastName: savedOrder.form.lastName,
 					address: savedOrder.form.address,

@@ -1,7 +1,11 @@
+import { deliveryType } from "../constants";
 import { BasketElement } from "./BasketContext";
+
+export type DeliveryId = (typeof deliveryType)[number]["id"];
 
 export interface OrderForm {
 	email: string;
+	delivery: DeliveryId;
 	firstName: string;
 	lastName: string;
 	address: string;

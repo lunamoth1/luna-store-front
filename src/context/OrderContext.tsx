@@ -46,6 +46,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
 		return {
 			form: {
 				email: form?.email ?? "",
+				delivery: form?.delivery ?? "standard",
 				firstName: form?.firstName ?? "",
 				lastName: form?.lastName ?? "",
 				address: form?.address ?? "",
