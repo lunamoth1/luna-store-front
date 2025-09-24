@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useBasket } from "../../context/BasketContext";
 import { useCategory } from "../../context/CategoryContext";
@@ -20,6 +20,18 @@ const ShopNavigation: React.FC = () => {
 		setCategory(cat);
 		setIsOpen(false);
 	};
+
+	useEffect(() => {
+		if (isOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "auto";
+		}
+
+		return () => {
+			document.body.style.overflow = "auto";
+		};
+	}, [isOpen]);
 
 	return (
 		<>
