@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useProductStore } from "./store/productStore";
+import { OrderProvider } from "./context/OrderContext";
+import { BasketProvider } from "./context/BasketContext";
+import { CurrencyProvider } from "./context/CurrencyContext";
+import { CategoryProvider } from "./context/CategoryContext";
 import HomePage from "./pages/HomePage";
 import ShopPage from "./pages/ShopPage";
 import EventsPage from "./pages/EventsPage";
@@ -14,10 +18,6 @@ import AdminPage from "./pages/AdminPage";
 import Footer from "./components/footer/Footer";
 import HeaderLogo from "./components/headerLogo/HeaderLogo";
 import ShopNavigation from "./components/shopNavigation/ShopNavigation";
-import { OrderProvider } from "./context/OrderContext";
-import { BasketProvider } from "./context/BasketContext";
-import { CurrencyProvider } from "./context/CurrencyContext";
-import { CategoryProvider } from "./context/CategoryContext";
 import "./styles/appPage.css";
 import "./assets/fonts/fonts.css";
 

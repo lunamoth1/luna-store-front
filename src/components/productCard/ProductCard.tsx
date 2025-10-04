@@ -20,6 +20,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 			state={{ product }}
 			className="productCardContainer"
 		>
+			{product.soldOut && (
+				<div className="productCardSoldOutContainer">
+					<p className="productCardSoldOutText">Sold Out</p>
+				</div>
+			)}
 			<img src={product.image[0].url} alt={product.name} />
 			<p className="productCardPrice">
 				{currencySymbol}

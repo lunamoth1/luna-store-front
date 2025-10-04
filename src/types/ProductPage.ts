@@ -22,4 +22,5 @@ export interface Product {
 	categories: string;
 	ingredients: string;
 	additional: string;
+	soldOut: boolean;
 }
