@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import { useProductStore } from "./store/productStore";
 import { OrderProvider } from "./context/OrderContext";
 import { BasketProvider } from "./context/BasketContext";
@@ -65,6 +66,7 @@ const App: React.FC = () => {
 				<OrderProvider>
 					<BrowserRouter>
 						<CategoryProvider>
+							<Analytics />
 							<AppRoutes />
 						</CategoryProvider>
 					</BrowserRouter>
