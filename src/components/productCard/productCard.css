@@ -30,6 +30,19 @@
 	transform: rotate(20deg);
 }
 
+.productCardImageWrapper {
+	width: 100%;
+	aspect-ratio: 1.5357;
+	position: relative;
+	margin-bottom: 1rem;
+}
+
+.productCardImageWrapper img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
 .productCardContainer img {
 	width: 100%;
 	object-fit: cover;

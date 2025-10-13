@@ -137,13 +137,13 @@
 	}
 }
 
-@media (max-width: 622px) {
+@media (max-width: 662px) {
 	.productPhotoContainer {
 		gap: 1rem;
 	}
 }
 
-@media (max-width: 595px) {
+@media (max-width: 645px) {
 	.productPhotoContainer {
 		flex-direction: column;
 	}

@@ -29,18 +29,33 @@ export const americasNames: Record<string, string> = {
 	CA: "Canada",
 };
 
-export const deliveryType = [
+export const usDeliveryType = [
 	{
-		id: "standard",
-		label: "Standard Delivery",
-		price: 0,
+		id: "ground",
+		label: "USPS Ground Advantage",
+		price: 12,
 	},
 	{
 		id: "express",
-		label: "Express Delivery",
-		price: 1,
+		label: "USPS Express Shipping",
+		price: 32,
 	},
 ] as const;
+
+export const internationalDeliveryType = [
+	{
+		id: "basic",
+		label: "USPS International Basic",
+		price: 39,
+	},
+	{
+		id: "sipping",
+		label: "USPS Express Shipping International",
+		price: 92,
+	},
+] as const;
+
+export const deliveryType = [...usDeliveryType, ...internationalDeliveryType];
 
 export const statusColors: Record<Status, string> = {
 	Received: "#43E26BFF",
