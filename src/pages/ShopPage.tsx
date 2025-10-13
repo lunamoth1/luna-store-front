@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { SpinnerCircularFixed } from "spinners-react";
+// import { SpinnerCircularFixed } from "spinners-react";
 import { useProductStore } from "../store/productStore";
 import { useCurrency } from "../context/CurrencyContext";
 import { useCategory } from "../context/CategoryContext";
 import ProductCard from "../components/productCard/ProductCard";
+import ProductCardSkeleton from "../components/productCardSceleton/ProductCardSkeleton";
 import "../styles/shopPage.css";
 
 const ShopPage: React.FC = () => {
@@ -26,15 +27,11 @@ const ShopPage: React.FC = () => {
 	if (isLoading) {
 		return (
 			<div className="shopContainer">
-				<div className="shopLoadingContainer">
-					<SpinnerCircularFixed
-						size={60}
-						thickness={50}
-						speed={100}
-						color="#000"
-						secondaryColor="#E8E8E8"
-					/>
-				</div>
+				<section className="shopGrid">
+					{[...Array(7)].map((_, index) => (
+						<ProductCardSkeleton key={index} />
+					))}
+				</section>
 			</div>
 		);
 	}

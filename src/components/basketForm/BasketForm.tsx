@@ -8,17 +8,18 @@ import CheckoutButton from "../checkoutButton/CheckoutButton";
 import {
 	americas,
 	americasNames,
-	deliveryType,
 	europe,
 	europeNames,
+	internationalDeliveryType,
 	usd,
+	usDeliveryType,
 } from "../../constants";
-import { DeliveryId, OrderForm } from "../../types/OrderContext";
+import { DeliveryId, OrderData, OrderForm } from "../../types/OrderContext";
 import "./basketForm.css";
 
 const defaultForm: OrderForm = {
 	email: "",
-	delivery: "standard",
+	delivery: "ground",
 	firstName: "",
 	lastName: "",
 	address: "",
@@ -50,9 +51,40 @@ const BasketForm: React.FC = () => {
 			delivery:
 				(savedForm?.delivery as DeliveryId) ??
 				(order?.form?.delivery as DeliveryId) ??
-				"standard",
+				"ground",
 		};
 	});
+
+	const delivery =
+		form.country === "" || form.country === "US"
+			? usDeliveryType
+			: internationalDeliveryType;
+
+	useEffect(() => {
+		const availableDelivery =
+			form.country === "US" || form.country === ""
+				? usDeliveryType
+				: internationalDeliveryType;
+
+		if (!availableDelivery.some((opt) => opt.id === form.delivery)) {
+			const fallbackDelivery: DeliveryId = availableDelivery[0].id;
+			const updatedForm: OrderForm = {
+				...form,
+				delivery: fallbackDelivery,
+			};
+			setForm(updatedForm);
+
+			const newOrder: OrderData = {
+				form: updatedForm,
+				basketItems: basket,
+			};
+			setOrder(newOrder);
+
+			try {
+				localStorage.setItem("order", JSON.stringify(newOrder));
+			} catch {}
+		}
+	}, [form.country]);
 
 	useEffect(() => {
 		if (order?.form) {
@@ -60,7 +92,7 @@ const BasketForm: React.FC = () => {
 				...prev,
 				...order.form,
 				delivery:
-					(order.form.delivery as DeliveryId) ?? prev.delivery ?? "standard",
+					(order.form.delivery as DeliveryId) ?? prev.delivery ?? "ground",
 			}));
 		}
 	}, [order]);
@@ -114,7 +146,7 @@ const BasketForm: React.FC = () => {
 
 			<p className="basketFormTitle">Delivery Options</p>
 			<div className="basketFormRadioContainer">
-				{deliveryType.map((option) => (
+				{delivery.map((option) => (
 					<div key={option.id} className="basketFormRadioOption">
 						<input
 							type="radio"
