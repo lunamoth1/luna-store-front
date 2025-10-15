@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+	BrowserRouter,
+	Routes,
+	Route,
+	useLocation,
+	Navigate,
+} from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 import { useProductStore } from "./store/productStore";
 import { OrderProvider } from "./context/OrderContext";
@@ -32,8 +38,9 @@ const AppRoutes: React.FC = () => {
 			<main className="main">
 				{!hideHeaderFooter && <ShopNavigation />}
 				<Routes>
-					<Route path="/" element={<HomePage />} />
+					<Route path="/" element={<Navigate to="/shop" replace />} />
 					<Route path="/shop" element={<ShopPage />} />
+					<Route path="/main" element={<HomePage />} />
 					<Route path="/events" element={<EventsPage />} />
 					<Route path="/contacts" element={<ContactsPage />} />
 					<Route path="/basket" element={<BasketPage />} />
