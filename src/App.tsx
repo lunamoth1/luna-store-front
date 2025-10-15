@@ -21,7 +21,7 @@ import ShippingPage from "./pages/ShippingPage";
 import PartnersPage from "./pages/PartnersPage";
 import ProductPage from "./pages/ProductPage";
 import ThanksgivingPage from "./pages/ThanksgivingPage";
-import Error404 from "./pages/error404";
+import Error404 from "./pages/Error404";
 import AdminPage from "./pages/AdminPage";
 import Footer from "./components/footer/Footer";
 import HeaderLogo from "./components/headerLogo/HeaderLogo";
