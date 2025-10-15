@@ -26,10 +26,17 @@ const Footer: React.FC = () => {
 					<Link
 						to="https://www.instagram.com/lunamothxx"
 						className="footerSocialIcon"
+						target="_blank"
+						rel="noopener noreferrer"
 					>
 						<Instagram fill={"#fff"} />
 					</Link>
-					<Link to="#" className="footerSocialIcon">
+					<Link
+						to="#"
+						className="footerSocialIcon"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<Tiktok fill={"#fff"} />
 					</Link>
 				</div>

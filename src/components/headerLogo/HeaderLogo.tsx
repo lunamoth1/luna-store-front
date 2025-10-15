@@ -5,7 +5,7 @@ import "./headerLogo.css";
 const HeaderLogo: React.FC = () => {
 	return (
 		<header className="headerLogoContainer">
-			<NavLink to="/">
+			<NavLink to="/main">
 				<img src={logo} className="headerLogoImg" alt="Logo" loading="lazy" />
 			</NavLink>
 		</header>

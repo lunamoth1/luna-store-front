@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+	BrowserRouter,
+	Routes,
+	Route,
+	useLocation,
+	Navigate,
+} from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 import { useProductStore } from "./store/productStore";
 import { OrderProvider } from "./context/OrderContext";
@@ -15,6 +21,7 @@ import ShippingPage from "./pages/ShippingPage";
 import PartnersPage from "./pages/PartnersPage";
 import ProductPage from "./pages/ProductPage";
 import ThanksgivingPage from "./pages/ThanksgivingPage";
+import Error404 from "./pages/Error404";
 import AdminPage from "./pages/AdminPage";
 import Footer from "./components/footer/Footer";
 import HeaderLogo from "./components/headerLogo/HeaderLogo";
@@ -24,7 +31,8 @@ import "./assets/fonts/fonts.css";
 
 const AppRoutes: React.FC = () => {
 	const location = useLocation();
-	const hideHeaderFooter = location.pathname === "/admin";
+	const hideHeaderFooter =
+		location.pathname === "/admin" || location.pathname === "/404";
 
 	return (
 		<div className="container">
@@ -32,8 +40,9 @@ const AppRoutes: React.FC = () => {
 			<main className="main">
 				{!hideHeaderFooter && <ShopNavigation />}
 				<Routes>
-					<Route path="/" element={<HomePage />} />
+					<Route path="/" element={<Navigate to="/shop" replace />} />
 					<Route path="/shop" element={<ShopPage />} />
+					<Route path="/main" element={<HomePage />} />
 					<Route path="/events" element={<EventsPage />} />
 					<Route path="/contacts" element={<ContactsPage />} />
 					<Route path="/basket" element={<BasketPage />} />
@@ -42,10 +51,9 @@ const AppRoutes: React.FC = () => {
 					<Route path="/product/:id" element={<ProductPage />} />
 					<Route path="/thanksgiving" element={<ThanksgivingPage />} />
 					<Route path="/admin" element={<AdminPage />} />
-					<Route
-						path="*"
-						element={<h1 style={{ textAlign: "center" }}>404 Not Found</h1>}
-					/>
+
+					<Route path="*" element={<Navigate to="/404" replace />} />
+					<Route path="/404" element={<Error404 />} />
 				</Routes>
 			</main>
 			{!hideHeaderFooter && <Footer />}
