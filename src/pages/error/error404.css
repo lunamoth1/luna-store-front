@@ -1,0 +1,43 @@
+.error404 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+	text-align: center;
+}
+
+.error404__title {
+	font-size: 8rem;
+	font-weight: 800;
+	margin: 0;
+	color: var(--color-almostBlack);
+}
+
+.error404__subtitle {
+	font-size: 1.8rem;
+	margin: 10px 0;
+	color: var(--color-darkGray);
+}
+
+.error404__text {
+	font-size: 1.1rem;
+	margin-bottom: 30px;
+	color: var(--color-darkGray);
+}
+
+.error404__btn {
+	padding: 12px 28px;
+	border: none;
+	background: var(--color-almostBlack);
+	color: var(--color-white);
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+.error404__btn:hover {
+	background: var(--color-darkGray);
+}

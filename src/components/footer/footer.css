@@ -1,13 +1,13 @@
 .footer {
 	width: 100%;
-	background: #161616;
-	border-top: 8px solid #393939;
-	color: #fff;
+	background: var(--color-black);
+	border-top: 8px solid var(--color-darkGray);
+	color: var(--color-white);
 }
 
 .footerLine {
 	height: 8px;
-	background-color: #050505;
+	background-color: var(--color-black);
 }
 
 .footerContainer {
@@ -17,8 +17,9 @@
 	justify-content: center;
 	padding: 1rem 1rem;
 	text-align: center;
-	background: rgba(22, 22, 22, 0.95) url("../../assets/images/floor.png") repeat
-		center / auto;
+	color: var(--color-white);
+	background: var(--color-footerLine) url("../../assets/images/floor.png")
+		repeat center / auto;
 	background-blend-mode: multiply;
 }
 
@@ -35,7 +36,7 @@
 	align-items: center;
 	justify-content: center;
 	padding: 3px 1rem;
-	color: #fff;
+	color: var(--color-white);
 	text-decoration: none;
 	font-size: 12px;
 	transition: opacity 0.3s ease;

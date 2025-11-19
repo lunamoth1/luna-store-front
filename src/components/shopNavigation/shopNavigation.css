@@ -4,7 +4,7 @@
 	margin: 0;
 	margin-left: 1rem;
 	padding-top: 10px;
-	background: #fff;
+	background: var(--color-white);
 	height: fit-content;
 	position: sticky;
 	top: 0;
@@ -23,7 +23,7 @@
 	width: 40px;
 	height: 40px;
 	cursor: pointer;
-	color: #000;
+	color: var(--color-black);
 }
 
 .shopNavOverlay {
@@ -32,7 +32,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: rgba(0, 0, 0, 0.4);
+	background: var(--color-halfTransparentBlack);
 	z-index: 1000;
 }
 
@@ -52,13 +52,13 @@
 
 .shopNavShopLinkText {
 	font-size: 16px;
-	color: #000;
+	color: var(--color-black);
 	font-family: "KyivTypeSerif", serif;
 	text-transform: uppercase;
 }
 
 .shopNavShopLinkTextActive {
-	color: #fff;
+	color: var(--color-white);
 }
 
 .shopNavContainer ul {
@@ -73,6 +73,7 @@
 	cursor: pointer;
 	text-transform: uppercase;
 	font-family: "KyivTypeSerif", serif;
+	color: var(--color-black);
 }
 
 .shopNavContainer ul li.active {
@@ -84,6 +85,7 @@
 	display: flex;
 	align-items: center;
 	margin-bottom: 6rem;
+	color: var(--color-black);
 }
 
 @media (max-width: 500px) {

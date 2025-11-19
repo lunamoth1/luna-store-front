@@ -1,0 +1,138 @@
+.basketCardContainer {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	max-width: 500px;
+	margin-bottom: 4rem;
+}
+
+.basketCardImage {
+	width: 120px;
+	height: 120px;
+	margin-right: 1.5rem;
+	object-fit: cover;
+}
+
+.basketCardInfoContainer {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.basketCardNamePriceContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2rem;
+}
+
+.basketCardQuantityContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2rem;
+}
+
+.basketCardQuantityButton {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	font-size: 1rem;
+	padding: 8px 16px;
+	font-weight: 300;
+	transition: opacity 0.2s ease;
+	color: var(--color-black);
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.basketCardQuantityButton:hover {
+	opacity: 0.7;
+}
+
+.basketCardQuantityButtonContainer {
+	margin-right: -16px;
+}
+
+.basketCardQuantity {
+	color: var(--color-black);
+	font-size: 1rem;
+	font-weight: 300;
+}
+
+.basketCardMediumText {
+	font-size: 1rem;
+	color: var(--color-black);
+	font-weight: 400;
+}
+
+.basketCardRegularText {
+	font-size: 1rem;
+	color: var(--color-black);
+	font-weight: 300;
+}
+
+@media (max-width: 1024px) {
+	.basketCardImage {
+		width: 100px;
+		height: 100px;
+		margin-right: 1rem;
+	}
+
+	.basketCardInfoContainer {
+		gap: 0.5rem;
+	}
+}
+
+@media (max-width: 920px) {
+	.basketCardContainer {
+		max-width: 600px;
+	}
+	.basketCardImage {
+		width: 120px;
+		height: 120px;
+	}
+}
+
+@media (max-width: 520px) {
+	.basketCardImage {
+		width: 100px;
+		height: 100px;
+	}
+}
+
+@media (max-width: 440px) {
+	.basketCardContainer {
+		margin-bottom: 2rem;
+	}
+
+	.basketCardImage {
+		width: 80px;
+		height: 80px;
+		margin-right: 0.5rem;
+	}
+
+	.basketCardQuantityButton {
+		font-size: 0.875rem;
+		padding: 6px 12px;
+	}
+
+	.basketCardQuantityButtonContainer {
+		margin-right: -10px;
+	}
+
+	.basketCardMediumText,
+	.basketCardRegularText,
+	.basketCardQuantity {
+		font-size: 0.875rem;
+	}
+}
+
+@media (max-width: 326px) {
+	.basketCardContainer {
+		max-width: 310px;
+	}
+}

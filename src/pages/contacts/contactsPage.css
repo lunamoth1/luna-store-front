@@ -1,0 +1,32 @@
+.contactsContainer {
+	max-width: 1140px;
+	width: 100%;
+	margin-bottom: 6rem;
+	margin-right: 1rem;
+	margin-left: 1rem;
+}
+
+.contactsMedium {
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--color-black);
+	line-height: 20px;
+}
+
+.contactsLight {
+	font-size: 14px;
+	font-weight: 300;
+	color: var(--color-black);
+	line-height: 20px;
+}
+
+.contactsMargin {
+	margin-bottom: 1rem;
+}
+
+.contactsLink {
+	font-size: 14px;
+	color: var(--color-black);
+	text-decoration: underline;
+	font-weight: 300;
+}

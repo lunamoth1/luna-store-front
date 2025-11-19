@@ -21,7 +21,7 @@ button:focus {
 body {
 	font-family: "KyivTypeSerif", serif;
 	font-weight: 400;
-	background-color: #fff;
+	background-color: var(--color-white);
 	height: 100%;
 }
 
@@ -39,4 +39,22 @@ body {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+}
+
+:root {
+	--color-white: #fff;
+	--color-gray: #6e6e6e;
+	--color-darkGray: #393939;
+	--color-almostBlack: #191919;
+	--color-black: #000;
+
+	--color-red: #ee0606;
+	--color-selectedImageBorder: #201644;
+	--color-paleRed: #4a3434;
+
+	--color-almostTransparentBlack: rgba(0, 0, 0, 0.15);
+	--color-shadow: rgba(0, 0, 0, 0.3);
+	--color-halfTransparentBlack: rgba(0, 0, 0, 0.5);
+
+	--color-footerLine: rgba(22, 22, 22, 0.95);
 }

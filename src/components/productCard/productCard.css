@@ -16,7 +16,7 @@
 	right: 10px;
 	width: 80px;
 	height: 80px;
-	background-color: #4a3434;
+	background-color: var(--color-paleRed);
 	align-items: center;
 	justify-content: center;
 	display: flex;
@@ -25,7 +25,7 @@
 }
 
 .productCardSoldOutText {
-	color: #fff;
+	color: var(--color-white);
 	font-size: 16px;
 	transform: rotate(20deg);
 }
@@ -52,13 +52,13 @@
 
 .productCardPrice {
 	font-size: 12px;
-	color: #000;
+	color: var(--color-black);
 	margin-bottom: 1rem;
 }
 
 .productCardName {
 	font-size: 18px;
-	color: #000;
+	color: var(--color-black);
 	line-height: 1.4;
 	text-transform: uppercase;
 }

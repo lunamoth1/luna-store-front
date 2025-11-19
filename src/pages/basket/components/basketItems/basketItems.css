@@ -1,0 +1,32 @@
+.basketItemsContainer {
+	max-width: 500px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.basketItemsInfoContainer {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.basketItemsMediumText {
+	font-size: 16px;
+	color: var(--color-black);
+	margin-top: 1rem;
+	transition: opacity 0.3s ease;
+	font-weight: 400;
+}
+
+.basketItemsRegularText {
+	font-size: 1rem;
+	color: var(--color-black);
+	font-weight: 300;
+}
+
+@media (max-width: 920px) {
+	.basketItemsContainer {
+		max-width: 600px;
+	}
+}
