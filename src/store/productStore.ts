@@ -21,7 +21,13 @@ export const useProductStore = create<ProductStoreType>()(
 					if (!res.ok) throw new Error("Error fetching products");
 
 					const data = await res.json();
-					set({ products: data.data ?? [], isLoading: false });
+
+					const sortedData = data.data.sort(
+						(a: any, b: any) =>
+							new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+					);
+
+					set({ products: sortedData ?? [], isLoading: false });
 				} catch (err) {
 					console.error("Fetch error:", err);
 					set({ isLoading: false, error: "Failed to fetch products" });

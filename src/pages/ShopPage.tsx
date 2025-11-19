@@ -1,20 +1,47 @@
-import React, { useEffect } from "react";
-// import { SpinnerCircularFixed } from "spinners-react";
+import React, { useEffect, useState } from "react";
 import { useProductStore } from "../store/productStore";
 import { useCurrency } from "../context/CurrencyContext";
-import { useCategory } from "../context/CategoryContext";
-import ProductCard from "../components/productCard/ProductCard";
-import ProductCardSkeleton from "../components/productCardSceleton/ProductCardSkeleton";
+// import { useCategory } from "../context/CategoryContext";
+import ProductPhoto from "../components/productPhoto/ProductPhoto";
+import ProductInfo from "../components/productInfo/ProductInfo";
+import ProductCardSkeleton from "../components/productCardSkeleton/ProductCardSkeleton";
+import productBg from "../assets/images/productBg.png";
 import "../styles/shopPage.css";
+import "../styles/productPage.css";
 
 const ShopPage: React.FC = () => {
 	const { refreshLocation } = useCurrency();
-	const { category } = useCategory();
+	// const { category } = useCategory();
 	const { products, isLoading, error } = useProductStore();
+
+	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+	const [selectedProduct, setSelectedProduct] = useState<
+		null | (typeof products)[0]
+	>(null);
 
 	useEffect(() => {
 		refreshLocation();
 	}, []);
+
+	useEffect(() => {
+		if (isSidebarOpen) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "";
+		}
+
+		return () => {
+			document.body.style.overflow = "";
+		};
+	}, [isSidebarOpen]);
+
+	const openProductHandler = () => {
+		const product = products[0];
+		setSelectedProduct(product);
+		setIsSidebarOpen(true);
+	};
+
+	const closeSidebar = () => setIsSidebarOpen(false);
 
 	if (error) {
 		return (
@@ -38,15 +65,31 @@ const ShopPage: React.FC = () => {
 
 	return (
 		<div className="shopContainer">
-			<section className="shopGrid">
-				{products.map(
-					(product) =>
-						category &&
-						product.categories.includes(category.toLowerCase()) && (
-							<ProductCard product={product} key={product.article} />
-						)
+			<div className="shopImageWrapper">
+				<img
+					src={productBg}
+					alt="Product background image"
+					className="shopProductImage"
+				/>
+				<div className="shopProductSquare" onClick={openProductHandler} />
+			</div>
+
+			{isSidebarOpen && (
+				<div className="productOverlay" onClick={closeSidebar} />
+			)}
+
+			<div className={`productSidebar ${isSidebarOpen ? "open" : ""}`}>
+				<button className="sidebarCloseBtn" onClick={closeSidebar}>
+					×
+				</button>
+
+				{selectedProduct && (
+					<div className="productSidebarContent">
+						<ProductPhoto photo={selectedProduct.image} />
+						<ProductInfo product={selectedProduct} />
+					</div>
 				)}
-			</section>
+			</div>
 		</div>
 	);
 };
