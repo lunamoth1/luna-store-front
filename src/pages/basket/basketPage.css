@@ -1,0 +1,29 @@
+.basketContainer {
+	max-width: 1140px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 6rem;
+	padding-right: 1rem;
+	margin-left: 1rem;
+}
+
+.basketEmptyText {
+	font-size: 14px;
+	color: var(--color-black);
+}
+
+.basketContainerInner {
+	gap: 2rem;
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
+@media (max-width: 920px) {
+	.basketContainerInner {
+		flex-direction: column-reverse;
+		align-items: center;
+		gap: 3rem;
+	}
+}

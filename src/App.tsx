@@ -12,20 +12,22 @@ import { OrderProvider } from "./context/OrderContext";
 import { BasketProvider } from "./context/BasketContext";
 import { CurrencyProvider } from "./context/CurrencyContext";
 import { CategoryProvider } from "./context/CategoryContext";
-import HomePage from "./pages/HomePage";
-import ShopPage from "./pages/ShopPage";
-import EventsPage from "./pages/EventsPage";
-import ContactsPage from "./pages/ContactsPage";
-import BasketPage from "./pages/BasketPage";
-import ShippingPage from "./pages/ShippingPage";
-import PartnersPage from "./pages/PartnersPage";
-import ProductPage from "./pages/ProductPage";
-import ThanksgivingPage from "./pages/ThanksgivingPage";
-import Error404 from "./pages/Error404";
-import AdminPage from "./pages/AdminPage";
+
+import HomePage from "./pages/home/HomePage";
+import ShopPage from "./pages/shop/ShopPage";
+import EventsPage from "./pages/events/EventsPage";
+import ContactsPage from "./pages/contacts/ContactsPage";
+import BasketPage from "./pages/basket/BasketPage";
+import ShippingPage from "./pages/shipping/ShippingPage";
+import PartnersPage from "./pages/partners/PartnersPage";
+import ProductPage from "./pages/product/ProductPage";
+import ThanksgivingPage from "./pages/thanksgiving/ThanksgivingPage";
+import Error404 from "./pages/error/Error404";
+import AdminPage from "./pages/admin/AdminPage";
 import Footer from "./components/footer/Footer";
 import HeaderLogo from "./components/headerLogo/HeaderLogo";
 import ShopNavigation from "./components/shopNavigation/ShopNavigation";
+
 import "./styles/appPage.css";
 import "./assets/fonts/fonts.css";
 

@@ -1,0 +1,109 @@
+.shopContainer {
+	max-width: 1140px;
+	width: 100%;
+	margin: 0 1rem 6rem;
+	position: relative;
+}
+
+.shopMessageError {
+	color: var(--color-red);
+	font-weight: 300;
+	font-size: 1rem;
+}
+
+.shopGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(258px, max-content));
+	gap: 36px;
+	width: 100%;
+}
+
+.shopImageWrapper {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	max-width: 666px;
+}
+
+.shopProductImage {
+	max-width: 666px;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+
+.shopProductSquare {
+	position: absolute;
+	width: 15%;
+	aspect-ratio: 1 / 1;
+	top: 71%;
+	left: 33%;
+	z-index: 2;
+	cursor: pointer;
+}
+
+/* .productOverlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: var(--color-halfTransparentBlack);
+	z-index: 998;
+	opacity: 1;
+	transition: opacity 0.3s ease;
+} */
+
+.productSidebar {
+	position: fixed;
+	top: 0;
+	right: -600px;
+	width: 600px;
+	height: 100vh;
+	background: var(--color-white);
+	box-shadow: -2px 0 6px var(--color-almostTransparentBlack);
+	padding: 20px;
+	z-index: 999;
+	transition: right 0.3s ease;
+	overflow-y: auto;
+}
+
+.productSidebar.open {
+	right: 0;
+}
+
+.sidebarCloseBtn {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	z-index: 2000;
+	background: none;
+	border: none;
+	font-size: 2.3rem;
+	line-height: 0;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	color: var(--color-black);
+}
+
+.productSidebarContent {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	margin-top: 80px;
+}
+
+.productSidebarContent .productPhotoContainer {
+	max-width: 100%;
+}
+
+.productSidebarContent .productInfoContainer {
+	padding: 0;
+}
+
+@media (max-width: 600px) {
+	.productSidebar {
+		width: 100%;
+	}
+}

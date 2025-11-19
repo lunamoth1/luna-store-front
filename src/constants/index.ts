@@ -57,6 +57,7 @@ export const internationalDeliveryType = [
 
 export const deliveryType = [...usDeliveryType, ...internationalDeliveryType];
 
+// here
 export const statusColors: Record<Status, string> = {
 	Received: "#43E26BFF",
 	Shipped: "#007AFF",

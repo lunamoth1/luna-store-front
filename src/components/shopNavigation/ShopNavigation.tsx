@@ -13,6 +13,7 @@ const ShopNavigation: React.FC = () => {
 	const location = useLocation();
 	const itemCount = basket.reduce((sum, item) => sum + item.quantity, 0);
 	const isShopActive = location.pathname.startsWith("/shop");
+	const isBasketActive = location.pathname === "/basket";
 
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -82,7 +83,8 @@ const ShopNavigation: React.FC = () => {
 					className="shopNavBasket"
 					onClick={() => setIsOpen(false)}
 				>
-					<Basket className="headerBasketIcon" />({itemCount})
+					<Basket className="headerBasketIcon" isActive={isBasketActive} />
+					<p className="shopNavShopLinkText">({itemCount})</p>
 				</Link>
 			</header>
 		</>
