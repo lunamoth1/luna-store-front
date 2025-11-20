@@ -15,7 +15,7 @@ export const useProductStore = create<ProductStoreType>()(
 				set({ isLoading: true, error: null });
 				try {
 					const res = await fetch(
-						`${import.meta.env.VITE_STRAPI_API_URL}/api/products?populate=image`
+						`${import.meta.env.VITE_STRAPI_API_URL}/api/products?populate=*`
 					);
 
 					if (!res.ok) throw new Error("Error fetching products");
