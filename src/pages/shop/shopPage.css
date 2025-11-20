@@ -20,39 +20,30 @@
 
 .shopImageWrapper {
 	position: relative;
-	display: inline-block;
 	width: 100%;
-	max-width: 666px;
+	max-width: 460px;
 }
 
 .shopProductImage {
-	max-width: 666px;
 	width: 100%;
 	height: auto;
-	object-fit: cover;
+	display: block;
 }
 
-.shopProductSquare {
+.productPin {
 	position: absolute;
-	width: 15%;
-	aspect-ratio: 1 / 1;
-	top: 71%;
-	left: 33%;
-	z-index: 2;
 	cursor: pointer;
+	z-index: 20;
+	width: 18%;
+	aspect-ratio: 1 / 1;
 }
 
-/* .productOverlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background: var(--color-halfTransparentBlack);
-	z-index: 998;
-	opacity: 1;
-	transition: opacity 0.3s ease;
-} */
+.productPinImage {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	pointer-events: none;
+}
 
 .productSidebar {
 	position: fixed;
@@ -66,6 +57,7 @@
 	z-index: 999;
 	transition: right 0.3s ease;
 	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .productSidebar.open {
@@ -76,7 +68,6 @@
 	position: absolute;
 	top: 20px;
 	right: 20px;
-	z-index: 2000;
 	background: none;
 	border: none;
 	font-size: 2.3rem;
@@ -85,6 +76,7 @@
 	height: 40px;
 	cursor: pointer;
 	color: var(--color-black);
+	z-index: 2000;
 }
 
 .productSidebarContent {
@@ -105,5 +97,6 @@
 @media (max-width: 600px) {
 	.productSidebar {
 		width: 100%;
+		right: -100%;
 	}
 }

@@ -23,4 +23,7 @@ export interface Product {
 	ingredients: string;
 	additional: string;
 	soldOut: boolean;
+	x: number;
+	y: number;
+	previewImage: ProductImage;
 }

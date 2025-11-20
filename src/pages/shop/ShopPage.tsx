@@ -7,7 +7,7 @@ import ProductPhoto from "./components/productPhoto/ProductPhoto";
 import ProductInfo from "./components/productInfo/ProductInfo";
 import productBg from "../../assets/images/productBg.png";
 import "./shopPage.css";
-import "../product/productPage.css";
+// import "../product/productPage.css";
 
 const ShopPage: React.FC = () => {
 	const { refreshLocation } = useCurrency();
@@ -15,6 +15,7 @@ const ShopPage: React.FC = () => {
 	const { products, isLoading, error } = useProductStore();
 
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+	const [lockBodyScroll, setLockBodyScroll] = useState(false);
 	const [selectedProduct, setSelectedProduct] = useState<
 		null | (typeof products)[0]
 	>(null);
@@ -24,24 +25,18 @@ const ShopPage: React.FC = () => {
 	}, []);
 
 	useEffect(() => {
-		if (isSidebarOpen) {
-			document.body.style.overflow = "hidden";
-		} else {
-			document.body.style.overflow = "";
-		}
+		document.body.style.overflow = lockBodyScroll ? "hidden" : "";
+	}, [lockBodyScroll]);
 
-		return () => {
-			document.body.style.overflow = "";
-		};
-	}, [isSidebarOpen]);
-
-	const openProductHandler = () => {
-		const product = products[0];
+	const openProductHandler = (product: (typeof products)[0]) => {
 		setSelectedProduct(product);
 		setIsSidebarOpen(true);
 	};
 
-	const closeSidebar = () => setIsSidebarOpen(false);
+	const closeSidebar = () => {
+		setIsSidebarOpen(false);
+		setLockBodyScroll(false);
+	};
 
 	if (error) {
 		return (
@@ -68,17 +63,34 @@ const ShopPage: React.FC = () => {
 			<div className="shopImageWrapper">
 				<img
 					src={productBg}
-					alt="Product background image"
+					alt="Product background"
 					className="shopProductImage"
 				/>
-				<div className="shopProductSquare" onClick={openProductHandler} />
+
+				{products.map((product) => (
+					<div
+						key={product.id}
+						className="productPin"
+						style={{
+							top: `${product.y}%`,
+							left: `${product.x}%`,
+						}}
+						onClick={() => openProductHandler(product)}
+					>
+						<img
+							src={product.previewImage.url}
+							alt={product.name}
+							className="productPinImage"
+						/>
+					</div>
+				))}
 			</div>
 
-			{/* {isSidebarOpen && (
-				<div className="productOverlay" onClick={closeSidebar} />
-			)} */}
-
-			<div className={`productSidebar ${isSidebarOpen ? "open" : ""}`}>
+			<div
+				className={`productSidebar ${isSidebarOpen ? "open" : ""}`}
+				onMouseEnter={() => setLockBodyScroll(true)}
+				onMouseLeave={() => setLockBodyScroll(false)}
+			>
 				<button className="sidebarCloseBtn" onClick={closeSidebar}>
 					×
 				</button>
