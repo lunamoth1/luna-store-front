@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useCurrency } from "../../context/CurrencyContext";
+import { useCategory } from "../../context/CategoryContext";
 import { useProductStore } from "../../store/productStore";
-// import { useCategory } from "../context/CategoryContext";
 import ProductCardSkeleton from "../../components/productCardSkeleton/ProductCardSkeleton";
 import ProductPhoto from "./components/productPhoto/ProductPhoto";
 import ProductInfo from "./components/productInfo/ProductInfo";
-import productBg from "../../assets/images/productBg.png";
+import gothicBg from "../../assets/images/gothicBg.png";
+import ritualsBg from "../../assets/images/ritualsBg.png";
+import wallartBg from "../../assets/images/wallartBg.png";
+import vintageBg from "../../assets/images/vintageBg.png";
 import "./shopPage.css";
-// import "../product/productPage.css";
+
+const backgrounds = {
+	Gothic: gothicBg,
+	Rituals: ritualsBg,
+	"Wall Art": wallartBg,
+	Vintage: vintageBg,
+};
 
 const ShopPage: React.FC = () => {
 	const { refreshLocation } = useCurrency();
-	// const { category } = useCategory();
+	const { category, isSidebarOpen, setIsSidebarOpen } = useCategory();
 	const { products, isLoading, error } = useProductStore();
-
-	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 	const [lockBodyScroll, setLockBodyScroll] = useState(false);
 	const [selectedProduct, setSelectedProduct] = useState<
 		null | (typeof products)[0]
@@ -37,6 +44,18 @@ const ShopPage: React.FC = () => {
 		setIsSidebarOpen(false);
 		setLockBodyScroll(false);
 	};
+
+	const filteredProducts = products.filter((p) => {
+		if (!category) return false;
+		if (!p.categories) return false;
+
+		const categoryList = p.categories
+			.split("-")
+			.map((c) => c.trim().toLowerCase())
+			.filter(Boolean);
+
+		return categoryList.includes(category.toLowerCase());
+	});
 
 	if (error) {
 		return (
@@ -62,12 +81,12 @@ const ShopPage: React.FC = () => {
 		<div className="shopContainer">
 			<div className="shopImageWrapper">
 				<img
-					src={productBg}
-					alt="Product background"
+					src={backgrounds[category as keyof typeof backgrounds]}
+					alt={`${category} background`}
 					className="shopProductImage"
 				/>
 
-				{products.map((product) => (
+				{filteredProducts.map((product) => (
 					<div
 						key={product.id}
 						className="productPin"

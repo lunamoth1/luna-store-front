@@ -1,12 +1,12 @@
 .productInfoName {
-	font-size: 2rem;
+	font-size: clamp(1.4rem, 1vw + 1.2rem, 2rem);
 	color: var(--color-black);
 	margin: 0.5rem 0 2rem;
 	text-align: center;
 }
 
 .productInfoDescription {
-	font-size: 1.2rem;
+	font-size: clamp(1rem, 0.6vw + 0.9rem, 1.2rem);
 	color: var(--color-black);
 	margin-bottom: 4rem;
 	text-align: center;
@@ -14,7 +14,7 @@
 }
 
 .productInfoPrice {
-	font-size: 1.5rem;
+	font-size: clamp(1.1rem, 0.8vw + 1rem, 1.5rem);
 	color: var(--color-black);
 	margin-bottom: 4rem;
 	text-align: center;
@@ -27,7 +27,7 @@
 	align-items: center;
 	justify-content: center;
 	margin-bottom: 4rem;
-	gap: 5rem;
+	gap: clamp(1rem, 4vw, 5rem);
 }
 
 .productInfoQuantity {
@@ -38,7 +38,7 @@
 }
 
 .productInfoQuantity label {
-	font-size: 1rem;
+	font-size: clamp(0.9rem, 0.4vw + 0.7rem, 1rem);
 	color: var(--color-black);
 	font-weight: 300;
 }
@@ -46,7 +46,7 @@
 .productInfoQuantity input {
 	width: 45px;
 	padding: 0.4rem;
-	font-size: 1.1rem;
+	font-size: clamp(1rem, 0.5vw + 0.9rem, 1.1rem);
 	border: 1px solid var(--color-black);
 	background-color: var(--color-white);
 	margin: 0 0.5rem;
@@ -55,14 +55,13 @@
 	font-family: "KyivTypeSerif", serif;
 	font-weight: 300;
 	border-radius: 0;
-
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
 }
 
 .productInfoQuantitySymbol {
-	font-size: 1.2rem;
+	font-size: clamp(1rem, 0.4vw + 0.9rem, 1.2rem);
 	color: var(--color-black);
 	padding: 1rem;
 	cursor: pointer;
@@ -85,7 +84,7 @@
 }
 
 .productInfoIngredients {
-	font-size: 1rem;
+	font-size: clamp(0.8rem, 0.3vw + 0.7rem, 1rem);
 	color: var(--color-darkGray);
 	margin-bottom: 3rem;
 	text-align: center;
@@ -93,91 +92,17 @@
 }
 
 .productInfoAdditional {
-	font-size: 1rem;
+	font-size: clamp(0.8rem, 0.3vw + 0.7rem, 1rem);
 	color: var(--color-darkGray);
 	margin-bottom: 2rem;
 	text-align: center;
 	font-weight: 300;
 }
 
-@media (max-width: 1212px) {
-	.productInfoName {
-		font-size: 1.8rem;
-	}
-	.productInfoDescription {
-		font-size: 1.2rem;
-	}
-	.productInfoPrice {
-		font-size: 1.4rem;
-		margin: 0 0 3rem;
-	}
-}
-
-@media (max-width: 1100px) {
-	.productInfoName {
-		font-size: 1.6rem;
-	}
-}
-
-@media (max-width: 990px) {
-	.productInfoName {
-		font-size: 1.5rem;
-		margin: 0.5rem 0 1.8rem;
-	}
-	.productInfoDescription {
-		font-size: 1rem;
-	}
-	.productInfoPrice {
-		font-size: 1.2rem;
-		margin: 0 0 2.9rem;
-	}
-	.productInfoBuyContainer {
-		margin: 0 0 3rem;
-		gap: 4rem;
-	}
-	.productInfoIngredients {
-		font-size: 0.9rem;
-		margin: 0 0 2.8rem;
-	}
-	.productInfoAdditional {
-		font-size: 0.9rem;
-		margin: 0 0 2rem;
-	}
-}
-
 @media (max-width: 874px) {
-	.productInfoName {
-		font-size: 1.5rem;
-		margin: 0.5rem 0 1.8rem;
-	}
-	.productInfoDescription {
-		font-size: 1rem;
-		margin: 0 0 2.4rem;
-	}
-	.productInfoPrice {
-		font-size: 1.1rem;
-		margin: 0 0 1rem;
-	}
 	.productInfoBuyContainer {
 		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		margin: 0 0 2.4rem;
 		gap: 1rem;
-	}
-	.productInfoIngredients,
-	.productInfoAdditional {
-		font-size: 0.8rem;
-		margin: 0 0 2rem;
-	}
-}
-
-@media (max-width: 700px) {
-	.productInfoPrice {
-		margin: 0 0 1.4rem;
-	}
-	.productInfoBuyContainer {
-		margin: 0 0 2.2rem;
-		gap: 1.4rem;
+		margin-bottom: 2.4rem;
 	}
 }
