@@ -2,12 +2,12 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	max-width: 450px;
+	max-width: 350px;
 	width: 100%;
 }
 
 .productPhotoMain {
-	width: clamp(320px, 50vw, 450px);
+	width: clamp(320px, 50vw, 350px);
 	aspect-ratio: 1 / 1;
 	box-shadow: 2px 2px 4px var(--color-shadow);
 	margin-bottom: 1rem;
@@ -16,13 +16,13 @@
 .productPhotoThumbnailContainer {
 	display: flex;
 	flex-wrap: wrap;
-	width: clamp(320px, 50vw, 450px);
-	gap: clamp(8.7px, 1.25vw, 12.5px);
+	width: clamp(320px, 50vw, 350px);
+	gap: 7px;
 	justify-content: start;
 }
 
 .productPhotoThumbnails {
-	width: clamp(57px, 9vw, 80px);
+	width: clamp(58.3px, 9vw, 64.3px);
 	aspect-ratio: 1 / 1;
 	cursor: pointer;
 	border: clamp(2px, 0.4vw, 3px) solid var(--color-white);
@@ -34,5 +34,5 @@
 }
 
 .productPhotoThumbnails.active {
-	border: clamp(2px, 0.4vw, 3px) solid var(--color-selectedImageBorder);
+	border: 3px, solid var(--color-selectedImageBorder);
 }

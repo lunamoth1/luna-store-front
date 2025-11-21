@@ -9,7 +9,7 @@ import "./shopNavigation.css";
 
 const ShopNavigation: React.FC = () => {
 	const { basket } = useBasket();
-	const { category, setCategory } = useCategory();
+	const { category, setCategory, isSidebarOpen } = useCategory();
 	const location = useLocation();
 	const itemCount = basket.reduce((sum, item) => sum + item.quantity, 0);
 	const isShopActive = location.pathname.startsWith("/shop");
@@ -36,12 +36,14 @@ const ShopNavigation: React.FC = () => {
 
 	return (
 		<>
-			<button
-				className={`shopNavToggle ${isOpen ? "open" : ""}`}
-				onClick={() => setIsOpen(!isOpen)}
-			>
-				{isOpen ? "×" : "☰"}
-			</button>
+			{!isSidebarOpen && (
+				<button
+					className={`shopNavToggle ${isOpen ? "open" : ""}`}
+					onClick={() => setIsOpen(!isOpen)}
+				>
+					{isOpen ? "×" : "☰"}
+				</button>
+			)}
 
 			{isOpen && (
 				<div className="shopNavOverlay" onClick={() => setIsOpen(false)} />
