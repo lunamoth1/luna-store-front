@@ -1,11 +1,12 @@
-import { deliveryType } from "../constants";
+import { deliveryType } from "../../constants";
 import { BasketElement } from "./BasketContext";
 
 export type DeliveryId = (typeof deliveryType)[number]["id"];
 
 export interface OrderForm {
 	email: string;
-	delivery: DeliveryId;
+	// fix-here
+	delivery: any;
 	firstName: string;
 	lastName: string;
 	address: string;
@@ -18,14 +19,4 @@ export interface OrderForm {
 export interface OrderData {
 	form: OrderForm;
 	basketItems: BasketElement[];
-}
-
-export interface OrderContextProps {
-	order: OrderData | null;
-	setOrder: (data: OrderData) => void;
-	clearOrder: () => void;
-	initOrderFromBasket: (
-		items: BasketElement[],
-		partialForm?: Partial<OrderForm>
-	) => OrderData;
 }

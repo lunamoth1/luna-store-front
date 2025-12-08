@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useCurrency } from "../../context/CurrencyContext";
 import { useCategory } from "../../context/CategoryContext";
-import { useProductStore } from "../../store/productStore";
+import { useProductStore } from "../../store/useProductStore";
 import ProductCardSkeleton from "../../components/productCardSkeleton/ProductCardSkeleton";
 import ProductPhoto from "./components/productPhoto/ProductPhoto";
 import ProductInfo from "./components/productInfo/ProductInfo";

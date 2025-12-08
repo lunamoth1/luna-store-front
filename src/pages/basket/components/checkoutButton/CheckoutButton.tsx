@@ -4,6 +4,7 @@ import { useOrder } from "../../../../context/OrderContext";
 import { useBasket } from "../../../../context/BasketContext";
 import { useCurrency } from "../../../../context/CurrencyContext";
 import Button from "../../../../components/button/Button";
+import { createCheckoutSession } from "../../../../api/checkout";
 import { deliveryType, taxesPercent, usd } from "../../../../constants";
 
 interface CheckoutButtonProps {
@@ -39,8 +40,8 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 
 			try {
 				localStorage.setItem("order", JSON.stringify(orderToSave));
-			} catch (e) {
-				console.warn("Failed to local-save order before redirect", e);
+			} catch {
+				console.warn("Failed to local-save order before redirect");
 			}
 
 			const stripe = await stripePromise;
@@ -49,36 +50,30 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 				return;
 			}
 
-			const response = await fetch(
-				`${import.meta.env.VITE_STRAPI_API_URL}/api/checkout`,
-				{
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({
-						basketItems: basket.map((item) => ({
-							name: item.product.name,
-							price:
-								currency === usd
-									? item.product.priceUS * 100
-									: item.product.priceEU * 100,
-							quantity: item.quantity,
-						})),
-						email,
-						shippingCost: shippingPrice ? shippingPrice * 100 : 0,
-						taxAmount: taxesPrice ? Math.round(taxesPrice * 100) : 0,
-						currency: currency === usd ? "usd" : "eur",
-					}),
-				}
-			);
+			const session = await createCheckoutSession({
+				basketItems: basket.map((item) => ({
+					name: item.product.name,
+					price:
+						currency === usd
+							? item.product.priceUS * 100
+							: item.product.priceEU * 100,
+					quantity: item.quantity,
+				})),
+				email,
+				shippingCost: shippingPrice ? shippingPrice * 100 : 0,
+				taxAmount: taxesPrice ? Math.round(taxesPrice * 100) : 0,
+				currency: currency === usd ? "usd" : "eur",
+			});
 
-			const data = await response.json();
-
-			if (!data.id) {
-				console.error("Failed to create Stripe session:", data);
+			if (!session.id) {
+				console.error("Failed to create Stripe session:", session);
 				return;
 			}
 
-			const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
+			const { error } = await stripe.redirectToCheckout({
+				sessionId: session.id,
+			});
+
 			if (error) {
 				console.error("Stripe checkout error:", error.message);
 			}

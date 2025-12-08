@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation, Link, useParams } from "react-router-dom";
 import { SpinnerCircularFixed } from "spinners-react";
-import { useProductStore } from "../../store/productStore";
+import { useProductStore } from "../../store/useProductStore";
 import ProductPhoto from "../shop/components/productPhoto/ProductPhoto";
 import ProductInfo from "../shop/components/productInfo/ProductInfo";
 import "./productPage.css";

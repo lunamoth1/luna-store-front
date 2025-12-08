@@ -18,7 +18,7 @@ import {
 	DeliveryId,
 	OrderData,
 	OrderForm,
-} from "../../../../types/OrderContext";
+} from "../../../../types/context/OrderContext";
 import "./basketForm.css";
 
 const defaultForm: OrderForm = {

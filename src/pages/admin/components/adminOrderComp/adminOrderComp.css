@@ -1,0 +1,66 @@
+.adminOrderCompContainer {
+	padding: 10px 6px;
+	margin-bottom: 20px;
+	max-width: 500px;
+	width: 100%;
+	gap: 10px;
+	display: flex;
+	flex-direction: column;
+	border-bottom: 1px solid var(--color-grayLight);
+}
+
+.adminOrderCompHorizontalContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	gap: 40px;
+}
+
+.adminOrderCompIdText {
+	color: var(--color-black);
+	font-size: 1.2rem;
+	font-weight: 500;
+}
+
+.adminOrderCompNameText {
+	color: var(--color-darkGray);
+	font-size: 0.9rem;
+	font-weight: 400;
+}
+
+.adminOrderCompDateText {
+	color: var(--color-darkGray);
+	font-size: 0.9rem;
+	font-weight: 300;
+}
+
+.adminOrderCompCityText {
+	color: var(--color-darkGray);
+	font-size: 0.9rem;
+	font-weight: 300;
+}
+
+.adminOrderCompProductImagesContainer {
+	display: flex;
+	flex-direction: row;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.adminOrderCompProductImage {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.adminOrderCompTotalText {
+	color: var(--color-green);
+	font-size: 1.2rem;
+	font-weight: 400;
+}
+
+.adminOrderCompItemGap {
+	margin-top: 20px;
+}

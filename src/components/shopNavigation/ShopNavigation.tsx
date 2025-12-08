@@ -4,7 +4,7 @@ import { useBasket } from "../../context/BasketContext";
 import { useCategory } from "../../context/CategoryContext";
 import Basket from "../../assets/icons/Basket";
 import { categories } from "../../constants";
-import { categoriesType } from "../../types/CategoryContext";
+import { categoriesType } from "../../types/context/CategoryContext";
 import "./shopNavigation.css";
 
 const ShopNavigation: React.FC = () => {

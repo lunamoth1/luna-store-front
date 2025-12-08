@@ -2,11 +2,10 @@ import React, { useEffect } from "react";
 import { useBasket } from "../../context/BasketContext";
 import { useOrder } from "../../context/OrderContext";
 import { statuses } from "../../constants";
+import { createOrder } from "../../api/orders";
 import { Order } from "../../types/adminPage";
-import { BasketElement } from "../../types/BasketContext";
+import { BasketElement } from "../../types/context/BasketContext";
 import "./thanksgivingPage.css";
-
-const apiUrl = import.meta.env.VITE_STRAPI_API_URL;
 
 const ThanksgivingPage: React.FC = () => {
 	const { clearBasket } = useBasket();
@@ -14,50 +13,55 @@ const ThanksgivingPage: React.FC = () => {
 
 	useEffect(() => {
 		const urlParams = new URLSearchParams(window.location.search);
+
 		if (urlParams.get("success") === "true") {
 			const savedOrder = JSON.parse(localStorage.getItem("order") || "{}");
-			if (savedOrder && savedOrder.basketItems?.length) {
-				const basketItemsJson = savedOrder.basketItems.map(
-					(item: BasketElement) => ({
-						id: item.id,
-						quantity: item.quantity,
-						product: {
-							id: item.product.id,
-							name: item.product.name,
-							priceUS: item.product.priceUS,
-							priceEU: item.product.priceEU,
-						},
-					})
-				);
-				const orderPayload: Order = {
-					email: savedOrder.form.email,
-					delivery: savedOrder.form.delivery,
-					firstName: savedOrder.form.firstName,
-					lastName: savedOrder.form.lastName,
-					address: savedOrder.form.address,
-					city: savedOrder.form.city,
-					state: savedOrder.form.state,
-					postalCode: savedOrder.form.postalCode,
-					country: savedOrder.form.country,
-					basket: basketItemsJson,
-					note: "",
-					orderStatus: statuses[2],
-				};
-				fetch(`${apiUrl}/api/orders`, {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ data: orderPayload }),
+
+			if (!savedOrder || !savedOrder.basketItems?.length) return;
+
+			const basketItemsJson = savedOrder.basketItems.map(
+				(item: BasketElement) => ({
+					id: item.id,
+					quantity: item.quantity,
+					product: {
+						id: item.product.id,
+						name: item.product.name,
+						priceUS: item.product.priceUS,
+						priceEU: item.product.priceEU,
+					},
 				})
-					.then((res) => {
-						if (!res.ok) throw new Error(`Error: ${res.status}`);
-						return res.json();
-					})
-					.then((data) => console.log("Order submitted"))
-					.catch((err) => console.error("Failed:", err));
-				localStorage.removeItem("order");
-				clearBasket();
-				clearOrder();
-			}
+			);
+
+			const orderPayload: Order = {
+				email: savedOrder.form.email,
+				delivery: savedOrder.form.delivery,
+				firstName: savedOrder.form.firstName,
+				lastName: savedOrder.form.lastName,
+				address: savedOrder.form.address,
+				city: savedOrder.form.city,
+				state: savedOrder.form.state,
+				postalCode: savedOrder.form.postalCode,
+				country: savedOrder.form.country,
+
+				basket: basketItemsJson,
+				note: "",
+				orderStatus: statuses[2],
+				archived: false,
+				trackingNumber: "",
+			};
+
+			(async () => {
+				try {
+					await createOrder(orderPayload);
+					console.log("Order successfully submitted");
+				} catch (err) {
+					console.error("Failed to submit order:", err);
+				} finally {
+					localStorage.removeItem("order");
+					clearBasket();
+					clearOrder();
+				}
+			})();
 		}
 	}, []);
 

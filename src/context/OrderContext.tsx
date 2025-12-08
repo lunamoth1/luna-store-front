@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { OrderContextProps, OrderData, OrderForm } from "../types/OrderContext";
-import { BasketElement } from "../types/BasketContext";
+import { OrderData, OrderForm } from "../types/context/OrderContext";
+import { BasketElement } from "../types/context/BasketContext";
+import { OrderStoreType } from "../types/stores/useOrderStore";
 
 const STORAGE_KEY = "order";
 
-const OrderContext = createContext<OrderContextProps | undefined>(undefined);
+const OrderContext = createContext<OrderStoreType | undefined>(undefined);
 
 export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
 	children,

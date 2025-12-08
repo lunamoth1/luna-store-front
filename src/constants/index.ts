@@ -1,5 +1,7 @@
-import { categoriesType } from "../types/CategoryContext";
+import { categoriesType } from "../types/context/CategoryContext";
 import { Status } from "../types/statusDropDown";
+
+export const apiUrl = import.meta.env.VITE_STRAPI_API_URL;
 
 export const categories: categoriesType[] = [
 	"Gothic",

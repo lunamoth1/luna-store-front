@@ -1,5 +1,5 @@
-import { BasketElement } from "./BasketContext";
-import { OrderForm } from "./OrderContext";
+import { BasketElement } from "./context/BasketContext";
+import { OrderForm } from "./context/OrderContext";
 import { Status } from "./statusDropDown";
 
 export type Order = {
@@ -9,4 +9,6 @@ export type Order = {
 	createdAt?: string;
 	note: string;
 	orderStatus: Status;
+	archived: boolean;
+	trackingNumber?: string;
 } & OrderForm;

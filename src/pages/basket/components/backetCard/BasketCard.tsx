@@ -2,7 +2,7 @@ import React from "react";
 import { useBasket } from "../../../../context/BasketContext";
 import { useCurrency } from "../../../../context/CurrencyContext";
 import { usd } from "../../../../constants";
-import { BasketElement } from "../../../../types/BasketContext";
+import { BasketElement } from "../../../../types/context/BasketContext";
 import "./basketCard.css";
 
 interface BasketCardProps {

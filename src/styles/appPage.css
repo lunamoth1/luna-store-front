@@ -43,6 +43,8 @@ body {
 
 :root {
 	--color-white: #fff;
+	--color-lightGray: #dadada;
+	--color-grayLight: #b3b3b3;
 	--color-gray: #6e6e6e;
 	--color-darkGray: #393939;
 	--color-almostBlack: #191919;

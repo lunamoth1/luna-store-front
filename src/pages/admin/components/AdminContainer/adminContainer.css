@@ -1,0 +1,15 @@
+.adminScreensContainer {
+	background-color: var(--color-almostBlack);
+	position: fixed;
+	inset: 0;
+	overflow-y: auto;
+	display: flex;
+	justify-content: center;
+}
+
+.adminScreenContainerInner {
+	background-color: var(--color-lightGray);
+	max-width: 500px;
+	width: 100%;
+	padding: 0 10px;
+}

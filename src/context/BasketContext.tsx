@@ -1,6 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { Product } from "../types/ProductPage";
-import { BasketContextType, BasketElement } from "../types/BasketContext";
+import {
+	BasketContextType,
+	BasketElement,
+} from "../types/context/BasketContext";
 
 const BasketContext = createContext<BasketContextType | undefined>(undefined);
 
