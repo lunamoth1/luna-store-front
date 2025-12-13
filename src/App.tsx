@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 import { useProductStore } from "./store/useProductStore";
+import { useSettingsStore } from "./store/useSettingsStore";
 import { OrderProvider } from "./context/OrderContext";
 import { BasketProvider } from "./context/BasketContext";
 import { CurrencyProvider } from "./context/CurrencyContext";
@@ -90,9 +91,11 @@ const AppRoutes: React.FC = () => {
 
 const App: React.FC = () => {
 	const { fetchProducts } = useProductStore();
+	const { fetchSettings } = useSettingsStore();
 
 	useEffect(() => {
 		fetchProducts();
+		fetchSettings();
 	}, [fetchProducts]);
 
 	return (

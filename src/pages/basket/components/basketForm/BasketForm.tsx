@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useOrder } from "../../../../context/OrderContext";
 import { useBasket } from "../../../../context/BasketContext";
 import { useCurrency } from "../../../../context/CurrencyContext";
+import { useSettingsStore } from "../../../../store/useSettingsStore";
+import { useOrderStore } from "../../../../store/useOrderStore";
 import Input from "../../../../components/input/Input";
 import InputDropDown from "../inputDropDown/InputDropDown";
 import CheckoutButton from "../checkoutButton/CheckoutButton";
@@ -14,130 +15,57 @@ import {
 	usd,
 	usDeliveryType,
 } from "../../../../constants";
-import {
-	DeliveryId,
-	OrderData,
-	OrderForm,
-} from "../../../../types/context/OrderContext";
+import { DeliveryId, OrderForm } from "../../../../types/context/OrderContext";
 import "./basketForm.css";
 
-const defaultForm: OrderForm = {
-	email: "",
-	delivery: "ground",
-	firstName: "",
-	lastName: "",
-	address: "",
-	city: "",
-	state: "",
-	postalCode: "",
-	country: "",
-};
-
-// here errors
 const BasketForm: React.FC = () => {
 	const { basket } = useBasket();
 	const { currency } = useCurrency();
-	const { order, setOrder } = useOrder();
+	const { usDelivery, internationalDelivery } = useSettingsStore();
+	const { order, setForm, setBasket, clear } = useOrderStore();
+
+	const form = order.form;
+
 	const shippedCountries = currency === usd ? americas : europe;
 	const countryNames = currency === usd ? americasNames : europeNames;
 
 	const [clickCounter, setClickCounter] = useState(0);
-	const [form, setForm] = useState<OrderForm>(() => {
-		let savedForm: Partial<OrderForm> | null = null;
-		try {
-			const saved = localStorage.getItem("order");
-			if (saved) savedForm = JSON.parse(saved)?.form ?? null;
-		} catch {}
 
-		return {
-			...defaultForm,
-			...savedForm,
-			...order?.form,
-			delivery:
-				(savedForm?.delivery as DeliveryId) ??
-				(order?.form?.delivery as DeliveryId) ??
-				"ground",
-		};
-	});
+	useEffect(() => {
+		setBasket(basket as any[]);
+	}, [basket]);
 
 	const delivery =
 		form.country === "" || form.country === "US"
-			? usDeliveryType
+			? usDelivery.length > 0
+				? usDelivery
+				: usDeliveryType
+			: internationalDelivery.length > 0
+			? internationalDelivery
 			: internationalDeliveryType;
 
 	useEffect(() => {
-		const availableDelivery =
-			form.country === "US" || form.country === ""
-				? usDeliveryType
-				: internationalDeliveryType;
-
-		if (!availableDelivery.some((opt) => opt.id === form.delivery)) {
-			const fallbackDelivery: DeliveryId = availableDelivery[0].id;
-			const updatedForm: OrderForm = {
-				...form,
-				delivery: fallbackDelivery,
-			};
-			setForm(updatedForm);
-
-			// here any
-			const newOrder: OrderData = {
-				form: updatedForm,
-				basketItems: basket as any,
-			};
-			setOrder(newOrder);
-
-			try {
-				localStorage.setItem("order", JSON.stringify(newOrder));
-			} catch {}
+		if (!delivery.some((opt: any) => opt.id === form.delivery)) {
+			setForm({ delivery: delivery[0].id as DeliveryId });
 		}
-	}, [form.country]);
-
-	useEffect(() => {
-		if (order?.form) {
-			setForm((prev) => ({
-				...prev,
-				...order.form,
-				delivery:
-					(order.form.delivery as DeliveryId) ?? prev.delivery ?? "ground",
-			}));
-		}
-	}, [order]);
+	}, [form.country, usDelivery, internationalDelivery]);
 
 	const changeHandler = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
 	) => {
 		const { name, value } = e.target;
-		const updatedForm: OrderForm = {
-			...form,
+		setForm({
 			[name]: name === "delivery" ? (value as DeliveryId) : value,
-		} as OrderForm;
-
-		setForm(updatedForm);
-
-		const newOrder = { form: updatedForm, basketItems: basket };
-		// here any
-		setOrder(newOrder as any);
-
-		try {
-			localStorage.setItem("order", JSON.stringify(newOrder));
-		} catch {}
+		} as Partial<OrderForm>);
 	};
 
 	const clickHandler = () => {
 		setClickCounter((prev) => prev + 1);
 		if (clickCounter === 1) {
 			setClickCounter(0);
-			clearForm();
+			clear();
 		}
-		setTimeout(() => {
-			setClickCounter(0);
-		}, 3000);
-	};
-
-	const clearForm = () => {
-		setForm(defaultForm);
-		setOrder({ form: defaultForm, basketItems: [] });
-		localStorage.removeItem("order");
+		setTimeout(() => setClickCounter(0), 3000);
 	};
 
 	return (
@@ -153,7 +81,7 @@ const BasketForm: React.FC = () => {
 
 			<p className="basketFormTitle">Delivery Options</p>
 			<div className="basketFormRadioContainer">
-				{delivery.map((option) => (
+				{delivery.map((option: any) => (
 					<div key={option.id} className="basketFormRadioOption">
 						<input
 							type="radio"

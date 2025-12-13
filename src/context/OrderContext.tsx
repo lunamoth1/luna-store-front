@@ -1,5 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { OrderData, OrderForm } from "../types/context/OrderContext";
+import {
+	DeliveryId,
+	OrderData,
+	OrderForm,
+} from "../types/context/OrderContext";
 import { OrderStoreType } from "../types/stores/useOrderStore";
 import { CheckoutBasketItem } from "../types/adminPage";
 
@@ -47,7 +51,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
 		return {
 			form: {
 				email: form?.email ?? "",
-				delivery: form?.delivery ?? "ground",
+				delivery: form?.delivery ?? ("" as DeliveryId),
 				firstName: form?.firstName ?? "",
 				lastName: form?.lastName ?? "",
 				address: form?.address ?? "",

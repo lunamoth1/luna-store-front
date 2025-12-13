@@ -1,42 +1,60 @@
 import { create } from "zustand";
-import { persist, createJSONStorage } from "zustand/middleware";
-import { OrderStoreType } from "../types/stores/useOrderStore";
-import { OrderData, OrderForm } from "../types/context/OrderContext";
+import { persist } from "zustand/middleware";
+import { OrderForm, OrderData } from "../types/context/OrderContext";
 import { CheckoutBasketItem } from "../types/adminPage";
 
-const STORAGE_KEY = "order";
+interface OrderStore {
+	order: OrderData;
+	setForm: (patch: Partial<OrderForm>) => void;
+	setBasket: (items: CheckoutBasketItem[]) => void;
+	clear: () => void;
+}
 
-export const useOrderStore = create<OrderStoreType>()(
+const createDefaultForm = (): OrderForm => ({
+	email: "",
+	delivery: "ground",
+	firstName: "",
+	lastName: "",
+	address: "",
+	city: "",
+	state: "",
+	postalCode: "",
+	country: "",
+});
+
+export const useOrderStore = create<OrderStore>()(
 	persist(
-		(set) => ({
-			order: null,
-			loading: false,
-			error: null,
+		(set, get) => ({
+			order: {
+				form: createDefaultForm(),
+				basketItems: [],
+			},
 
-			setOrder: (data: OrderData) => set({ order: data }),
-			clearOrder: () => set({ order: null }),
+			setForm: (patch) => {
+				const { order } = get();
+				set({
+					order: {
+						...order,
+						form: { ...order.form, ...patch },
+					},
+				});
+			},
 
-			initOrderFromBasket: (
-				items: CheckoutBasketItem[],
-				form?: Partial<OrderForm>
-			) => ({
-				form: {
-					email: form?.email ?? "",
-					delivery: form?.delivery ?? "ground",
-					firstName: form?.firstName ?? "",
-					lastName: form?.lastName ?? "",
-					address: form?.address ?? "",
-					city: form?.city ?? "",
-					state: form?.state ?? "",
-					postalCode: form?.postalCode ?? "",
-					country: form?.country ?? "",
-				},
-				basketItems: items,
-			}),
+			setBasket: (items) => {
+				const { order } = get();
+				set({
+					order: { ...order, basketItems: items },
+				});
+			},
+
+			clear: () =>
+				set({
+					order: {
+						form: createDefaultForm(),
+						basketItems: [],
+					},
+				}),
 		}),
-		{
-			name: STORAGE_KEY,
-			storage: createJSONStorage(() => localStorage),
-		}
+		{ name: "order" }
 	)
 );

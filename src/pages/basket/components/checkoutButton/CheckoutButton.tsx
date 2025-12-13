@@ -1,11 +1,17 @@
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { useOrder } from "../../../../context/OrderContext";
 import { useBasket } from "../../../../context/BasketContext";
 import { useCurrency } from "../../../../context/CurrencyContext";
+import { useSettingsStore } from "../../../../store/useSettingsStore";
+import { useOrderStore } from "../../../../store/useOrderStore";
 import Button from "../../../../components/button/Button";
 import { createCheckoutSession } from "../../../../api/checkout";
-import { deliveryType, taxesPercent, usd } from "../../../../constants";
+import {
+	taxesPercent,
+	usd,
+	usDeliveryType,
+	internationalDeliveryType,
+} from "../../../../constants";
 
 interface CheckoutButtonProps {
 	email?: string;
@@ -15,13 +21,24 @@ interface CheckoutButtonProps {
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
-	const { order, setOrder, initOrderFromBasket } = useOrder();
+	const { order } = useOrderStore();
 	const { currency } = useCurrency();
 	const { basket } = useBasket();
+	const { usDelivery, internationalDelivery } = useSettingsStore();
 
-	const shippingPrice = deliveryType.find(
-		(d) => d.id === order?.form.delivery
-	)?.price;
+	const deliveryList =
+		order.form.country === "" || order.form.country === "US"
+			? usDelivery.length > 0
+				? usDelivery
+				: usDeliveryType
+			: internationalDelivery.length > 0
+			? internationalDelivery
+			: internationalDeliveryType;
+
+	const shippingPrice =
+		deliveryList.find((d: any) => d.id === order.form.delivery)?.price ??
+		deliveryList[0]?.price ??
+		0;
 
 	const subtotalPrice = basket.reduce(
 		(sum, item) =>
@@ -33,16 +50,6 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 
 	const checkoutHandler = async () => {
 		try {
-			// here any
-			const orderToSave = order ?? initOrderFromBasket(basket as any);
-			setOrder(orderToSave);
-
-			try {
-				localStorage.setItem("order", JSON.stringify(orderToSave));
-			} catch {
-				console.warn("Failed to local-save order before redirect");
-			}
-
 			const stripe = await stripePromise;
 			if (!stripe) {
 				console.error("Stripe failed to initialize");
@@ -63,18 +70,20 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 				),
 
 				form: {
-					email: orderToSave.form.email,
-					firstName: orderToSave.form.firstName,
-					lastName: orderToSave.form.lastName,
-					delivery: orderToSave.form.delivery,
-					address: orderToSave.form.address,
-					city: orderToSave.form.city,
-					state: orderToSave.form.state,
-					postalCode: orderToSave.form.postalCode,
-					country: orderToSave.form.country,
+					email: order.form.email,
+					firstName: order.form.firstName,
+					lastName: order.form.lastName,
+					delivery: order.form.delivery,
+					address: order.form.address,
+					city: order.form.city,
+					state: order.form.state,
+					postalCode: order.form.postalCode,
+					country: order.form.country,
 				},
 
-				shippingCost: shippingPrice ? shippingPrice * 100 : 0,
+				shippingCost: shippingPrice
+					? Math.round(Number(shippingPrice) * 100)
+					: 0,
 				taxAmount: taxesPrice ? Math.round(taxesPrice * 100) : 0,
 				currency: currency === usd ? "usd" : "eur",
 			});

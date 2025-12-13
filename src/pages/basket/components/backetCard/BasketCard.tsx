@@ -15,7 +15,6 @@ const BasketCard: React.FC<BasketCardProps> = ({ item }) => {
 	const currencySymbol = currency === usd ? "$" : "€";
 	const { id, name, priceUS, priceEU, image, quantity } = item;
 	const price = currency === usd ? priceUS : priceEU;
-	console.log(image);
 
 	return (
 		<div className="basketCardContainer">

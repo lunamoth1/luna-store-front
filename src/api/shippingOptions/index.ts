@@ -8,17 +8,7 @@ export async function getShippingOptions() {
 
 	if (!result.data) return [];
 
-	return result.data.map((item: ShippingOption) => ({
-		id: item.id,
-		documentId: item.documentId,
-		uid: item.uid,
-		label: item.label,
-		price: item.price,
-		type: item.type,
-		createdAt: item.createdAt,
-		updatedAt: item.updatedAt,
-		publishedAt: item.publishedAt,
-	}));
+	return result.data;
 }
 
 export async function updateShippingOption(
