@@ -1,10 +1,10 @@
 import "./adminLightText.css";
 
-type Props = { text: string; style?: React.CSSProperties };
+type Props = { text: string; className?: string; style?: React.CSSProperties };
 
-const AdminLightText: React.FC<Props> = ({ text, style }) => {
+const AdminLightText: React.FC<Props> = ({ text, className, style }) => {
 	return (
-		<p className="adminLightText" style={style}>
+		<p className={`adminLightText ${className || ""}`} style={style}>
 			{text}
 		</p>
 	);

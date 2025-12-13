@@ -1,4 +1,4 @@
-import { BasketElement } from "../context/BasketContext";
+import { CheckoutBasketItem } from "../adminPage";
 import { OrderData, OrderForm } from "../context/OrderContext";
 
 export interface OrderStoreType {
@@ -6,7 +6,7 @@ export interface OrderStoreType {
 	setOrder: (data: OrderData) => void;
 	clearOrder: () => void;
 	initOrderFromBasket: (
-		items: BasketElement[],
+		items: CheckoutBasketItem[],
 		form?: Partial<OrderForm>
 	) => OrderData;
 }

@@ -36,7 +36,7 @@ const AdminPinPage: React.FC = () => {
 		try {
 			const result = await checkAdminPin(pin);
 
-			const isValid = result.valid ?? result.success ?? false;
+			const isValid = result.data?.success ?? false;
 
 			if (isValid) {
 				setPin("");

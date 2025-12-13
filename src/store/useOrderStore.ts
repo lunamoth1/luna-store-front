@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { OrderStoreType } from "../types/stores/useOrderStore";
 import { OrderData, OrderForm } from "../types/context/OrderContext";
-import { BasketElement } from "../types/context/BasketContext";
+import { CheckoutBasketItem } from "../types/adminPage";
 
 const STORAGE_KEY = "order";
 
@@ -17,7 +17,7 @@ export const useOrderStore = create<OrderStoreType>()(
 			clearOrder: () => set({ order: null }),
 
 			initOrderFromBasket: (
-				items: BasketElement[],
+				items: CheckoutBasketItem[],
 				form?: Partial<OrderForm>
 			) => ({
 				form: {

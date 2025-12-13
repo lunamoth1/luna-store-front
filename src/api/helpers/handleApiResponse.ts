@@ -1,4 +1,4 @@
-export async function handleApiResponse<T>(res: Response): Promise<T> {
+export async function handleApiResponse(res: Response) {
 	if (!res.ok) {
 		let message = `Request failed with status ${res.status}`;
 
@@ -15,5 +15,5 @@ export async function handleApiResponse<T>(res: Response): Promise<T> {
 		throw new Error(message);
 	}
 
-	return res.json() as Promise<T>;
+	return res.json();
 }

@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useProductStore } from "../../../../store/useProductStore";
 import { formatDate } from "../../../../utils";
 import { Order } from "../../../../types/adminPage";
-import { Product } from "../../../../types/ProductPage";
 import "./adminOrderComp.css";
 
 type Props = {
@@ -10,22 +8,7 @@ type Props = {
 };
 
 const AdminOrderComp: React.FC<Props> = ({ order }) => {
-	const { products } = useProductStore();
 	const navigate = useNavigate();
-
-	const getProductImage = (productFromOrder: Product): string => {
-		if (!productFromOrder?.documentId) return "/images/placeholder.webp";
-
-		const found = products.find(
-			(p) => p.documentId === productFromOrder.documentId
-		);
-
-		if (found?.image?.[0]?.url) {
-			return found.image[0].url;
-		}
-
-		return "/images/placeholder.webp";
-	};
 
 	const navigationHandler = () =>
 		navigate(`/admin/actual-order/${order.documentId}`, { state: { order } });
@@ -56,8 +39,8 @@ const AdminOrderComp: React.FC<Props> = ({ order }) => {
 					{order.basket.map((item) => (
 						<img
 							key={item.id}
-							src={getProductImage(item.product)}
-							alt={item.product.name}
+							src={item.image}
+							alt={item.name}
 							className="adminOrderCompProductImage"
 						/>
 					))}
@@ -67,7 +50,7 @@ const AdminOrderComp: React.FC<Props> = ({ order }) => {
 					$
 					{order.basket
 						.map((item) => {
-							const price = Number(item.product.priceUS);
+							const price = Number(item.priceUS);
 							return price * item.quantity;
 						})
 						.reduce((sum, subtotal) => sum + subtotal, 0)

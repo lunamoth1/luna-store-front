@@ -33,6 +33,7 @@ const defaultForm: OrderForm = {
 	country: "",
 };
 
+// here errors
 const BasketForm: React.FC = () => {
 	const { basket } = useBasket();
 	const { currency } = useCurrency();

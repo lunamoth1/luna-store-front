@@ -25,14 +25,13 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 
 	const subtotalPrice = basket.reduce(
 		(sum, item) =>
-			sum +
-			(currency === usd ? item.product.priceUS : item.product.priceEU) *
-				item.quantity,
+			sum + (currency === usd ? item.priceUS : item.priceEU) * item.quantity,
 		0
 	);
 
 	const taxesPrice = subtotalPrice * taxesPercent;
 
+	// here errors
 	const checkoutHandler = async () => {
 		try {
 			const orderToSave = order ?? initOrderFromBasket(basket);
@@ -52,14 +51,25 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 
 			const session = await createCheckoutSession({
 				basketItems: basket.map((item) => ({
-					name: item.product.name,
-					price:
-						currency === usd
-							? item.product.priceUS * 100
-							: item.product.priceEU * 100,
+					id: item.id,
+					name: item.name,
+					price: currency === usd ? item.priceUS * 100 : item.priceEU * 100,
 					quantity: item.quantity,
+					image: item.image?.url || "",
 				})),
-				email,
+
+				form: {
+					email: orderToSave.form.email,
+					firstName: orderToSave.form.firstName,
+					lastName: orderToSave.form.lastName,
+					delivery: orderToSave.form.delivery,
+					address: orderToSave.form.address,
+					city: orderToSave.form.city,
+					state: orderToSave.form.state,
+					postalCode: orderToSave.form.postalCode,
+					country: orderToSave.form.country,
+				},
+
 				shippingCost: shippingPrice ? shippingPrice * 100 : 0,
 				taxAmount: taxesPrice ? Math.round(taxesPrice * 100) : 0,
 				currency: currency === usd ? "usd" : "eur",

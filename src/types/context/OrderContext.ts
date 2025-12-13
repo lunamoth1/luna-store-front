@@ -1,12 +1,11 @@
 import { deliveryType } from "../../constants";
-import { BasketElement } from "./BasketContext";
+import { CheckoutBasketItem } from "../adminPage";
 
 export type DeliveryId = (typeof deliveryType)[number]["id"];
 
 export interface OrderForm {
 	email: string;
-	// fix-here
-	delivery: any;
+	delivery: (typeof deliveryType)[number]["id"];
 	firstName: string;
 	lastName: string;
 	address: string;
@@ -18,5 +17,5 @@ export interface OrderForm {
 
 export interface OrderData {
 	form: OrderForm;
-	basketItems: BasketElement[];
+	basketItems: CheckoutBasketItem[];
 }

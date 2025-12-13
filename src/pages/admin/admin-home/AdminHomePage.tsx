@@ -16,6 +16,8 @@ const AdminHomePage: React.FC = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
 
+	const activeOrders = orders.filter((order) => !order.archived);
+
 	useEffect(() => {
 		(async () => {
 			try {
@@ -31,6 +33,7 @@ const AdminHomePage: React.FC = () => {
 	}, []);
 
 	const orderHandler = () => navigate("/admin/actual-order");
+	const archivedOrderHandler = () => navigate("/admin/archived-order");
 
 	if (loading) {
 		return (
@@ -62,8 +65,12 @@ const AdminHomePage: React.FC = () => {
 		>
 			<div className="adminHomeContent">
 				<AdminLineLink
-					text={`Orders (${orders.length})`}
+					text={`Orders (${activeOrders.length})`}
 					onPress={orderHandler}
+				/>
+				<AdminLineLink
+					text={`Archived Orders (${orders.length - activeOrders.length})`}
+					onPress={archivedOrderHandler}
 				/>
 			</div>
 		</AdminContainer>

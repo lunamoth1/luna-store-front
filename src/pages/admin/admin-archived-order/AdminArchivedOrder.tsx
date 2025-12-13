@@ -2,18 +2,18 @@ import { useCompletedOrdersStore } from "../../../store/useCompletedOrdersStore"
 import AdminContainer from "../components/adminContainer/AdminContainer";
 import AdminLightText from "../components/adminLightText/AdminLightText";
 import AdminOrderComp from "../components/adminOrderComp/AdminOrderComp";
-import "./adminActualOrder.css";
+import "./adminArchivedOrder.css";
 
-const AdminActualOrder: React.FC = () => {
+const AdminArchivedOrder: React.FC = () => {
 	const { orders, loading, error } = useCompletedOrdersStore();
-	const activeOrders = orders.filter((order) => !order.archived);
+	const archivedOrders = orders.filter((order) => order.archived);
 
 	if (loading) {
 		return (
 			<AdminContainer showHeader showBackButton title="Orders">
 				<AdminLightText
 					text="Loading orders..."
-					className="adminActualOrderText"
+					className="adminArchivedOrderText"
 				/>
 			</AdminContainer>
 		);
@@ -24,7 +24,7 @@ const AdminActualOrder: React.FC = () => {
 			<AdminContainer showHeader showBackButton title="Orders">
 				<AdminLightText
 					text="Error loading orders"
-					className="adminActualOrderText"
+					className="adminArchivedOrderText"
 				/>
 			</AdminContainer>
 		);
@@ -32,15 +32,18 @@ const AdminActualOrder: React.FC = () => {
 
 	return (
 		<AdminContainer showHeader showBackButton title="Orders">
-			{activeOrders.length > 0 ? (
-				activeOrders.map((order) => (
+			{archivedOrders.length > 0 ? (
+				archivedOrders.map((order) => (
 					<AdminOrderComp key={order.id} order={order} />
 				))
 			) : (
-				<AdminLightText text="No new orders" className="adminActualOrderText" />
+				<AdminLightText
+					text="No new orders"
+					className="adminArchivedOrderText"
+				/>
 			)}
 		</AdminContainer>
 	);
 };
 
-export default AdminActualOrder;
+export default AdminArchivedOrder;

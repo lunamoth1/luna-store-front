@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { OrderData, OrderForm } from "../types/context/OrderContext";
-import { BasketElement } from "../types/context/BasketContext";
 import { OrderStoreType } from "../types/stores/useOrderStore";
+import { CheckoutBasketItem } from "../types/adminPage";
 
 const STORAGE_KEY = "order";
 
@@ -41,7 +41,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
 	const clearOrder = () => setOrderState(null);
 
 	const initOrderFromBasket = (
-		items: BasketElement[],
+		items: CheckoutBasketItem[],
 		form?: Partial<OrderForm>
 	): OrderData => {
 		return {

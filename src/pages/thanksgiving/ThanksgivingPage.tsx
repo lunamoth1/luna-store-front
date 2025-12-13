@@ -13,22 +13,22 @@ const ThanksgivingPage: React.FC = () => {
 
 	useEffect(() => {
 		const urlParams = new URLSearchParams(window.location.search);
+		const isSuccess = urlParams.get("success") === "true";
+		if (!isSuccess) return;
 
-		if (urlParams.get("success") === "true") {
-			const savedOrder = JSON.parse(localStorage.getItem("order") || "{}");
+		const savedOrder = JSON.parse(localStorage.getItem("order") || "{}");
 
+		if (import.meta.env.DEV) {
 			if (!savedOrder || !savedOrder.basketItems?.length) return;
 
 			const basketItemsJson = savedOrder.basketItems.map(
 				(item: BasketElement) => ({
 					id: item.id,
 					quantity: item.quantity,
-					product: {
-						id: item.product.id,
-						name: item.product.name,
-						priceUS: item.product.priceUS,
-						priceEU: item.product.priceEU,
-					},
+					name: item.name,
+					priceUS: item.priceUS,
+					priceEU: item.priceEU,
+					image: item.image?.url || "",
 				})
 			);
 
@@ -53,16 +53,16 @@ const ThanksgivingPage: React.FC = () => {
 			(async () => {
 				try {
 					await createOrder(orderPayload);
-					console.log("Order successfully submitted");
+					console.log("DEV: Order successfully submitted");
 				} catch (err) {
-					console.error("Failed to submit order:", err);
-				} finally {
-					localStorage.removeItem("order");
-					clearBasket();
-					clearOrder();
+					console.error("DEV: Failed to submit order:", err);
 				}
 			})();
 		}
+
+		localStorage.removeItem("order");
+		clearBasket();
+		clearOrder();
 	}, []);
 
 	return (

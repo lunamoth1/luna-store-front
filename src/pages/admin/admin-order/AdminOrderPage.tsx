@@ -6,7 +6,12 @@ import AdminOrderProduct from "../components/adminOrderProduct/AdminOrderProduct
 import AdminOrderLineText from "../components/adminOrderLineText/AdminOrderLineText";
 import Button from "../../../components/button/Button";
 import Input from "../../../components/input/Input";
-import { getOrderById } from "../../../api/orders";
+import { sendTrackingEmail } from "../../../api/admin";
+import {
+	getOrderById,
+	updateOrderArchived,
+	updateOrderTrackingNumber,
+} from "../../../api/orders";
 import { Order } from "../../../types/adminPage";
 import "./adminOrderPage.css";
 
@@ -22,61 +27,59 @@ const AdminOrderPage = () => {
 	const [invoiceNumber, setInvoiceNumber] = useState("");
 	const [sending, setSending] = useState(false);
 
-	// const handleArchiveToggle = async (archived: boolean) => {
-	// 	if (!order) return;
+	const handleArchiveToggle = async (archived: boolean) => {
+		if (!order) return;
 
-	// 	const orderDocId = order.documentId || order.id;
-	// 	try {
-	// 		const updated = await updateOrderArchived(
-	// 			orderDocId as string | number,
-	// 			archived
-	// 		);
+		const orderDocId = order.documentId || order.id;
+		try {
+			const updated = await updateOrderArchived(
+				orderDocId as string | number,
+				archived
+			);
 
-	// 		setOrder((prev) =>
-	// 			prev ? { ...prev, archived: updated.archived } : prev
-	// 		);
+			setOrder(updated.data);
 
-	// 		window.dispatchEvent(
-	// 			new CustomEvent("orderUpdated", {
-	// 				detail: { id: orderDocId, archived },
-	// 			})
-	// 		);
+			window.dispatchEvent(
+				new CustomEvent("orderUpdated", {
+					detail: { id: orderDocId, archived },
+				})
+			);
 
-	// 		alert(
-	// 			archived
-	// 				? "✅ Order moved to archive"
-	// 				: "♻️ Order returned to active list"
-	// 		);
-	// 	} catch (err) {
-	// 		console.error("Error while updating archive status:", err);
-	// 		alert("Failed to update order");
-	// 	}
-	// };
+			alert(
+				archived
+					? "✅ Order moved to archive"
+					: "♻️ Order returned to active list"
+			);
+		} catch (err) {
+			console.error("Error while updating archive status:", err);
+			alert("Failed to update order");
+		}
+	};
 
-	// const handleSendInvoice = async () => {
-	// 	try {
-	// 		setSending(true);
-	// 		await sendTrackingEmail(invoiceNumber, order!.email);
-	// 		await updateOrderTrackingNumber(
-	// 			order!.documentId as string,
-	// 			invoiceNumber
-	// 		);
-	// 		const updated = await getOrderById(order!.documentId as string);
-	// 		setOrder(updated);
+	const handleSendInvoice = async () => {
+		try {
+			setSending(true);
+			await sendTrackingEmail(invoiceNumber, order!.email);
+			await updateOrderTrackingNumber(
+				order!.documentId as string,
+				invoiceNumber
+			);
+			const updated = await getOrderById(order!.documentId as string);
+			setOrder(updated);
 
-	// 		alert("✅ Email sent successfully!");
-	// 		setInvoiceNumber("");
-	// 	} catch (err) {
-	// 		console.error(err);
-	// 		alert(
-	// 			`❌ Failed to send email: ${
-	// 				err instanceof Error ? err.message : String(err)
-	// 			}`
-	// 		);
-	// 	} finally {
-	// 		setSending(false);
-	// 	}
-	// };
+			alert("✅ Email sent successfully!");
+			setInvoiceNumber("");
+		} catch (err) {
+			console.error(err);
+			alert(
+				`❌ Failed to send email: ${
+					err instanceof Error ? err.message : String(err)
+				}`
+			);
+		} finally {
+			setSending(false);
+		}
+	};
 
 	useEffect(() => {
 		if (order) return;
@@ -156,10 +159,10 @@ const AdminOrderPage = () => {
 					label: "Copy Email",
 					action: () => navigator.clipboard.writeText(order.email),
 				},
-				// {
-				// 	label: order.archived ? "Return to Orders" : "Move to Archive",
-				// 	action: () => handleArchiveToggle(!order.archived),
-				// },
+				{
+					label: order.archived ? "Return to Orders" : "Move to Archive",
+					action: () => handleArchiveToggle(!order.archived),
+				},
 			]}
 		>
 			{order.basket?.map((item, index) => (
@@ -185,7 +188,7 @@ const AdminOrderPage = () => {
 						/>
 						<Button
 							text={sending ? "Sending..." : "Send Invoice"}
-							// onClick={handleSendInvoice}
+							onClick={handleSendInvoice}
 							disabled={sending}
 							styles={styles.pinButtonStyle}
 							textStyle={styles.pinButtonTextStyle}

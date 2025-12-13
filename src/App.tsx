@@ -28,8 +28,8 @@ import ProtectedAdminRoute from "./pages/admin/components/ProtectedAdminRoute";
 import AdminPinPage from "./pages/admin/admin-pin/AdminPinPage";
 import AdminHomePage from "./pages/admin/admin-home/AdminHomePage";
 import AdminActualOrder from "./pages/admin/admin-actual-order/AdminActualOrder";
+import AdminArchivedOrder from "./pages/admin/admin-archived-order/AdminArchivedOrder";
 import AdminOrderPage from "./pages/admin/admin-order/AdminOrderPage";
-// import AdminPage from "./pages/admin/AdminPage";
 
 import Footer from "./components/footer/Footer";
 import HeaderLogo from "./components/headerLogo/HeaderLogo";
@@ -52,6 +52,10 @@ const AppRoutes: React.FC = () => {
 					<Route path="/admin-pin" element={<AdminPinPage />} />
 					<Route path="/admin/actual-order" element={<AdminActualOrder />} />
 					<Route
+						path="/admin/archived-order"
+						element={<AdminArchivedOrder />}
+					/>
+					<Route
 						path="/admin/actual-order/:orderId"
 						element={<AdminOrderPage />}
 					/>
@@ -64,6 +68,7 @@ const AppRoutes: React.FC = () => {
 							</ProtectedAdminRoute>
 						}
 					/>
+
 					<Route path="/" element={<Navigate to="/shop" replace />} />
 					<Route path="/shop" element={<ShopPage />} />
 					<Route path="/main" element={<HomePage />} />
