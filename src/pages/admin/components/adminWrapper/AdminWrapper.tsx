@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useCompletedOrdersStore } from "../../../../store/useCompletedOrdersStore";
 import AdminHeader from "../adminHeader/AdminHeader";
-import "./adminContainer.css";
+import "./adminWrapper.css";
 
 type MenuItem = {
 	label: string;
 	action: () => void;
 };
-interface AdminContainerProps {
+interface AdminWrapperProps {
 	showHeader?: boolean;
 	title?: string;
 	showBackButton?: boolean;
@@ -15,7 +15,7 @@ interface AdminContainerProps {
 	children: React.ReactNode;
 }
 
-const AdminContainer: React.FC<AdminContainerProps> = ({
+const AdminWrapper: React.FC<AdminWrapperProps> = ({
 	showHeader,
 	title,
 	showBackButton = false,
@@ -29,8 +29,8 @@ const AdminContainer: React.FC<AdminContainerProps> = ({
 	}, []);
 
 	return (
-		<div className="adminScreensContainer">
-			<div className="adminScreenContainerInner">
+		<div className="adminWrapperContainer">
+			<div className="adminWrapperContainerInner">
 				{showHeader && title ? (
 					<AdminHeader
 						title={title}
@@ -44,4 +44,4 @@ const AdminContainer: React.FC<AdminContainerProps> = ({
 	);
 };
 
-export default AdminContainer;
+export default AdminWrapper;

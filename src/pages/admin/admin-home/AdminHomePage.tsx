@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAdminAuth from "../../../store/useAdminAuth";
-import AdminContainer from "../components/adminContainer/AdminContainer";
+import AdminWrapper from "../components/adminWrapper/AdminWrapper";
 import AdminLineLink from "../components/adminLineLink/AdminLineLink";
 import AdminLightText from "../components/adminLightText/AdminLightText";
 import { getOrders } from "../../../api/orders";
@@ -37,28 +37,28 @@ const AdminHomePage: React.FC = () => {
 
 	if (loading) {
 		return (
-			<AdminContainer title="Admin Home">
+			<AdminWrapper title="Admin Home">
 				<AdminLightText
 					text="Loading..."
 					style={{ marginTop: "80px", textAlign: "center" }}
 				/>
-			</AdminContainer>
+			</AdminWrapper>
 		);
 	}
 
 	if (error) {
 		return (
-			<AdminContainer title="Admin Home">
+			<AdminWrapper title="Admin Home">
 				<AdminLightText
 					text={`Error: ${error}`}
 					style={{ marginTop: "80px", textAlign: "center" }}
 				/>
-			</AdminContainer>
+			</AdminWrapper>
 		);
 	}
 
 	return (
-		<AdminContainer
+		<AdminWrapper
 			showHeader={true}
 			title="Admin Home"
 			menuItems={[{ label: "Exit", action: logoutAdmin }]}
@@ -73,7 +73,7 @@ const AdminHomePage: React.FC = () => {
 					onPress={archivedOrderHandler}
 				/>
 			</div>
-		</AdminContainer>
+		</AdminWrapper>
 	);
 };
 

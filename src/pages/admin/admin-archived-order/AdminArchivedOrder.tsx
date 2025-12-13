@@ -1,5 +1,5 @@
 import { useCompletedOrdersStore } from "../../../store/useCompletedOrdersStore";
-import AdminContainer from "../components/adminContainer/AdminContainer";
+import AdminWrapper from "../components/adminWrapper/AdminWrapper";
 import AdminLightText from "../components/adminLightText/AdminLightText";
 import AdminOrderComp from "../components/adminOrderComp/AdminOrderComp";
 import "./adminArchivedOrder.css";
@@ -10,28 +10,28 @@ const AdminArchivedOrder: React.FC = () => {
 
 	if (loading) {
 		return (
-			<AdminContainer showHeader showBackButton title="Orders">
+			<AdminWrapper showHeader showBackButton title="Orders">
 				<AdminLightText
 					text="Loading orders..."
 					className="adminArchivedOrderText"
 				/>
-			</AdminContainer>
+			</AdminWrapper>
 		);
 	}
 
 	if (error) {
 		return (
-			<AdminContainer showHeader showBackButton title="Orders">
+			<AdminWrapper showHeader showBackButton title="Orders">
 				<AdminLightText
 					text="Error loading orders"
 					className="adminArchivedOrderText"
 				/>
-			</AdminContainer>
+			</AdminWrapper>
 		);
 	}
 
 	return (
-		<AdminContainer showHeader showBackButton title="Orders">
+		<AdminWrapper showHeader showBackButton title="Orders">
 			{archivedOrders.length > 0 ? (
 				archivedOrders.map((order) => (
 					<AdminOrderComp key={order.id} order={order} />
@@ -42,7 +42,7 @@ const AdminArchivedOrder: React.FC = () => {
 					className="adminArchivedOrderText"
 				/>
 			)}
-		</AdminContainer>
+		</AdminWrapper>
 	);
 };
 

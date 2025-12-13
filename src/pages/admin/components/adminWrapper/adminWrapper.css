@@ -1,4 +1,4 @@
-.adminScreensContainer {
+.adminWrapperContainer {
 	background-color: var(--color-almostBlack);
 	position: fixed;
 	inset: 0;
@@ -7,7 +7,7 @@
 	justify-content: center;
 }
 
-.adminScreenContainerInner {
+.adminWrapperContainerInner {
 	background-color: var(--color-lightGray);
 	max-width: 500px;
 	width: 100%;

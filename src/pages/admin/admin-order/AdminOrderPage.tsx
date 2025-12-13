@@ -1,7 +1,7 @@
 import { CSSProperties, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import AdminLightText from "../components/adminLightText/AdminLightText";
-import AdminContainer from "../components/adminContainer/AdminContainer";
+import AdminWrapper from "../components/adminWrapper/AdminWrapper";
 import AdminOrderProduct from "../components/adminOrderProduct/AdminOrderProduct";
 import AdminOrderLineText from "../components/adminOrderLineText/AdminOrderLineText";
 import Button from "../../../components/button/Button";
@@ -118,39 +118,39 @@ const AdminOrderPage = () => {
 
 	if (loading) {
 		return (
-			<AdminContainer showBackButton showHeader title="Order detail">
+			<AdminWrapper showBackButton showHeader title="Order detail">
 				<AdminLightText
 					text="Loading..."
 					style={{ marginTop: "80px", textAlign: "center" }}
 				/>
-			</AdminContainer>
+			</AdminWrapper>
 		);
 	}
 
 	if (error) {
 		return (
-			<AdminContainer showBackButton showHeader title="Order detail">
+			<AdminWrapper showBackButton showHeader title="Order detail">
 				<AdminLightText
 					text={`Error: ${error}`}
 					style={{ marginTop: "80px", textAlign: "center" }}
 				/>
-			</AdminContainer>
+			</AdminWrapper>
 		);
 	}
 
 	if (!order) {
 		return (
-			<AdminContainer showBackButton showHeader title="Order detail">
+			<AdminWrapper showBackButton showHeader title="Order detail">
 				<AdminLightText
 					text="No order details available"
 					style={{ marginTop: "80px", textAlign: "center" }}
 				/>
-			</AdminContainer>
+			</AdminWrapper>
 		);
 	}
 
 	return (
-		<AdminContainer
+		<AdminWrapper
 			title="Order detail"
 			showBackButton
 			showHeader
@@ -211,7 +211,7 @@ const AdminOrderPage = () => {
 			<AdminOrderLineText label="state" value={order.state} />
 			<AdminOrderLineText label="postal code" value={order.postalCode} />
 			<AdminOrderLineText label="country" value={order.country} />
-		</AdminContainer>
+		</AdminWrapper>
 	);
 };
 

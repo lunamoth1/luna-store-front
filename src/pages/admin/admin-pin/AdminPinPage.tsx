@@ -1,7 +1,7 @@
 import { useState, useEffect, CSSProperties } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAdminAuth from "../../../store/useAdminAuth";
-import AdminContainer from "../components/adminContainer/AdminContainer";
+import AdminWrapper from "../components/adminWrapper/AdminWrapper";
 import AdminLightText from "../components/adminLightText/AdminLightText";
 import Button from "../../../components/button/Button";
 import Input from "../../../components/input/Input";
@@ -61,7 +61,7 @@ const AdminPinPage: React.FC = () => {
 	};
 
 	return (
-		<AdminContainer>
+		<AdminWrapper>
 			<div className="adminPinContainer" style={styles.adminContainerInner}>
 				<AdminLightText text="Enter admin password:" />
 
@@ -81,7 +81,7 @@ const AdminPinPage: React.FC = () => {
 					textStyle={styles.pinButtonTextStyle}
 				/>
 			</div>
-		</AdminContainer>
+		</AdminWrapper>
 	);
 };
 
