@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { eur, usd } from "../constants";
-import { CurrencyContextType } from "../types/CurrencyContext";
+import { CurrencyContextType } from "../types/context/CurrencyContext";
 
 const CurrencyContext = createContext<CurrencyContextType>({
 	currency: null,

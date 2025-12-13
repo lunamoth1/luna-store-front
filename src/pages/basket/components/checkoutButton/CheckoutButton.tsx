@@ -4,6 +4,7 @@ import { useOrder } from "../../../../context/OrderContext";
 import { useBasket } from "../../../../context/BasketContext";
 import { useCurrency } from "../../../../context/CurrencyContext";
 import Button from "../../../../components/button/Button";
+import { createCheckoutSession } from "../../../../api/checkout";
 import { deliveryType, taxesPercent, usd } from "../../../../constants";
 
 interface CheckoutButtonProps {
@@ -24,9 +25,7 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 
 	const subtotalPrice = basket.reduce(
 		(sum, item) =>
-			sum +
-			(currency === usd ? item.product.priceUS : item.product.priceEU) *
-				item.quantity,
+			sum + (currency === usd ? item.priceUS : item.priceEU) * item.quantity,
 		0
 	);
 
@@ -34,13 +33,14 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 
 	const checkoutHandler = async () => {
 		try {
-			const orderToSave = order ?? initOrderFromBasket(basket);
+			// here any
+			const orderToSave = order ?? initOrderFromBasket(basket as any);
 			setOrder(orderToSave);
 
 			try {
 				localStorage.setItem("order", JSON.stringify(orderToSave));
-			} catch (e) {
-				console.warn("Failed to local-save order before redirect", e);
+			} catch {
+				console.warn("Failed to local-save order before redirect");
 			}
 
 			const stripe = await stripePromise;
@@ -49,36 +49,45 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 				return;
 			}
 
-			const response = await fetch(
-				`${import.meta.env.VITE_STRAPI_API_URL}/api/checkout`,
-				{
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({
-						basketItems: basket.map((item) => ({
-							name: item.product.name,
-							price:
-								currency === usd
-									? item.product.priceUS * 100
-									: item.product.priceEU * 100,
+			const session = await createCheckoutSession({
+				basketItems: basket.map(
+					(item) =>
+						({
+							id: item.id,
+							name: item.name,
+							price: currency === usd ? item.priceUS * 100 : item.priceEU * 100,
 							quantity: item.quantity,
-						})),
-						email,
-						shippingCost: shippingPrice ? shippingPrice * 100 : 0,
-						taxAmount: taxesPrice ? Math.round(taxesPrice * 100) : 0,
-						currency: currency === usd ? "usd" : "eur",
-					}),
-				}
-			);
+							image: item.image?.url || "",
+						} as any)
+					// here any
+				),
 
-			const data = await response.json();
+				form: {
+					email: orderToSave.form.email,
+					firstName: orderToSave.form.firstName,
+					lastName: orderToSave.form.lastName,
+					delivery: orderToSave.form.delivery,
+					address: orderToSave.form.address,
+					city: orderToSave.form.city,
+					state: orderToSave.form.state,
+					postalCode: orderToSave.form.postalCode,
+					country: orderToSave.form.country,
+				},
 
-			if (!data.id) {
-				console.error("Failed to create Stripe session:", data);
+				shippingCost: shippingPrice ? shippingPrice * 100 : 0,
+				taxAmount: taxesPrice ? Math.round(taxesPrice * 100) : 0,
+				currency: currency === usd ? "usd" : "eur",
+			});
+
+			if (!session.id) {
+				console.error("Failed to create Stripe session:", session);
 				return;
 			}
 
-			const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
+			const { error } = await stripe.redirectToCheckout({
+				sessionId: session.id,
+			});
+
 			if (error) {
 				console.error("Stripe checkout error:", error.message);
 			}

@@ -1,4 +1,4 @@
-import { Product } from "./ProductPage";
+import { Product } from "../ProductPage";
 
 export interface ProductStoreType {
 	products: Product[];

@@ -1,10 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { OrderContextProps, OrderData, OrderForm } from "../types/OrderContext";
-import { BasketElement } from "../types/BasketContext";
+import { OrderData, OrderForm } from "../types/context/OrderContext";
+import { OrderStoreType } from "../types/stores/useOrderStore";
+import { CheckoutBasketItem } from "../types/adminPage";
 
 const STORAGE_KEY = "order";
 
-const OrderContext = createContext<OrderContextProps | undefined>(undefined);
+const OrderContext = createContext<OrderStoreType | undefined>(undefined);
 
 export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
 	children,
@@ -40,7 +41,7 @@ export const OrderProvider: React.FC<{ children: React.ReactNode }> = ({
 	const clearOrder = () => setOrderState(null);
 
 	const initOrderFromBasket = (
-		items: BasketElement[],
+		items: CheckoutBasketItem[],
 		form?: Partial<OrderForm>
 	): OrderData => {
 		return {

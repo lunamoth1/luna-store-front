@@ -1,0 +1,10 @@
+.adminOrderDeliveryContainer {
+	margin-top: 42px;
+	margin-bottom: 42px;
+}
+
+.adminOrderEmailContainer {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}

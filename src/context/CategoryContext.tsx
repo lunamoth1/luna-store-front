@@ -7,7 +7,10 @@ import {
 } from "react";
 import { useLocation } from "react-router-dom";
 import { categories } from "../constants";
-import { categoriesType, CategoryContextType } from "../types/CategoryContext";
+import {
+	categoriesType,
+	CategoryContextType,
+} from "../types/context/CategoryContext";
 
 const CategoryContext = createContext<CategoryContextType | undefined>(
 	undefined

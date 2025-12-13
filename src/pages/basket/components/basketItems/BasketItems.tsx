@@ -15,9 +15,7 @@ const BasketItems: React.FC = () => {
 
 	const subtotalPrice = basket.reduce(
 		(sum, item) =>
-			sum +
-			(currency === usd ? item.product.priceUS : item.product.priceEU) *
-				item.quantity,
+			sum + (currency === usd ? item.priceUS : item.priceEU) * item.quantity,
 		0
 	);
 	const shippingPrice =

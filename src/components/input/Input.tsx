@@ -10,6 +10,7 @@ interface InputProps {
 	inputContainerStyle?: React.CSSProperties;
 	inputStyle?: React.CSSProperties;
 	autoFocus?: boolean;
+	placeholder?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -21,6 +22,7 @@ const Input: React.FC<InputProps> = ({
 	inputContainerStyle,
 	inputStyle,
 	autoFocus,
+	placeholder,
 }) => {
 	return (
 		<div className="inputContainer" style={inputContainerStyle}>
@@ -33,6 +35,7 @@ const Input: React.FC<InputProps> = ({
 				className="inputField"
 				style={inputStyle}
 				autoFocus={autoFocus}
+				placeholder={placeholder}
 			/>
 		</div>
 	);

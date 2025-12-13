@@ -1,0 +1,60 @@
+.adminOrderProductContainer {
+	display: flex;
+	margin-bottom: 10px;
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	gap: 12px;
+}
+
+.adminOrderProductImage {
+	min-width: 60px;
+	max-width: 60px;
+	width: 100%;
+	height: 60px;
+	object-fit: cover;
+	border-radius: 8px;
+	border: 1px solid var(--color-grayLight);
+}
+
+.adminOrderProductInfoContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	gap: 8px;
+	display: flex;
+}
+
+.adminOrderProductInfoDetails {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.adminOrderProductInfoPrice {
+	min-width: 50px;
+	height: max-content;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	width: max-content;
+	justify-content: center;
+}
+
+.adminOrderProductRegularText {
+	font-size: 1rem;
+	font-weight: 400;
+	color: var(--color-black);
+}
+
+.adminOrderProductLightText {
+	font-size: 1rem;
+	font-weight: 300;
+	color: var(--color-black);
+}
+
+.adminOrderProductEndText {
+	text-align: end;
+}

@@ -1,9 +1,12 @@
-import { Product } from "./ProductPage";
+import { Product, ProductImage } from "../ProductPage";
 
 export interface BasketElement {
 	id: string;
 	quantity: number;
-	product: Product;
+	name: string;
+	priceUS: number;
+	priceEU: number;
+	image: ProductImage;
 }
 
 export interface BasketContextType {
