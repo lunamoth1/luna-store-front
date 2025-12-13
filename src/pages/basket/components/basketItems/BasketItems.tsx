@@ -1,15 +1,22 @@
 import React from "react";
-import { useOrder } from "../../../../context/OrderContext";
 import { useBasket } from "../../../../context/BasketContext";
 import { useCurrency } from "../../../../context/CurrencyContext";
+import { useSettingsStore } from "../../../../store/useSettingsStore";
+import { useOrderStore } from "../../../../store/useOrderStore";
 import BasketCard from "../backetCard/BasketCard";
-import { deliveryType, taxesPercent, usd } from "../../../../constants";
+import {
+	taxesPercent,
+	usd,
+	usDeliveryType,
+	internationalDeliveryType,
+} from "../../../../constants";
 import "./basketItems.css";
 
 const BasketItems: React.FC = () => {
 	const { basket } = useBasket();
-	const { order } = useOrder();
+	const { order } = useOrderStore();
 	const { currency } = useCurrency();
+	const { usDelivery, internationalDelivery } = useSettingsStore();
 
 	const currencySymbol = currency === usd ? "$" : "€";
 
@@ -18,11 +25,23 @@ const BasketItems: React.FC = () => {
 			sum + (currency === usd ? item.priceUS : item.priceEU) * item.quantity,
 		0
 	);
+
+	const deliveryList =
+		order.form.country === "" || order.form.country === "US"
+			? usDelivery.length > 0
+				? usDelivery
+				: usDeliveryType
+			: internationalDelivery.length > 0
+			? internationalDelivery
+			: internationalDeliveryType;
+
 	const shippingPrice =
-		deliveryType.find((d) => d.id === order?.form.delivery)?.price ||
-		deliveryType[0].price;
+		deliveryList.find((d: any) => d.id === order.form.delivery)?.price ??
+		deliveryList[0]?.price ??
+		0;
+
 	const taxesPrice = subtotalPrice * taxesPercent;
-	const totalPrice = subtotalPrice + taxesPrice + (shippingPrice || 0);
+	const totalPrice = subtotalPrice + taxesPrice + shippingPrice;
 
 	return (
 		<div className="basketItemsContainer">
@@ -39,7 +58,8 @@ const BasketItems: React.FC = () => {
 			<div className="basketItemsInfoContainer">
 				<p className="basketItemsRegularText">Shipping:</p>
 				<p className="basketItemsRegularText">
-					{currencySymbol} {shippingPrice}
+					{currencySymbol}
+					{Number(shippingPrice).toFixed(2)}
 				</p>
 			</div>
 			<div className="basketItemsInfoContainer">

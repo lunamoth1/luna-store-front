@@ -1,47 +1,46 @@
 import React, { useEffect } from "react";
 import { useBasket } from "../../context/BasketContext";
-import { useOrder } from "../../context/OrderContext";
+import { useOrderStore } from "../../store/useOrderStore";
 import { statuses } from "../../constants";
 import { createOrder } from "../../api/orders";
 import { Order } from "../../types/adminPage";
-import { BasketElement } from "../../types/context/BasketContext";
+// import { BasketElement } from "../../types/context/BasketContext";
 import "./thanksgivingPage.css";
 
 const ThanksgivingPage: React.FC = () => {
 	const { clearBasket } = useBasket();
-	const { clearOrder } = useOrder();
+	const { order, clear } = useOrderStore();
 
 	useEffect(() => {
 		const urlParams = new URLSearchParams(window.location.search);
 		const isSuccess = urlParams.get("success") === "true";
 		if (!isSuccess) return;
 
-		const savedOrder = JSON.parse(localStorage.getItem("order") || "{}");
-
 		if (import.meta.env.DEV) {
-			if (!savedOrder || !savedOrder.basketItems?.length) return;
+			if (!order || !order.basketItems?.length) return;
 
-			const basketItemsJson = savedOrder.basketItems.map(
-				(item: BasketElement) => ({
-					id: item.id,
-					quantity: item.quantity,
-					name: item.name,
-					priceUS: item.priceUS,
-					priceEU: item.priceEU,
-					image: item.image?.url || "",
-				})
+			const basketItemsJson = order.basketItems.map(
+				(item: any) =>
+					({
+						id: item.id,
+						quantity: item.quantity,
+						name: item.name,
+						priceUS: item.priceUS,
+						priceEU: item.priceEU,
+						image: item.image?.url || "",
+					} as any)
 			);
 
 			const orderPayload: Order = {
-				email: savedOrder.form.email,
-				delivery: savedOrder.form.delivery,
-				firstName: savedOrder.form.firstName,
-				lastName: savedOrder.form.lastName,
-				address: savedOrder.form.address,
-				city: savedOrder.form.city,
-				state: savedOrder.form.state,
-				postalCode: savedOrder.form.postalCode,
-				country: savedOrder.form.country,
+				email: order.form.email,
+				delivery: order.form.delivery,
+				firstName: order.form.firstName,
+				lastName: order.form.lastName,
+				address: order.form.address,
+				city: order.form.city,
+				state: order.form.state,
+				postalCode: order.form.postalCode,
+				country: order.form.country,
 
 				basket: basketItemsJson,
 				note: "",
@@ -60,9 +59,8 @@ const ThanksgivingPage: React.FC = () => {
 			})();
 		}
 
-		localStorage.removeItem("order");
 		clearBasket();
-		clearOrder();
+		clear();
 	}, []);
 
 	return (
