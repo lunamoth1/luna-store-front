@@ -31,10 +31,10 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 
 	const taxesPrice = subtotalPrice * taxesPercent;
 
-	// here errors
 	const checkoutHandler = async () => {
 		try {
-			const orderToSave = order ?? initOrderFromBasket(basket);
+			// here any
+			const orderToSave = order ?? initOrderFromBasket(basket as any);
 			setOrder(orderToSave);
 
 			try {
@@ -50,13 +50,17 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 			}
 
 			const session = await createCheckoutSession({
-				basketItems: basket.map((item) => ({
-					id: item.id,
-					name: item.name,
-					price: currency === usd ? item.priceUS * 100 : item.priceEU * 100,
-					quantity: item.quantity,
-					image: item.image?.url || "",
-				})),
+				basketItems: basket.map(
+					(item) =>
+						({
+							id: item.id,
+							name: item.name,
+							price: currency === usd ? item.priceUS * 100 : item.priceEU * 100,
+							quantity: item.quantity,
+							image: item.image?.url || "",
+						} as any)
+					// here any
+				),
 
 				form: {
 					email: orderToSave.form.email,

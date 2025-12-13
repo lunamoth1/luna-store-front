@@ -79,9 +79,10 @@ const BasketForm: React.FC = () => {
 			};
 			setForm(updatedForm);
 
+			// here any
 			const newOrder: OrderData = {
 				form: updatedForm,
-				basketItems: basket,
+				basketItems: basket as any,
 			};
 			setOrder(newOrder);
 
@@ -114,7 +115,8 @@ const BasketForm: React.FC = () => {
 		setForm(updatedForm);
 
 		const newOrder = { form: updatedForm, basketItems: basket };
-		setOrder(newOrder);
+		// here any
+		setOrder(newOrder as any);
 
 		try {
 			localStorage.setItem("order", JSON.stringify(newOrder));
