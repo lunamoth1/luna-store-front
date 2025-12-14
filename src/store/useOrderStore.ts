@@ -1,12 +1,12 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { OrderForm, OrderData } from "../types/context/OrderContext";
-import { CheckoutBasketItem } from "../types/adminPage";
+import { OrderData, OrderForm } from "../types/stores/useOrderStore";
+import type { BasketElement } from "../types/context/BasketContext";
 
 interface OrderStore {
 	order: OrderData;
 	setForm: (patch: Partial<OrderForm>) => void;
-	setBasket: (items: CheckoutBasketItem[]) => void;
+	setBasket: (items: BasketElement[]) => void;
 	clear: () => void;
 }
 

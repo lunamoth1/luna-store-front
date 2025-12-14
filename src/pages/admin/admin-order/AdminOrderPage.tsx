@@ -15,9 +15,12 @@ import {
 import { Order } from "../../../types/adminPage";
 import "./adminOrderPage.css";
 
+interface LocationState {
+	order?: Order;
+}
 const AdminOrderPage = () => {
-	const location = useLocation();
-	const { orderId } = useParams();
+	const location = useLocation() as { state?: LocationState };
+	const { orderId } = useParams<{ orderId: string }>();
 
 	const [order, setOrder] = useState<Order | null>(
 		location.state?.order ?? null
@@ -30,13 +33,10 @@ const AdminOrderPage = () => {
 	const handleArchiveToggle = async (archived: boolean) => {
 		if (!order) return;
 
-		const orderDocId = order.documentId || order.id;
-		try {
-			const updated = await updateOrderArchived(
-				orderDocId as string | number,
-				archived
-			);
+		const orderDocId: string | number = order.documentId ?? order.id;
 
+		try {
+			const updated = await updateOrderArchived(orderDocId, archived);
 			setOrder(updated.data);
 
 			window.dispatchEvent(
@@ -51,29 +51,32 @@ const AdminOrderPage = () => {
 					: "♻️ Order returned to active list"
 			);
 		} catch (err) {
-			console.error("Error while updating archive status:", err);
+			console.error("❌ Archive update failed:", err);
 			alert("Failed to update order");
 		}
 	};
 
 	const handleSendInvoice = async () => {
+		if (!order) return;
+
 		try {
 			setSending(true);
-			await sendTrackingEmail(invoiceNumber, order!.email);
-			await updateOrderTrackingNumber(
-				order!.documentId as string,
-				invoiceNumber
-			);
-			const updated = await getOrderById(order!.documentId as string);
-			setOrder(updated);
+
+			await sendTrackingEmail(invoiceNumber, order.email);
+
+			if (order.documentId) {
+				await updateOrderTrackingNumber(order.documentId, invoiceNumber);
+				const updated = await getOrderById(order.documentId);
+				setOrder(updated);
+			}
 
 			alert("✅ Email sent successfully!");
 			setInvoiceNumber("");
 		} catch (err) {
-			console.error(err);
+			console.error("❌ Send invoice error:", err);
 			alert(
 				`❌ Failed to send email: ${
-					err instanceof Error ? err.message : String(err)
+					err instanceof Error ? err.message : "Unknown error"
 				}`
 			);
 		} finally {
@@ -82,13 +85,7 @@ const AdminOrderPage = () => {
 	};
 
 	useEffect(() => {
-		if (order) return;
-
-		if (!orderId) {
-			setError("Order ID is missing in the URL");
-			setLoading(false);
-			return;
-		}
+		if (order || !orderId) return;
 
 		const controller = new AbortController();
 
@@ -99,10 +96,11 @@ const AdminOrderPage = () => {
 
 				const data = await getOrderById(orderId, controller.signal);
 				setOrder(data);
-			} catch (err: any) {
-				if (err.name === "AbortError") return;
+			} catch (err) {
+				if (err instanceof DOMException && err.name === "AbortError") return;
+
 				console.error("❌ Fetch error:", err);
-				setError(err.message || "Unknown error");
+				setError(err instanceof Error ? err.message : "Unknown error");
 			} finally {
 				setLoading(false);
 			}
@@ -110,11 +108,7 @@ const AdminOrderPage = () => {
 
 		loadOrder();
 		return () => controller.abort();
-	}, [orderId]);
-
-	useEffect(() => {
-		getOrderById(orderId as string).then((data) => setOrder(data));
-	}, [orderId]);
+	}, [order, orderId]);
 
 	if (loading) {
 		return (
@@ -170,8 +164,9 @@ const AdminOrderPage = () => {
 			))}
 
 			<div className="adminOrderDeliveryContainer">
-				<AdminOrderLineText label="Delivery type" value={order?.delivery} />
-				{order!.trackingNumber ? (
+				<AdminOrderLineText label="Delivery type" value={order.delivery} />
+
+				{order.trackingNumber ? (
 					<AdminOrderLineText
 						label="Tracking Number"
 						value={order.trackingNumber}
@@ -217,8 +212,11 @@ const AdminOrderPage = () => {
 
 export default AdminOrderPage;
 
-const styles: { [key: string]: CSSProperties } = {
-	pinInputContainer: { display: "flex", flexDirection: "column" },
+const styles: Record<string, CSSProperties> = {
+	pinInputContainer: {
+		display: "flex",
+		flexDirection: "column",
+	},
 	pinInputStyle: {
 		backgroundColor: "transparent",
 		border: "1px solid #000",
@@ -228,7 +226,10 @@ const styles: { [key: string]: CSSProperties } = {
 		border: "1px solid #000",
 		minWidth: "120px",
 		height: "40px",
-		padding: "0",
+		padding: 0,
 	},
-	pinButtonTextStyle: { color: "#000", fontSize: "14px" },
+	pinButtonTextStyle: {
+		color: "#000",
+		fontSize: "14px",
+	},
 };

@@ -61,7 +61,10 @@ const AdminHeader: React.FC<Props> = ({
 							{menuItems.map((item, index) => (
 								<button
 									key={index}
-									onClick={() => handleMenuClick(item.action)}
+									onClick={() => {
+										handleMenuClick(item.action);
+										setMenuOpen((prev) => !prev);
+									}}
 								>
 									{item.label}
 								</button>

@@ -3,7 +3,7 @@ import { useBasket } from "../../../../context/BasketContext";
 import { useCurrency } from "../../../../context/CurrencyContext";
 import { useSettingsStore } from "../../../../store/useSettingsStore";
 import { useOrderStore } from "../../../../store/useOrderStore";
-import BasketCard from "../backetCard/BasketCard";
+import BasketCard from "../basketCard/BasketCard";
 import {
 	taxesPercent,
 	usd,
@@ -36,7 +36,7 @@ const BasketItems: React.FC = () => {
 			: internationalDeliveryType;
 
 	const shippingPrice =
-		deliveryList.find((d: any) => d.id === order.form.delivery)?.price ??
+		deliveryList.find((d) => d.id === order.form.delivery)?.price ??
 		deliveryList[0]?.price ??
 		0;
 

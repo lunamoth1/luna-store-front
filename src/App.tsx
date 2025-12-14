@@ -9,7 +9,6 @@ import {
 import { Analytics } from "@vercel/analytics/react";
 import { useProductStore } from "./store/useProductStore";
 import { useSettingsStore } from "./store/useSettingsStore";
-import { OrderProvider } from "./context/OrderContext";
 import { BasketProvider } from "./context/BasketContext";
 import { CurrencyProvider } from "./context/CurrencyContext";
 import { CategoryProvider } from "./context/CategoryContext";
@@ -101,14 +100,12 @@ const App: React.FC = () => {
 	return (
 		<BasketProvider>
 			<CurrencyProvider>
-				<OrderProvider>
-					<BrowserRouter>
-						<CategoryProvider>
-							<Analytics />
-							<AppRoutes />
-						</CategoryProvider>
-					</BrowserRouter>
-				</OrderProvider>
+				<BrowserRouter>
+					<CategoryProvider>
+						<Analytics />
+						<AppRoutes />
+					</CategoryProvider>
+				</BrowserRouter>
 			</CurrencyProvider>
 		</BasketProvider>
 	);

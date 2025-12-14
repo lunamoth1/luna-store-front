@@ -1,18 +1,17 @@
-import { OrderForm } from "./context/OrderContext";
+import { OrderForm } from "./stores/useOrderStore";
 import { Status } from "./statusDropDown";
 
 export interface CheckoutBasketItem {
 	id: string;
 	quantity: number;
 	name: string;
-	priceUS: number;
-	priceEU: number;
+	price: number;
 	image: string;
 }
 
 export type Order = {
 	id?: number;
-	documentId?: string;
+	documentId: string;
 	basket: CheckoutBasketItem[];
 	createdAt?: string;
 	note: string;
