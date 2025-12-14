@@ -3,8 +3,7 @@ import { useBasket } from "../../context/BasketContext";
 import { useOrderStore } from "../../store/useOrderStore";
 import { statuses } from "../../constants";
 import { createOrder } from "../../api/orders";
-import { Order } from "../../types/adminPage";
-// import { BasketElement } from "../../types/context/BasketContext";
+import { CheckoutBasketItem } from "../../types/adminPage";
 import "./thanksgivingPage.css";
 
 const ThanksgivingPage: React.FC = () => {
@@ -19,19 +18,17 @@ const ThanksgivingPage: React.FC = () => {
 		if (import.meta.env.DEV) {
 			if (!order || !order.basketItems?.length) return;
 
-			const basketItemsJson = order.basketItems.map(
-				(item: any) =>
-					({
-						id: item.id,
-						quantity: item.quantity,
-						name: item.name,
-						priceUS: item.priceUS,
-						priceEU: item.priceEU,
-						image: item.image?.url || "",
-					} as any)
+			const basketItemsJson: CheckoutBasketItem[] = order.basketItems.map(
+				(item) => ({
+					id: item.id,
+					quantity: item.quantity,
+					name: item.name,
+					price: item.priceUS,
+					image: item.image.url,
+				})
 			);
 
-			const orderPayload: Order = {
+			const orderPayload = {
 				email: order.form.email,
 				delivery: order.form.delivery,
 				firstName: order.form.firstName,

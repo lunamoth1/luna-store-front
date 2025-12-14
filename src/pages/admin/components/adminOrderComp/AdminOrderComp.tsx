@@ -50,7 +50,7 @@ const AdminOrderComp: React.FC<Props> = ({ order }) => {
 					$
 					{order.basket
 						.map((item) => {
-							const price = Number(item.priceUS);
+							const price = Number(item.price);
 							return price * item.quantity;
 						})
 						.reduce((sum, subtotal) => sum + subtotal, 0)

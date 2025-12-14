@@ -2,19 +2,20 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { getShippingOptions } from "../api/shippingOptions";
 import { usDeliveryType, internationalDeliveryType } from "../constants";
+import { ShippingOptionApi } from "../types/api";
 import type {
 	SettingsStoreTypes,
 	ShippingOption,
 } from "../types/stores/useSettingsStore";
 
-const normalizeShipping = (list: ShippingOption[]) =>
+const normalizeShipping = (list: ShippingOptionApi[]): ShippingOption[] =>
 	list.map((opt) => {
 		const rawType = String(opt.type ?? "")
 			.trim()
 			.toLowerCase();
 
 		return {
-			id: String(opt.uid ?? opt.id),
+			id: String(opt.uid ?? opt.id ?? crypto.randomUUID()),
 			label: opt.label,
 			price: Number(opt.price) || 0,
 			type: rawType.includes("us") ? "us" : "international",
@@ -23,10 +24,10 @@ const normalizeShipping = (list: ShippingOption[]) =>
 
 export const useSettingsStore = create<SettingsStoreTypes>()(
 	persist(
-		(set, get) => ({
+		(set) => ({
 			shippingOptions: [],
-			usDelivery: usDeliveryType as any,
-			internationalDelivery: internationalDeliveryType as any,
+			usDelivery: usDeliveryType,
+			internationalDelivery: internationalDeliveryType,
 
 			isLoading: false,
 			error: null,
@@ -43,25 +44,19 @@ export const useSettingsStore = create<SettingsStoreTypes>()(
 						(o) => o.type === "international"
 					);
 
-					console.log("🚚 backend US:", backendUS);
-					console.log("🌍 backend INTL:", backendIntl);
-
 					set({
-						shippingOptions: normalized as any,
-						usDelivery:
-							backendUS.length > 0 ? backendUS : (usDeliveryType as any),
+						shippingOptions: normalized,
+						usDelivery: backendUS.length > 0 ? backendUS : usDeliveryType,
 						internationalDelivery:
-							backendIntl.length > 0
-								? backendIntl
-								: (internationalDeliveryType as any),
+							backendIntl.length > 0 ? backendIntl : internationalDeliveryType,
 						isLoading: false,
 					});
 				} catch (err) {
 					console.error("❌ Error fetching shipping options:", err);
 					set({
 						shippingOptions: [],
-						usDelivery: usDeliveryType as any,
-						internationalDelivery: internationalDeliveryType as any,
+						usDelivery: usDeliveryType,
+						internationalDelivery: internationalDeliveryType,
 						isLoading: false,
 						error: "Failed to load shipping options",
 					});
@@ -71,8 +66,8 @@ export const useSettingsStore = create<SettingsStoreTypes>()(
 			clearSettings: () =>
 				set({
 					shippingOptions: [],
-					usDelivery: usDeliveryType as any,
-					internationalDelivery: internationalDeliveryType as any,
+					usDelivery: usDeliveryType,
+					internationalDelivery: internationalDeliveryType,
 					error: null,
 				}),
 		}),

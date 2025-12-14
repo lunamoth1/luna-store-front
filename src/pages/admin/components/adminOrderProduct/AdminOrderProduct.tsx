@@ -25,7 +25,7 @@ const AdminOrderProduct: React.FC<Props> = ({ item }) => {
 					</p>
 
 					<p className="adminOrderProductLightText adminOrderProductEndText">
-						${item.priceUS.toFixed(2)}
+						${item.price.toFixed(2)}
 					</p>
 				</div>
 			</div>

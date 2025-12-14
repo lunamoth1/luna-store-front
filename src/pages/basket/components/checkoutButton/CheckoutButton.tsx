@@ -36,7 +36,7 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 			: internationalDeliveryType;
 
 	const shippingPrice =
-		deliveryList.find((d: any) => d.id === order.form.delivery)?.price ??
+		deliveryList.find((d) => d.id === order.form.delivery)?.price ??
 		deliveryList[0]?.price ??
 		0;
 
@@ -57,17 +57,13 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 			}
 
 			const session = await createCheckoutSession({
-				basketItems: basket.map(
-					(item) =>
-						({
-							id: item.id,
-							name: item.name,
-							price: currency === usd ? item.priceUS * 100 : item.priceEU * 100,
-							quantity: item.quantity,
-							image: item.image?.url || "",
-						} as any)
-					// here any
-				),
+				basketItems: basket.map((item) => ({
+					id: item.id,
+					name: item.name,
+					price: currency === usd ? item.priceUS * 100 : item.priceEU * 100,
+					quantity: item.quantity,
+					image: item.image?.url || "",
+				})),
 
 				form: {
 					email: order.form.email,

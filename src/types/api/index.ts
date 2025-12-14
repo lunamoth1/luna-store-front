@@ -1,5 +1,5 @@
 import { CheckoutBasketItem } from "../adminPage";
-import { OrderForm } from "../context/OrderContext";
+import { OrderForm } from "../stores/useOrderStore";
 import { Status } from "../statusDropDown";
 
 export interface CreateCheckoutSessionBody {
@@ -40,4 +40,12 @@ export interface OrderAttributes {
 	stripePaymentStatus?: string;
 
 	createdAt?: string;
+}
+
+export interface ShippingOptionApi {
+	id?: number;
+	uid?: string;
+	label: string;
+	price: number | string;
+	type?: string;
 }

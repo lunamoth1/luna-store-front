@@ -12,10 +12,12 @@ import {
 	europe,
 	europeNames,
 	internationalDeliveryType,
+	INTL_DELIVERY_ORDER,
+	US_DELIVERY_ORDER,
 	usd,
 	usDeliveryType,
 } from "../../../../constants";
-import { DeliveryId, OrderForm } from "../../../../types/context/OrderContext";
+import { DeliveryId, OrderForm } from "../../../../types/stores/useOrderStore";
 import "./basketForm.css";
 
 const BasketForm: React.FC = () => {
@@ -32,20 +34,28 @@ const BasketForm: React.FC = () => {
 	const [clickCounter, setClickCounter] = useState(0);
 
 	useEffect(() => {
-		setBasket(basket as any[]);
-	}, [basket]);
+		setBasket(basket);
+	}, [basket, setBasket]);
 
-	const delivery =
-		form.country === "" || form.country === "US"
-			? usDelivery.length > 0
-				? usDelivery
-				: usDeliveryType
-			: internationalDelivery.length > 0
-			? internationalDelivery
-			: internationalDeliveryType;
+	const isUS = form.country === "" || form.country === "US";
+
+	const rawDelivery = isUS
+		? usDelivery.length > 0
+			? usDelivery
+			: usDeliveryType
+		: internationalDelivery.length > 0
+		? internationalDelivery
+		: internationalDeliveryType;
+
+	const delivery = [...rawDelivery].sort((a, b) => {
+		const order = isUS ? US_DELIVERY_ORDER : INTL_DELIVERY_ORDER;
+		return (
+			order.indexOf(a.id as DeliveryId) - order.indexOf(b.id as DeliveryId)
+		);
+	});
 
 	useEffect(() => {
-		if (!delivery.some((opt: any) => opt.id === form.delivery)) {
+		if (!delivery.some((opt) => opt.id === form.delivery)) {
 			setForm({ delivery: delivery[0].id as DeliveryId });
 		}
 	}, [form.country, usDelivery, internationalDelivery]);
@@ -54,6 +64,7 @@ const BasketForm: React.FC = () => {
 		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
 	) => {
 		const { name, value } = e.target;
+
 		setForm({
 			[name]: name === "delivery" ? (value as DeliveryId) : value,
 		} as Partial<OrderForm>);
@@ -61,10 +72,12 @@ const BasketForm: React.FC = () => {
 
 	const clickHandler = () => {
 		setClickCounter((prev) => prev + 1);
+
 		if (clickCounter === 1) {
 			setClickCounter(0);
 			clear();
 		}
+
 		setTimeout(() => setClickCounter(0), 3000);
 	};
 
@@ -81,7 +94,7 @@ const BasketForm: React.FC = () => {
 
 			<p className="basketFormTitle">Delivery Options</p>
 			<div className="basketFormRadioContainer">
-				{delivery.map((option: any) => (
+				{delivery.map((option) => (
 					<div key={option.id} className="basketFormRadioOption">
 						<input
 							type="radio"

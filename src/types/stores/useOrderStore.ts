@@ -1,12 +1,21 @@
-import { CheckoutBasketItem } from "../adminPage";
-import { OrderData, OrderForm } from "../context/OrderContext";
+import { deliveryType } from "../../constants";
+import { BasketElement } from "../context/BasketContext";
 
-export interface OrderStoreType {
-	order: OrderData | null;
-	setOrder: (data: OrderData) => void;
-	clearOrder: () => void;
-	initOrderFromBasket: (
-		items: CheckoutBasketItem[],
-		form?: Partial<OrderForm>
-	) => OrderData;
+export type DeliveryId = (typeof deliveryType)[number]["id"];
+
+export interface OrderForm {
+	email: string;
+	delivery: (typeof deliveryType)[number]["id"];
+	firstName: string;
+	lastName: string;
+	address: string;
+	city: string;
+	state: string;
+	postalCode: string;
+	country: string;
+}
+
+export interface OrderData {
+	form: OrderForm;
+	basketItems: BasketElement[];
 }

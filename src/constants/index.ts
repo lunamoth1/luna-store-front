@@ -1,5 +1,7 @@
 import { categoriesType } from "../types/context/CategoryContext";
 import { Status } from "../types/statusDropDown";
+import { DeliveryId } from "../types/stores/useOrderStore";
+import { ShippingOption } from "../types/stores/useSettingsStore";
 
 export const apiUrl = import.meta.env.VITE_STRAPI_API_URL;
 
@@ -17,6 +19,9 @@ export const eur = "EUR";
 export const americas = ["US", "CA"];
 export const europe = ["IE", "FR", "DE", "PT", "NL", "ES", "GB"];
 
+export const US_DELIVERY_ORDER: DeliveryId[] = ["ground", "express"];
+export const INTL_DELIVERY_ORDER: DeliveryId[] = ["basic", "shipping"];
+
 export const europeNames: Record<string, string> = {
 	IE: "Ireland",
 	FR: "France",
@@ -31,31 +36,35 @@ export const americasNames: Record<string, string> = {
 	CA: "Canada",
 };
 
-export const usDeliveryType = [
+export const usDeliveryType: ShippingOption[] = [
 	{
 		id: "ground",
 		label: "USPS Ground Advantage",
 		price: 12,
+		type: "us",
 	},
 	{
 		id: "express",
 		label: "USPS Express Shipping",
 		price: 32,
+		type: "us",
 	},
-] as const;
+];
 
-export const internationalDeliveryType = [
+export const internationalDeliveryType: ShippingOption[] = [
 	{
 		id: "basic",
 		label: "USPS International Basic",
 		price: 39,
+		type: "international",
 	},
 	{
-		id: "sipping",
+		id: "shipping",
 		label: "USPS Express Shipping International",
 		price: 92,
+		type: "international",
 	},
-] as const;
+];
 
 export const deliveryType = [...usDeliveryType, ...internationalDeliveryType];
 
