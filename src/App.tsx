@@ -30,6 +30,7 @@ import AdminHomePage from "./pages/admin/admin-home/AdminHomePage";
 import AdminActualOrder from "./pages/admin/admin-actual-order/AdminActualOrder";
 import AdminArchivedOrder from "./pages/admin/admin-archived-order/AdminArchivedOrder";
 import AdminOrderPage from "./pages/admin/admin-order/AdminOrderPage";
+import AdminDeliverySettings from "./pages/admin/admin-delivery-settings/AdminDeliverySettings";
 
 import Footer from "./components/footer/Footer";
 import HeaderLogo from "./components/headerLogo/HeaderLogo";
@@ -58,6 +59,10 @@ const AppRoutes: React.FC = () => {
 					<Route
 						path="/admin/actual-order/:orderId"
 						element={<AdminOrderPage />}
+					/>
+					<Route
+						path="/admin/delivery-settings"
+						element={<AdminDeliverySettings />}
 					/>
 
 					<Route

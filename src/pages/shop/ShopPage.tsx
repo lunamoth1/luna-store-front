@@ -32,6 +32,12 @@ const ShopPage: React.FC = () => {
 	}, []);
 
 	useEffect(() => {
+		setIsSidebarOpen(false);
+		setSelectedProduct(null);
+		setLockBodyScroll(false);
+	}, []);
+
+	useEffect(() => {
 		document.body.style.overflow = lockBodyScroll ? "hidden" : "";
 	}, [lockBodyScroll]);
 

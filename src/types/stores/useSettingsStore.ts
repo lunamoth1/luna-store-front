@@ -2,6 +2,7 @@ export type DeliveryRegion = "us" | "international";
 
 export interface ShippingOption {
 	id: string;
+	documentId: string;
 	label: string;
 	price: number;
 	type: DeliveryRegion;

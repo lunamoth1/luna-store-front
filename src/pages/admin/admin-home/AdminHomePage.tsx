@@ -34,6 +34,7 @@ const AdminHomePage: React.FC = () => {
 
 	const orderHandler = () => navigate("/admin/actual-order");
 	const archivedOrderHandler = () => navigate("/admin/archived-order");
+	const deliverySettingsHandler = () => navigate("/admin/delivery-settings");
 
 	if (loading) {
 		return (
@@ -71,6 +72,10 @@ const AdminHomePage: React.FC = () => {
 				<AdminLineLink
 					text={`Archived Orders (${orders.length - activeOrders.length})`}
 					onPress={archivedOrderHandler}
+				/>
+				<AdminLineLink
+					text="Delivery Price"
+					onPress={deliverySettingsHandler}
 				/>
 			</div>
 		</AdminWrapper>
