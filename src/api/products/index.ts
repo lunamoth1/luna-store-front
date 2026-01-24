@@ -16,7 +16,6 @@ export async function getProducts() {
 export async function checkProductUpdates() {
 	const res = await fetch(`${apiUrl}/api/products?populate=*`);
 	const result = await handleApiResponse(res);
-	console.log("here1", result);
 
 	return result.data as Product[];
 }

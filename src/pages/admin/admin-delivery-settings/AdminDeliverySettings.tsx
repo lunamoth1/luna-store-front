@@ -8,6 +8,7 @@ import { updateShippingOption } from "../../../api/shippingOptions";
 import "./adminDeliverySettings.css";
 
 const AdminDeliverySettingsPage: React.FC = () => {
+	// here1 fetchSettings
 	const { shippingOptions, isLoading, error, fetchSettings } =
 		useSettingsStore();
 

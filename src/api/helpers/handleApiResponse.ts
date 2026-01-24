@@ -9,7 +9,7 @@ export async function handleApiResponse(res: Response) {
 				errorData?.message ||
 				JSON.stringify(errorData);
 		} catch {
-			// ignore json parsing errors
+			console.log("error parse some data");
 		}
 
 		throw new Error(message);
