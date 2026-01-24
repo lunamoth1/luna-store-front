@@ -94,13 +94,14 @@ const AppRoutes: React.FC = () => {
 };
 
 const App: React.FC = () => {
-	const { fetchProducts } = useProductStore();
+	const { fetchProducts, checkProductUpdates } = useProductStore();
 	const { fetchSettings } = useSettingsStore();
 
 	useEffect(() => {
 		fetchProducts();
+		checkProductUpdates();
 		fetchSettings();
-	}, [fetchProducts]);
+	}, []);
 
 	return (
 		<BasketProvider>

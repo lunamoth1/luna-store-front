@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { getProducts } from "../api/products";
+import { checkProductUpdates, getProducts } from "../api/products";
 import { ProductStoreType } from "../types/stores/useProductStore";
 
 export const useProductStore = create<ProductStoreType>()(
@@ -31,11 +31,36 @@ export const useProductStore = create<ProductStoreType>()(
 				}
 			},
 
+			checkProductUpdates: async () => {
+				const cached = get().products;
+				if (cached.length === 0) return;
+
+				try {
+					const latest = await checkProductUpdates();
+
+					const merged = cached.map((item) => {
+						const updated = latest.find(
+							(p) => p.documentId === item.documentId,
+						);
+
+						if (!updated) return item;
+
+						return new Date(updated.updatedAt) > new Date(item.updatedAt)
+							? { ...item, ...updated }
+							: item;
+					});
+
+					set({ products: merged });
+				} catch (err) {
+					console.error("checkProductUpdates failed:", err);
+				}
+			},
+
 			clearProducts: () => set({ products: [] }),
 		}),
 		{
 			name: "product-cache",
 			storage: createJSONStorage(() => sessionStorage),
-		}
-	)
+		},
+	),
 );

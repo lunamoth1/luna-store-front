@@ -39,12 +39,14 @@ export const americasNames: Record<string, string> = {
 export const usDeliveryType: ShippingOption[] = [
 	{
 		id: "ground",
+		documentId: "ground",
 		label: "USPS Ground Advantage",
 		price: 12,
 		type: "us",
 	},
 	{
 		id: "express",
+		documentId: "express",
 		label: "USPS Express Shipping",
 		price: 32,
 		type: "us",
@@ -54,12 +56,14 @@ export const usDeliveryType: ShippingOption[] = [
 export const internationalDeliveryType: ShippingOption[] = [
 	{
 		id: "basic",
+		documentId: "basic",
 		label: "USPS International Basic",
 		price: 39,
 		type: "international",
 	},
 	{
 		id: "shipping",
+		documentId: "shipping",
 		label: "USPS Express Shipping International",
 		price: 92,
 		type: "international",
