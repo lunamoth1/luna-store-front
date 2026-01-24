@@ -7,11 +7,11 @@ import {
 	Navigate,
 } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
-import { useProductStore } from "./store/useProductStore";
+import { useCategoryStore } from "./store/useCategoryStore";
 import { useCurrencyStore } from "./store/useCurrencyStore";
 import { useSettingsStore } from "./store/useSettingsStore";
+import { useProductStore } from "./store/useProductStore";
 import { BasketProvider } from "./context/BasketContext";
-import { CategoryProvider } from "./context/CategoryContext";
 
 import HomePage from "./pages/home/HomePage";
 import ShopPage from "./pages/shop/ShopPage";
@@ -38,6 +38,17 @@ import ShopNavigation from "./components/shopNavigation/ShopNavigation";
 
 import "./styles/appPage.css";
 import "./assets/fonts/fonts.css";
+
+const RouteSync = () => {
+	const location = useLocation();
+	const handleRouteChange = useCategoryStore((s) => s.handleRouteChange);
+
+	useEffect(() => {
+		handleRouteChange(location.pathname);
+	}, [location.pathname]);
+
+	return null;
+};
 
 const AppRoutes: React.FC = () => {
 	const location = useLocation();
@@ -108,10 +119,9 @@ const App: React.FC = () => {
 	return (
 		<BasketProvider>
 			<BrowserRouter>
-				<CategoryProvider>
-					<Analytics />
-					<AppRoutes />
-				</CategoryProvider>
+				<Analytics />
+				<RouteSync />
+				<AppRoutes />
 			</BrowserRouter>
 		</BasketProvider>
 	);

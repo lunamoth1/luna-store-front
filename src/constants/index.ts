@@ -1,6 +1,6 @@
-import { categoriesType } from "../types/context/CategoryContext";
 import { Status } from "../types/statusDropDown";
 import { DeliveryId } from "../types/stores/useOrderStore";
+import { categoriesType } from "../types/useCategoryStore";
 import { ShippingOption } from "../types/stores/useSettingsStore";
 
 export const apiUrl = import.meta.env.VITE_STRAPI_API_URL;

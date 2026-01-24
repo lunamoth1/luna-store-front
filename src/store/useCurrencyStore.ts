@@ -1,14 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { EU_COUNTRIES, eur, usd } from "../constants";
-
-interface CurrencyStore {
-	currency: string | null;
-	countryCode: string | null;
-	setCurrency: (currency: string) => void;
-	refreshLocation: () => Promise<void>;
-	initCurrency: () => Promise<void>;
-}
+import { CurrencyStore } from "../types/stores/useCurrencyStore";
 
 export const useCurrencyStore = create<CurrencyStore>()(
 	persist(
