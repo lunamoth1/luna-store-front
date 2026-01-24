@@ -8,9 +8,9 @@ import {
 } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 import { useProductStore } from "./store/useProductStore";
+import { useCurrencyStore } from "./store/useCurrencyStore";
 import { useSettingsStore } from "./store/useSettingsStore";
 import { BasketProvider } from "./context/BasketContext";
-import { CurrencyProvider } from "./context/CurrencyContext";
 import { CategoryProvider } from "./context/CategoryContext";
 
 import HomePage from "./pages/home/HomePage";
@@ -96,23 +96,23 @@ const AppRoutes: React.FC = () => {
 const App: React.FC = () => {
 	const { fetchProducts, checkProductUpdates } = useProductStore();
 	const { fetchSettings } = useSettingsStore();
+	const { initCurrency } = useCurrencyStore();
 
 	useEffect(() => {
 		fetchProducts();
+		initCurrency();
 		checkProductUpdates();
 		fetchSettings();
 	}, []);
 
 	return (
 		<BasketProvider>
-			<CurrencyProvider>
-				<BrowserRouter>
-					<CategoryProvider>
-						<Analytics />
-						<AppRoutes />
-					</CategoryProvider>
-				</BrowserRouter>
-			</CurrencyProvider>
+			<BrowserRouter>
+				<CategoryProvider>
+					<Analytics />
+					<AppRoutes />
+				</CategoryProvider>
+			</BrowserRouter>
 		</BasketProvider>
 	);
 };

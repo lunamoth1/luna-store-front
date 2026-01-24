@@ -80,3 +80,33 @@ export const statusColors: Record<Status, string> = {
 };
 
 export const statuses: Status[] = ["Received", "Shipped", "Paid", "Issues"];
+
+export const EU_COUNTRIES = [
+	"AT",
+	"BE",
+	"BG",
+	"HR",
+	"CY",
+	"CZ",
+	"DK",
+	"EE",
+	"FI",
+	"FR",
+	"DE",
+	"GR",
+	"HU",
+	"IE",
+	"IT",
+	"LV",
+	"LT",
+	"LU",
+	"MT",
+	"NL",
+	"PL",
+	"PT",
+	"RO",
+	"SK",
+	"SI",
+	"ES",
+	"SE",
+];

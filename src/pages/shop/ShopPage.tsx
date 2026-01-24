@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useCurrency } from "../../context/CurrencyContext";
 import { useCategory } from "../../context/CategoryContext";
+import { useCurrencyStore } from "../../store/useCurrencyStore";
 import { useProductStore } from "../../store/useProductStore";
 import ProductCardSkeleton from "../../components/productCardSkeleton/ProductCardSkeleton";
 import ProductPhoto from "./components/productPhoto/ProductPhoto";
@@ -19,7 +19,7 @@ const backgrounds = {
 };
 
 const ShopPage: React.FC = () => {
-	const { refreshLocation } = useCurrency();
+	const { refreshLocation } = useCurrencyStore();
 	const { category, isSidebarOpen, setIsSidebarOpen } = useCategory();
 	const { products, isLoading, error } = useProductStore();
 	const [lockBodyScroll, setLockBodyScroll] = useState(false);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useBasket } from "../../../../context/BasketContext";
-import { useCurrency } from "../../../../context/CurrencyContext";
+import { useCurrencyStore } from "../../../../store/useCurrencyStore";
 import Button from "../../../../components/button/Button";
 import { usd } from "../../../../constants";
 import { Product } from "../../../../types/ProductPage";
@@ -11,7 +11,7 @@ interface ProductInfoProps {
 }
 
 const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
-	const { currency } = useCurrency();
+	const { currency } = useCurrencyStore();
 	const { addToBasket } = useBasket();
 	const [quantity, setQuantity] = useState<number>(1);
 	const [buttonText, setButtonText] = useState("Add to basket");
