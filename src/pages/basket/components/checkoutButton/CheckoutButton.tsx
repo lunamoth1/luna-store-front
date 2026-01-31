@@ -42,7 +42,10 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 
 	const subtotalPrice = basket.reduce(
 		(sum, item) =>
-			sum + (currency === usd ? item.priceUS : item.priceEU) * item.quantity,
+			sum +
+			(item.soldOut !== true
+				? (currency === usd ? item.priceUS : item.priceEU) * item.quantity
+				: 0),
 		0,
 	);
 
@@ -57,13 +60,15 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 			}
 
 			const session = await createCheckoutSession({
-				basketItems: basket.map((item) => ({
-					id: item.id,
-					name: item.name,
-					price: currency === usd ? item.priceUS * 100 : item.priceEU * 100,
-					quantity: item.quantity,
-					image: item.image?.url || "",
-				})),
+				basketItems: basket
+					.filter(item => !item.soldOut)
+					.map((item) => ({
+						id: item.id,
+						name: item.name,
+						price: currency === usd ? item.priceUS * 100 : item.priceEU * 100,
+						quantity: item.quantity,
+						image: item.image?.url || "",
+					})),
 
 				form: {
 					email: order.form.email,
@@ -106,7 +111,7 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 			text="Pay Now"
 			onClick={checkoutHandler}
 			styles={{ marginTop: "3rem", alignSelf: "center" }}
-			disabled={disabled}
+			disabled={disabled || !Boolean(subtotalPrice)}
 		/>
 	);
 };

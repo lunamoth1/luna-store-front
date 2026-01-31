@@ -51,14 +51,16 @@ const AdminDeliverySettingsPage: React.FC = () => {
 		try {
 			setMessage("Saving...");
 
-			for (const opt of localOptions) {
-				await updateShippingOption(opt.documentId, {
-					label: opt.label,
-					price: opt.price,
-				});
-			}
+			await Promise.all(
+				localOptions.map((opt) =>
+					updateShippingOption(opt.documentId, {
+						label: opt.label,
+						price: opt.price,
+					}),
+				),
+			);
 
-			// await fetchSettings(true);
+			await fetchSettings();
 
 			setMessage("Saved successfully ✔");
 			setTimeout(() => setMessage(""), 2000);

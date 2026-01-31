@@ -11,6 +11,17 @@ const ProductPhoto: React.FC<ProductPhotoProps> = ({ photo }) => {
 	const [main, setMain] = useState<number>(0);
 	const [isMainPhotoLoaded, setIsMainPhotoLoaded] = useState(false);
 
+	const selectPhotoHandler = (index: number) => {
+		if (index === main) return;
+
+		setMain(index);
+		setIsMainPhotoLoaded(false);
+	};
+
+	const loadingHandler = (index: number) => {
+		if (index === main) setIsMainPhotoLoaded(true);
+	};
+
 	return (
 		<div className="productPhotoContainer">
 			{!isMainPhotoLoaded && <Skeleton className="productPhotoMain" />}
@@ -32,13 +43,8 @@ const ProductPhoto: React.FC<ProductPhotoProps> = ({ photo }) => {
 							key={img.id}
 							src={img.url}
 							alt={img.name}
-							onClick={() => {
-								setMain(index);
-								setIsMainPhotoLoaded(false);
-							}}
-							onLoad={() => {
-								if (index === main) setIsMainPhotoLoaded(true);
-							}}
+							onClick={() => selectPhotoHandler(index)}
+							onLoad={() => loadingHandler(index)}
 						/>
 					))}
 				</div>
