@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useBasket } from "../../../../context/BasketContext";
-import { useCurrency } from "../../../../context/CurrencyContext";
+import { useCurrencyStore } from "../../../../store/useCurrencyStore";
 import Button from "../../../../components/button/Button";
 import { usd } from "../../../../constants";
 import { Product } from "../../../../types/ProductPage";
@@ -11,9 +11,10 @@ interface ProductInfoProps {
 }
 
 const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
-	const { currency } = useCurrency();
+	const { currency } = useCurrencyStore();
 	const { addToBasket } = useBasket();
 	const [quantity, setQuantity] = useState<number>(1);
+	const [buttonText, setButtonText] = useState("Add to basket");
 
 	const currencySymbol = currency === usd ? "$" : "€";
 	const price = currency === usd ? product.priceUS : product.priceEU;
@@ -22,7 +23,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 	const decreaseQuantityHandler = () =>
 		setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
 
-	const handleAddToBasket = () => addToBasket(product, quantity);
+	const handleAddToBasket = () => {
+		addToBasket(product, quantity);
+		setButtonText("Added!");
+		setTimeout(() => setButtonText("Add to basket"), 2000);
+	};
 
 	return (
 		<div>
@@ -56,7 +61,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 						+
 					</p>
 				</div>
-				<Button text="Add to basket" onClick={handleAddToBasket} />
+				<Button
+					text={buttonText}
+					onClick={handleAddToBasket}
+					styles={{ width: 144 }}
+				/>
 			</div>
 
 			{product.ingredients && (

@@ -12,6 +12,7 @@ import {
 	updateOrderArchived,
 	updateOrderTrackingNumber,
 } from "../../../api/orders";
+import { internationalDeliveryType, usDeliveryType } from "../../../constants";
 import { Order } from "../../../types/adminPage";
 import "./adminOrderPage.css";
 
@@ -29,6 +30,14 @@ const AdminOrderPage = () => {
 	const [error, setError] = useState<string | null>(null);
 	const [invoiceNumber, setInvoiceNumber] = useState("");
 	const [sending, setSending] = useState(false);
+
+	const deliveryLabelMap: Record<string, string> = [
+		...usDeliveryType,
+		...internationalDeliveryType,
+	].reduce<Record<string, string>>((acc, option) => {
+		acc[option.id] = option.label;
+		return acc;
+	}, {});
 
 	const handleArchiveToggle = async (archived: boolean) => {
 		if (!order) return;
@@ -164,7 +173,10 @@ const AdminOrderPage = () => {
 			))}
 
 			<div className="adminOrderDeliveryContainer">
-				<AdminOrderLineText label="Delivery type" value={order.delivery} />
+				<AdminOrderLineText
+					label="Delivery type"
+					value={deliveryLabelMap[order.delivery] ?? order.delivery}
+				/>
 
 				{order.trackingNumber ? (
 					<AdminOrderLineText

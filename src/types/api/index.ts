@@ -48,4 +48,5 @@ export interface ShippingOptionApi {
 	label: string;
 	price: number | string;
 	type?: string;
+	documentId: string;
 }

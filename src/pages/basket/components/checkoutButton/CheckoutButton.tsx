@@ -1,7 +1,7 @@
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { useBasket } from "../../../../context/BasketContext";
-import { useCurrency } from "../../../../context/CurrencyContext";
+import { useCurrencyStore } from "../../../../store/useCurrencyStore";
 import { useSettingsStore } from "../../../../store/useSettingsStore";
 import { useOrderStore } from "../../../../store/useOrderStore";
 import Button from "../../../../components/button/Button";
@@ -22,7 +22,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 	const { order } = useOrderStore();
-	const { currency } = useCurrency();
+	const { currency } = useCurrencyStore();
 	const { basket } = useBasket();
 	const { usDelivery, internationalDelivery } = useSettingsStore();
 
@@ -32,8 +32,8 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 				? usDelivery
 				: usDeliveryType
 			: internationalDelivery.length > 0
-			? internationalDelivery
-			: internationalDeliveryType;
+				? internationalDelivery
+				: internationalDeliveryType;
 
 	const shippingPrice =
 		deliveryList.find((d) => d.id === order.form.delivery)?.price ??
@@ -43,7 +43,7 @@ const CheckoutButton: React.FC<CheckoutButtonProps> = ({ email, disabled }) => {
 	const subtotalPrice = basket.reduce(
 		(sum, item) =>
 			sum + (currency === usd ? item.priceUS : item.priceEU) * item.quantity,
-		0
+		0,
 	);
 
 	const taxesPrice = subtotalPrice * taxesPercent;

@@ -13,7 +13,7 @@ export async function getShippingOptions() {
 
 export async function updateShippingOption(
 	documentId: string,
-	data: Partial<ShippingOption>
+	data: Partial<ShippingOption>,
 ) {
 	const res = await fetch(`${apiUrl}/api/shipping-options/${documentId}`, {
 		method: "PUT",

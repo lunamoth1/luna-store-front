@@ -29,7 +29,7 @@ export const BasketProvider: React.FC<{ children: React.ReactNode }> = ({
 				return prev.map((item) =>
 					item.id === itemId
 						? { ...item, quantity: item.quantity + quantity }
-						: item
+						: item,
 				);
 			}
 
@@ -57,7 +57,7 @@ export const BasketProvider: React.FC<{ children: React.ReactNode }> = ({
 		}
 
 		setBasket((prev) =>
-			prev.map((item) => (item.id === id ? { ...item, quantity } : item))
+			prev.map((item) => (item.id === id ? { ...item, quantity } : item)),
 		);
 	};
 

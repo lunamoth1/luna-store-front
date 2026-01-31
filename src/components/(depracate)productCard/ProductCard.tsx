@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCurrency } from "../../context/CurrencyContext";
+import { useCurrencyStore } from "../../store/useCurrencyStore";
 import Skeleton from "../skeleton/Skeleton";
 import { usd } from "../../constants";
 import { Product } from "../../types/ProductPage";
@@ -11,7 +11,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-	const { currency } = useCurrency();
+	const { currency } = useCurrencyStore();
 	const [isImageLoaded, setIsImageLoaded] = useState(false);
 	const currencySymbol = currency === usd ? "$" : "€";
 	const price = currency === usd ? product.priceUS : product.priceEU;

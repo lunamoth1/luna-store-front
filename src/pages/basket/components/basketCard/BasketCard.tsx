@@ -1,6 +1,6 @@
 import React from "react";
 import { useBasket } from "../../../../context/BasketContext";
-import { useCurrency } from "../../../../context/CurrencyContext";
+import { useCurrencyStore } from "../../../../store/useCurrencyStore";
 import { usd } from "../../../../constants";
 import { BasketElement } from "../../../../types/context/BasketContext";
 import "./basketCard.css";
@@ -11,7 +11,8 @@ interface BasketCardProps {
 
 const BasketCard: React.FC<BasketCardProps> = ({ item }) => {
 	const { updateQuantity } = useBasket();
-	const { currency } = useCurrency();
+	const { currency } = useCurrencyStore();
+
 	const currencySymbol = currency === usd ? "$" : "€";
 	const { id, name, priceUS, priceEU, image, quantity } = item;
 	const price = currency === usd ? priceUS : priceEU;

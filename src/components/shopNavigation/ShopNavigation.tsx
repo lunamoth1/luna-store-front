@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useBasket } from "../../context/BasketContext";
-import { useCategory } from "../../context/CategoryContext";
+import { useCategoryStore } from "../../store/useCategoryStore";
 import Basket from "../../assets/icons/Basket";
 import { categories } from "../../constants";
-import { categoriesType } from "../../types/context/CategoryContext";
+import { categoriesType } from "../../types/useCategoryStore";
 import "./shopNavigation.css";
 
 const ShopNavigation: React.FC = () => {
 	const { basket } = useBasket();
-	const { category, setCategory, isSidebarOpen } = useCategory();
+	const { category, setCategory, isSidebarOpen } = useCategoryStore();
 	const location = useLocation();
 	const itemCount = basket.reduce((sum, item) => sum + item.quantity, 0);
 	const isShopActive = location.pathname.startsWith("/shop");

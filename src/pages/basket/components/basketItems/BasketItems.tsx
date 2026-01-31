@@ -1,6 +1,6 @@
 import React from "react";
 import { useBasket } from "../../../../context/BasketContext";
-import { useCurrency } from "../../../../context/CurrencyContext";
+import { useCurrencyStore } from "../../../../store/useCurrencyStore";
 import { useSettingsStore } from "../../../../store/useSettingsStore";
 import { useOrderStore } from "../../../../store/useOrderStore";
 import BasketCard from "../basketCard/BasketCard";
@@ -15,7 +15,7 @@ import "./basketItems.css";
 const BasketItems: React.FC = () => {
 	const { basket } = useBasket();
 	const { order } = useOrderStore();
-	const { currency } = useCurrency();
+	const { currency } = useCurrencyStore();
 	const { usDelivery, internationalDelivery } = useSettingsStore();
 
 	const currencySymbol = currency === usd ? "$" : "€";
@@ -23,7 +23,7 @@ const BasketItems: React.FC = () => {
 	const subtotalPrice = basket.reduce(
 		(sum, item) =>
 			sum + (currency === usd ? item.priceUS : item.priceEU) * item.quantity,
-		0
+		0,
 	);
 
 	const deliveryList =
@@ -32,8 +32,8 @@ const BasketItems: React.FC = () => {
 				? usDelivery
 				: usDeliveryType
 			: internationalDelivery.length > 0
-			? internationalDelivery
-			: internationalDeliveryType;
+				? internationalDelivery
+				: internationalDeliveryType;
 
 	const shippingPrice =
 		deliveryList.find((d) => d.id === order.form.delivery)?.price ??

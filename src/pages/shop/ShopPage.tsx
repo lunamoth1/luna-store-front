@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useCurrency } from "../../context/CurrencyContext";
-import { useCategory } from "../../context/CategoryContext";
+import { useCategoryStore } from "../../store/useCategoryStore";
+import { useCurrencyStore } from "../../store/useCurrencyStore";
 import { useProductStore } from "../../store/useProductStore";
 import ProductCardSkeleton from "../../components/productCardSkeleton/ProductCardSkeleton";
 import ProductPhoto from "./components/productPhoto/ProductPhoto";
@@ -19,8 +19,8 @@ const backgrounds = {
 };
 
 const ShopPage: React.FC = () => {
-	const { refreshLocation } = useCurrency();
-	const { category, isSidebarOpen, setIsSidebarOpen } = useCategory();
+	const { refreshLocation } = useCurrencyStore();
+	const { category, isSidebarOpen, setSidebarOpen } = useCategoryStore();
 	const { products, isLoading, error } = useProductStore();
 	const [lockBodyScroll, setLockBodyScroll] = useState(false);
 	const [selectedProduct, setSelectedProduct] = useState<
@@ -32,16 +32,22 @@ const ShopPage: React.FC = () => {
 	}, []);
 
 	useEffect(() => {
+		setSidebarOpen(false);
+		setSelectedProduct(null);
+		setLockBodyScroll(false);
+	}, []);
+
+	useEffect(() => {
 		document.body.style.overflow = lockBodyScroll ? "hidden" : "";
 	}, [lockBodyScroll]);
 
 	const openProductHandler = (product: (typeof products)[0]) => {
 		setSelectedProduct(product);
-		setIsSidebarOpen(true);
+		setSidebarOpen(true);
 	};
 
 	const closeSidebar = () => {
-		setIsSidebarOpen(false);
+		setSidebarOpen(false);
 		setLockBodyScroll(false);
 	};
 

@@ -1,6 +1,6 @@
-import { categoriesType } from "../types/context/CategoryContext";
 import { Status } from "../types/statusDropDown";
 import { DeliveryId } from "../types/stores/useOrderStore";
+import { categoriesType } from "../types/useCategoryStore";
 import { ShippingOption } from "../types/stores/useSettingsStore";
 
 export const apiUrl = import.meta.env.VITE_STRAPI_API_URL;
@@ -39,12 +39,14 @@ export const americasNames: Record<string, string> = {
 export const usDeliveryType: ShippingOption[] = [
 	{
 		id: "ground",
+		documentId: "ground",
 		label: "USPS Ground Advantage",
 		price: 12,
 		type: "us",
 	},
 	{
 		id: "express",
+		documentId: "express",
 		label: "USPS Express Shipping",
 		price: 32,
 		type: "us",
@@ -54,12 +56,14 @@ export const usDeliveryType: ShippingOption[] = [
 export const internationalDeliveryType: ShippingOption[] = [
 	{
 		id: "basic",
+		documentId: "basic",
 		label: "USPS International Basic",
 		price: 39,
 		type: "international",
 	},
 	{
 		id: "shipping",
+		documentId: "shipping",
 		label: "USPS Express Shipping International",
 		price: 92,
 		type: "international",
@@ -76,3 +80,33 @@ export const statusColors: Record<Status, string> = {
 };
 
 export const statuses: Status[] = ["Received", "Shipped", "Paid", "Issues"];
+
+export const EU_COUNTRIES = [
+	"AT",
+	"BE",
+	"BG",
+	"HR",
+	"CY",
+	"CZ",
+	"DK",
+	"EE",
+	"FI",
+	"FR",
+	"DE",
+	"GR",
+	"HU",
+	"IE",
+	"IT",
+	"LV",
+	"LT",
+	"LU",
+	"MT",
+	"NL",
+	"PL",
+	"PT",
+	"RO",
+	"SK",
+	"SI",
+	"ES",
+	"SE",
+];

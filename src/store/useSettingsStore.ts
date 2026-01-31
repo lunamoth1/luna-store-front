@@ -19,6 +19,7 @@ const normalizeShipping = (list: ShippingOptionApi[]): ShippingOption[] =>
 			label: opt.label,
 			price: Number(opt.price) || 0,
 			type: rawType.includes("us") ? "us" : "international",
+			documentId: String(opt.documentId),
 		};
 	});
 
@@ -41,7 +42,7 @@ export const useSettingsStore = create<SettingsStoreTypes>()(
 
 					const backendUS = normalized.filter((o) => o.type === "us");
 					const backendIntl = normalized.filter(
-						(o) => o.type === "international"
+						(o) => o.type === "international",
 					);
 
 					set({
@@ -77,6 +78,6 @@ export const useSettingsStore = create<SettingsStoreTypes>()(
 			onRehydrateStorage: () => (state) => {
 				state?.fetchSettings();
 			},
-		}
-	)
+		},
+	),
 );

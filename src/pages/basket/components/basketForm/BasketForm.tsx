@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useBasket } from "../../../../context/BasketContext";
-import { useCurrency } from "../../../../context/CurrencyContext";
+import { useCurrencyStore } from "../../../../store/useCurrencyStore";
 import { useSettingsStore } from "../../../../store/useSettingsStore";
 import { useOrderStore } from "../../../../store/useOrderStore";
 import Input from "../../../../components/input/Input";
@@ -22,7 +22,7 @@ import "./basketForm.css";
 
 const BasketForm: React.FC = () => {
 	const { basket } = useBasket();
-	const { currency } = useCurrency();
+	const { currency } = useCurrencyStore();
 	const { usDelivery, internationalDelivery } = useSettingsStore();
 	const { order, setForm, setBasket, clear } = useOrderStore();
 
@@ -44,8 +44,8 @@ const BasketForm: React.FC = () => {
 			? usDelivery
 			: usDeliveryType
 		: internationalDelivery.length > 0
-		? internationalDelivery
-		: internationalDeliveryType;
+			? internationalDelivery
+			: internationalDeliveryType;
 
 	const delivery = [...rawDelivery].sort((a, b) => {
 		const order = isUS ? US_DELIVERY_ORDER : INTL_DELIVERY_ORDER;
@@ -61,7 +61,7 @@ const BasketForm: React.FC = () => {
 	}, [form.country, usDelivery, internationalDelivery]);
 
 	const changeHandler = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+		e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
 	) => {
 		const { name, value } = e.target;
 

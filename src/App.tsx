@@ -7,11 +7,11 @@ import {
 	Navigate,
 } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
-import { useProductStore } from "./store/useProductStore";
+import { useCategoryStore } from "./store/useCategoryStore";
+import { useCurrencyStore } from "./store/useCurrencyStore";
 import { useSettingsStore } from "./store/useSettingsStore";
+import { useProductStore } from "./store/useProductStore";
 import { BasketProvider } from "./context/BasketContext";
-import { CurrencyProvider } from "./context/CurrencyContext";
-import { CategoryProvider } from "./context/CategoryContext";
 
 import HomePage from "./pages/home/HomePage";
 import ShopPage from "./pages/shop/ShopPage";
@@ -30,6 +30,7 @@ import AdminHomePage from "./pages/admin/admin-home/AdminHomePage";
 import AdminActualOrder from "./pages/admin/admin-actual-order/AdminActualOrder";
 import AdminArchivedOrder from "./pages/admin/admin-archived-order/AdminArchivedOrder";
 import AdminOrderPage from "./pages/admin/admin-order/AdminOrderPage";
+import AdminDeliverySettings from "./pages/admin/admin-delivery-settings/AdminDeliverySettings";
 
 import Footer from "./components/footer/Footer";
 import HeaderLogo from "./components/headerLogo/HeaderLogo";
@@ -37,6 +38,17 @@ import ShopNavigation from "./components/shopNavigation/ShopNavigation";
 
 import "./styles/appPage.css";
 import "./assets/fonts/fonts.css";
+
+const RouteSync = () => {
+	const location = useLocation();
+	const handleRouteChange = useCategoryStore((s) => s.handleRouteChange);
+
+	useEffect(() => {
+		handleRouteChange(location.pathname);
+	}, [location.pathname]);
+
+	return null;
+};
 
 const AppRoutes: React.FC = () => {
 	const location = useLocation();
@@ -58,6 +70,10 @@ const AppRoutes: React.FC = () => {
 					<Route
 						path="/admin/actual-order/:orderId"
 						element={<AdminOrderPage />}
+					/>
+					<Route
+						path="/admin/delivery-settings"
+						element={<AdminDeliverySettings />}
 					/>
 
 					<Route
@@ -89,24 +105,24 @@ const AppRoutes: React.FC = () => {
 };
 
 const App: React.FC = () => {
-	const { fetchProducts } = useProductStore();
+	const { fetchProducts, checkProductUpdates } = useProductStore();
 	const { fetchSettings } = useSettingsStore();
+	const { initCurrency } = useCurrencyStore();
 
 	useEffect(() => {
 		fetchProducts();
+		initCurrency();
+		checkProductUpdates();
 		fetchSettings();
-	}, [fetchProducts]);
+	}, []);
 
 	return (
 		<BasketProvider>
-			<CurrencyProvider>
-				<BrowserRouter>
-					<CategoryProvider>
-						<Analytics />
-						<AppRoutes />
-					</CategoryProvider>
-				</BrowserRouter>
-			</CurrencyProvider>
+			<BrowserRouter>
+				<Analytics />
+				<RouteSync />
+				<AppRoutes />
+			</BrowserRouter>
 		</BasketProvider>
 	);
 };
