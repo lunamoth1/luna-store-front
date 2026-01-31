@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useBasket } from "../../context/BasketContext";
 import BasketForm from "./components/basketForm/BasketForm";
 import BasketItems from "./components/basketItems/BasketItems";
 import "./basketPage.css";
 
 const BasketPage: React.FC = () => {
-	const { basket } = useBasket();
+	const { basket, updateBasketWithLatestData } = useBasket();
+
+	useEffect(() => {
+		if (basket.length > 0) {
+			updateBasketWithLatestData();
+		}
+	}, []);
 
 	if (basket.length === 0) {
 		return (

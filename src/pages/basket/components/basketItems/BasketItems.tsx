@@ -20,11 +20,13 @@ const BasketItems: React.FC = () => {
 
 	const currencySymbol = currency === usd ? "$" : "€";
 
-	const subtotalPrice = basket.reduce(
-		(sum, item) =>
-			sum + (currency === usd ? item.priceUS : item.priceEU) * item.quantity,
-		0,
-	);
+	const subtotalPrice = basket
+		.filter(item => !item.soldOut)
+		.reduce(
+			(sum, item) =>
+				sum + (currency === usd ? item.priceUS : item.priceEU) * item.quantity,
+			0,
+		);
 
 	const deliveryList =
 		order.form.country === "" || order.form.country === "US"

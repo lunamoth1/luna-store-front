@@ -16,6 +16,9 @@ const BasketCard: React.FC<BasketCardProps> = ({ item }) => {
 	const currencySymbol = currency === usd ? "$" : "€";
 	const { id, name, priceUS, priceEU, image, quantity } = item;
 	const price = currency === usd ? priceUS : priceEU;
+	const isSoldOut = item.soldOut;
+	const priceWithSymbol = currencySymbol + price;
+	const priceDisplay = isSoldOut ? "Sold Out" : priceWithSymbol;
 
 	return (
 		<div className="basketCardContainer">
@@ -23,9 +26,8 @@ const BasketCard: React.FC<BasketCardProps> = ({ item }) => {
 			<div className="basketCardInfoContainer">
 				<div className="basketCardNamePriceContainer">
 					<p className="basketCardMediumText">{name}</p>
-					<p className="basketCardMediumText">
-						{currencySymbol}
-						{price}
+					<p className={`basketCardMediumText ${isSoldOut ? "soldOut" : ""}`}>
+						{priceDisplay}
 					</p>
 				</div>
 				<div className="basketCardQuantityContainer">

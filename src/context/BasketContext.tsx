@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { checkProductUpdates } from "../api/products";
 import { Product } from "../types/ProductPage";
 import {
 	BasketContextType,
@@ -40,6 +41,7 @@ export const BasketProvider: React.FC<{ children: React.ReactNode }> = ({
 				priceUS: product.priceUS,
 				priceEU: product.priceEU,
 				image: product.image[0],
+				soldOut: product.soldOut,
 			};
 
 			return [...prev, newItem];
@@ -65,6 +67,35 @@ export const BasketProvider: React.FC<{ children: React.ReactNode }> = ({
 		setBasket([]);
 	};
 
+	const updateBasketWithLatestData = async () => {
+		try {
+			const latestProducts = await checkProductUpdates();
+
+			setBasket((prev) =>
+				prev.map((basketItem) => {
+					const updatedProduct = latestProducts.find(
+						(product) => product.article === basketItem.id,
+					);
+
+					if (updatedProduct) {
+						return {
+							...basketItem,
+							name: updatedProduct.name,
+							priceUS: updatedProduct.priceUS,
+							priceEU: updatedProduct.priceEU,
+							image: updatedProduct.image[0],
+							soldOut: updatedProduct.soldOut,
+						};
+					}
+
+					return basketItem;
+				}),
+			);
+		} catch (error) {
+			console.error("Failed to update basket with latest data:", error);
+		}
+	};
+
 	return (
 		<BasketContext.Provider
 			value={{
@@ -73,6 +104,7 @@ export const BasketProvider: React.FC<{ children: React.ReactNode }> = ({
 				removeFromBasket,
 				updateQuantity,
 				clearBasket,
+				updateBasketWithLatestData,
 			}}
 		>
 			{children}

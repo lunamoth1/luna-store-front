@@ -7,6 +7,7 @@ export interface BasketElement {
 	priceUS: number;
 	priceEU: number;
 	image: ProductImage;
+	soldOut: boolean;
 }
 
 export interface BasketContextType {
@@ -15,4 +16,5 @@ export interface BasketContextType {
 	removeFromBasket: (id: string) => void;
 	updateQuantity: (id: string, quantity: number) => void;
 	clearBasket: () => void;
+	updateBasketWithLatestData: () => Promise<void>;
 }
