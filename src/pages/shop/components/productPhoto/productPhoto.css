@@ -26,7 +26,9 @@
 	aspect-ratio: 1 / 1;
 	cursor: pointer;
 	border: clamp(2px, 0.4vw, 3px) solid var(--color-white);
-	transition: opacity 0.3s ease, border-color 0.2s ease;
+	transition:
+		opacity 0.3s ease,
+		border-color 0.2s ease;
 }
 
 .productPhotoThumbnails:hover {
@@ -34,5 +36,7 @@
 }
 
 .productPhotoThumbnails.active {
-	border: 3px, solid var(--color-selectedImageBorder);
+	border:
+		3px,
+		solid var(--color-selectedImageBorder);
 }
