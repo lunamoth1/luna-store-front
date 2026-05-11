@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { EU_COUNTRIES, eur, usd } from "../constants";
 import { CurrencyStore } from "../types/stores/useCurrencyStore";
+import { getLocation } from "../api/helpers/location";
 
 export const useCurrencyStore = create<CurrencyStore>()(
 	persist(
@@ -23,10 +24,8 @@ export const useCurrencyStore = create<CurrencyStore>()(
 
 			refreshLocation: async () => {
 				try {
-					const res = await fetch("https://ipwho.is/");
-					const data = await res.json();
+					const country = await getLocation();
 
-					const country = data.country_code;
 					const currency =
 						country === "US" || country === "CA"
 							? usd
@@ -39,7 +38,7 @@ export const useCurrencyStore = create<CurrencyStore>()(
 					localStorage.setItem("currency", currency);
 					localStorage.setItem("countryCode", country);
 				} catch (err) {
-					console.error("IP API error:", err);
+					console.error("Location detection error:", err);
 
 					set({ currency: usd, countryCode: "US" });
 					localStorage.setItem("currency", usd);

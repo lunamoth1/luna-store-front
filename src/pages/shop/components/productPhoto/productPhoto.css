@@ -9,7 +9,7 @@
 .productPhotoMain {
 	width: clamp(320px, 50vw, 350px);
 	aspect-ratio: 1 / 1;
-	box-shadow: 2px 2px 4px var(--color-shadow);
+	/* box-shadow: 2px 2px 4px var(--color-shadow); */
 	margin-bottom: 1rem;
 }
 
