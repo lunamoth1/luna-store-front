@@ -5,21 +5,26 @@ import "./productPhoto.css";
 
 interface ProductPhotoProps {
 	photo: ProductImage[];
+	mainPhoto: number;
+	setMainPhoto: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const ProductPhoto: React.FC<ProductPhotoProps> = ({ photo }) => {
-	const [main, setMain] = useState<number>(0);
+const ProductPhoto: React.FC<ProductPhotoProps> = ({
+	photo,
+	mainPhoto,
+	setMainPhoto,
+}) => {
 	const [isMainPhotoLoaded, setIsMainPhotoLoaded] = useState(false);
 
 	const selectPhotoHandler = (index: number) => {
-		if (index === main) return;
+		if (index === mainPhoto) return;
 
-		setMain(index);
+		setMainPhoto(index);
 		setIsMainPhotoLoaded(false);
 	};
 
 	const loadingHandler = (index: number) => {
-		if (index === main) setIsMainPhotoLoaded(true);
+		if (index === mainPhoto) setIsMainPhotoLoaded(true);
 	};
 
 	return (
@@ -27,8 +32,8 @@ const ProductPhoto: React.FC<ProductPhotoProps> = ({ photo }) => {
 			{!isMainPhotoLoaded && <Skeleton className="productPhotoMain" />}
 			<img
 				className="productPhotoMain"
-				src={photo[main].url}
-				alt={photo[main].name}
+				src={photo[mainPhoto].url}
+				alt={photo[mainPhoto].name}
 				onLoad={() => setIsMainPhotoLoaded(true)}
 				style={{ display: isMainPhotoLoaded ? "block" : "none" }}
 			/>
@@ -38,7 +43,7 @@ const ProductPhoto: React.FC<ProductPhotoProps> = ({ photo }) => {
 					{photo.map((img, index) => (
 						<img
 							className={`productPhotoThumbnails ${
-								index === main ? "active" : ""
+								index === mainPhoto ? "active" : ""
 							}`}
 							key={img.id}
 							src={img.url}

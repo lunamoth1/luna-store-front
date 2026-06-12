@@ -26,6 +26,7 @@ const ShopPage: React.FC = () => {
 	const [selectedProduct, setSelectedProduct] = useState<
 		null | (typeof products)[0]
 	>(null);
+	const [mainPhoto, setMainPhoto] = useState(0);
 
 	useEffect(() => {
 		refreshLocation();
@@ -42,6 +43,7 @@ const ShopPage: React.FC = () => {
 	}, [lockBodyScroll]);
 
 	const openProductHandler = (product: (typeof products)[0]) => {
+		setMainPhoto(0);
 		setSelectedProduct(product);
 		setSidebarOpen(true);
 	};
@@ -136,7 +138,11 @@ const ShopPage: React.FC = () => {
 
 				{selectedProduct && (
 					<div className="productSidebarContent">
-						<ProductPhoto photo={selectedProduct.image} />
+						<ProductPhoto
+							photo={selectedProduct.image}
+							mainPhoto={mainPhoto}
+							setMainPhoto={setMainPhoto}
+						/>
 						<ProductInfo product={selectedProduct} />
 					</div>
 				)}
