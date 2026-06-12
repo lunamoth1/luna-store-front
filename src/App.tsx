@@ -20,7 +20,7 @@ import ContactsPage from "./pages/contacts/ContactsPage";
 import BasketPage from "./pages/basket/BasketPage";
 import ShippingPage from "./pages/shipping/ShippingPage";
 import PartnersPage from "./pages/partners/PartnersPage";
-import ProductPage from "./pages/product/ProductPage";
+// import ProductPage from "./pages/product/ProductPage";
 import ThanksgivingPage from "./pages/thanksgiving/ThanksgivingPage";
 import Error404 from "./pages/error/Error404";
 
@@ -93,7 +93,7 @@ const AppRoutes: React.FC = () => {
 					<Route path="/basket" element={<BasketPage />} />
 					<Route path="/shipping" element={<ShippingPage />} />
 					<Route path="/partners" element={<PartnersPage />} />
-					<Route path="/product/:id" element={<ProductPage />} />
+					{/* <Route path="/product/:id" element={<ProductPage />} /> */}
 					<Route path="/thanksgiving" element={<ThanksgivingPage />} />
 					<Route path="*" element={<Navigate to="/404" replace />} />
 					<Route path="/404" element={<Error404 />} />

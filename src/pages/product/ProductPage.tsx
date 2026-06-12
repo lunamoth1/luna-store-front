@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useLocation, Link, useParams } from "react-router-dom";
 import { SpinnerCircularFixed } from "spinners-react";
 import { useProductStore } from "../../store/useProductStore";
-import ProductPhoto from "../shop/components/productPhoto/ProductPhoto";
+// import ProductPhoto from "../shop/components/productPhoto/ProductPhoto";
 import ProductInfo from "../shop/components/productInfo/ProductInfo";
 import "./productPage.css";
 
@@ -40,7 +40,10 @@ const ProductPage: React.FC = () => {
 		);
 
 	return (
-		<div className="productPageContainer">
+		<div
+			className="productPageContainer"
+			style={{ backgroundColor: "#000000" }}
+		>
 			<p className="productPageNav">
 				<Link className="productPageNavLink" to="/shop">
 					shop
@@ -48,7 +51,7 @@ const ProductPage: React.FC = () => {
 				{">"} {product.name}
 			</p>
 			<div className="productPageProduct">
-				<ProductPhoto photo={product.image} />
+				{/* <ProductPhoto photo={product.image} /> */}
 				<ProductInfo product={product} />
 			</div>
 		</div>
