@@ -85,7 +85,21 @@ const ShopPage: React.FC = () => {
 
 	return (
 		<div className="shopContainer">
-			<div className="shopImageWrapper">
+			<div className="productContainer">
+				{filteredProducts.map((item, index) => {
+					return (
+						<img
+							key={index}
+							src={item.previewImage.url}
+							alt={item.name}
+							className="productImage"
+							onClick={() => openProductHandler(item)}
+						/>
+					);
+				})}
+			</div>
+
+			{/* <div className="shopImageWrapper">
 				<img
 					src={backgrounds[category as keyof typeof backgrounds]}
 					alt={`${category} background`}
@@ -109,7 +123,7 @@ const ShopPage: React.FC = () => {
 						/>
 					</div>
 				))}
-			</div>
+			</div> */}
 
 			<div
 				className={`productSidebar ${isSidebarOpen ? "open" : ""}`}
