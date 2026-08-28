@@ -7,27 +7,48 @@ import Button from "../../../components/button/Button";
 import { updateShippingOption } from "../../../api/shippingOptions";
 import "./adminDeliverySettings.css";
 
+const ORDERED_UIDS = ["ground", "express", "basic", "shipping"];
+
+const sortShippingOptions = <
+	T extends { documentId: string; label: string; price: number },
+>(
+	options: T[],
+): T[] => {
+	return [...options].sort((a, b) => {
+		const uidA = (a as { uid?: string }).uid;
+		const uidB = (b as { uid?: string }).uid;
+
+		const indexA = uidA ? ORDERED_UIDS.indexOf(uidA) : -1;
+		const indexB = uidB ? ORDERED_UIDS.indexOf(uidB) : -1;
+
+		const orderA = indexA === -1 ? 999 : indexA;
+		const orderB = indexB === -1 ? 999 : indexB;
+
+		return orderA - orderB;
+	});
+};
+
 const AdminDeliverySettingsPage: React.FC = () => {
-	// here1 fetchSettings
 	const { shippingOptions, isLoading, error, fetchSettings } =
 		useSettingsStore();
 
 	const [message, setMessage] = useState("");
+
 	const [localOptions, setLocalOptions] = useState(() =>
-		shippingOptions.map((o) => ({
+		sortShippingOptions(shippingOptions).map((o) => ({
 			documentId: o.documentId,
 			label: o.label,
-			price: o.price,
+			priceStr: o.price.toString(),
 		})),
 	);
 
 	useEffect(() => {
 		if (shippingOptions.length) {
 			setLocalOptions(
-				shippingOptions.map((o) => ({
+				sortShippingOptions(shippingOptions).map((o) => ({
 					documentId: o.documentId,
 					label: o.label,
-					price: o.price,
+					priceStr: o.price.toString(),
 				})),
 			);
 		}
@@ -35,14 +56,12 @@ const AdminDeliverySettingsPage: React.FC = () => {
 
 	const updateOptionField = (
 		documentId: string,
-		field: string,
+		field: "label" | "priceStr",
 		value: string,
 	) => {
 		setLocalOptions((prev) =>
 			prev.map((opt) =>
-				opt.documentId === documentId
-					? { ...opt, [field]: field === "price" ? Number(value) : value }
-					: opt,
+				opt.documentId === documentId ? { ...opt, [field]: value } : opt,
 			),
 		);
 	};
@@ -55,7 +74,7 @@ const AdminDeliverySettingsPage: React.FC = () => {
 				localOptions.map((opt) =>
 					updateShippingOption(opt.documentId, {
 						label: opt.label,
-						price: opt.price,
+						price: parseFloat(opt.priceStr) || 0,
 					}),
 				),
 			);
@@ -110,9 +129,9 @@ const AdminDeliverySettingsPage: React.FC = () => {
 
 					<Input
 						label="Price"
-						value={opt.price.toString()}
+						value={opt.priceStr}
 						onChange={(e) =>
-							updateOptionField(opt.documentId, "price", e.target.value)
+							updateOptionField(opt.documentId, "priceStr", e.target.value)
 						}
 					/>
 				</div>
