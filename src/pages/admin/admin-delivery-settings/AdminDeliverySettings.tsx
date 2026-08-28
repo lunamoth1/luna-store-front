@@ -9,23 +9,27 @@ import "./adminDeliverySettings.css";
 
 const ORDERED_UIDS = ["ground", "express", "basic", "shipping"];
 
-const sortShippingOptions = <
-	T extends { documentId: string; label: string; price: number },
->(
+const getItemIndex = (item: any): number => {
+	const uid = String(item.uid || "").toLowerCase();
+	const label = String(item.label || "").toLowerCase();
+
+	const uidIndex = ORDERED_UIDS.findIndex((key) => uid.includes(key));
+	if (uidIndex !== -1) return uidIndex;
+
+	if (label.includes("ground")) return ORDERED_UIDS.indexOf("ground");
+	if (label.includes("express") && !label.includes("international"))
+		return ORDERED_UIDS.indexOf("express");
+	if (label.includes("basic")) return ORDERED_UIDS.indexOf("basic");
+	if (label.includes("international") || label.includes("shipping"))
+		return ORDERED_UIDS.indexOf("shipping");
+
+	return 999;
+};
+
+const sortShippingOptions = <T extends { label: string }>(
 	options: T[],
 ): T[] => {
-	return [...options].sort((a, b) => {
-		const uidA = (a as { uid?: string }).uid;
-		const uidB = (b as { uid?: string }).uid;
-
-		const indexA = uidA ? ORDERED_UIDS.indexOf(uidA) : -1;
-		const indexB = uidB ? ORDERED_UIDS.indexOf(uidB) : -1;
-
-		const orderA = indexA === -1 ? 999 : indexA;
-		const orderB = indexB === -1 ? 999 : indexB;
-
-		return orderA - orderB;
-	});
+	return [...options].sort((a, b) => getItemIndex(a) - getItemIndex(b));
 };
 
 const AdminDeliverySettingsPage: React.FC = () => {
