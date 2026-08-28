@@ -33,7 +33,11 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 		<div>
 			<p className="productInfoName">{product.name}</p>
 			<p className="productInfoDescription">{product.description}</p>
-			<p className="productInfoPrice">
+			{product.soldOut && <p className="productInfoSoldOut">Sold Out</p>}
+			<p
+				className="productInfoPrice"
+				style={{ textDecoration: product.soldOut ? "line-through" : "none" }}
+			>
 				{currencySymbol}
 				{price.toFixed(2)}
 			</p>
@@ -65,6 +69,7 @@ const ProductInfo: React.FC<ProductInfoProps> = ({ product }) => {
 					text={buttonText}
 					onClick={handleAddToBasket}
 					styles={{ width: 144 }}
+					disabled={product.soldOut}
 				/>
 			</div>
 

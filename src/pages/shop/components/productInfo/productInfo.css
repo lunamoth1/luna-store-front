@@ -13,6 +13,13 @@
 	font-weight: 300;
 }
 
+.productInfoSoldOut {
+	font-size: clamp(1.1rem, 0.8vw + 1rem, 1.5rem);
+	color: var(--color-red);
+	text-align: center;
+	font-weight: 300;
+}
+
 .productInfoPrice {
 	font-size: clamp(1.1rem, 0.8vw + 1rem, 1.5rem);
 	color: var(--color-black);

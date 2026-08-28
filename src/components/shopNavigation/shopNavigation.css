@@ -47,7 +47,7 @@
 }
 
 .shopNavShopLinkActive {
-	background-color: #7f0000;
+	background-color: var(--color-darkRed);
 }
 
 .shopNavShopLinkText {

@@ -18,6 +18,33 @@
 	width: 100%;
 }
 
+.productWrapper {
+	width: min-content;
+	position: relative;
+}
+
+.productSoldOutContainer {
+	background-color: var(--color-darkRed);
+	position: absolute;
+	transform: translateY(-50%);
+	top: 50%;
+	right: 0px;
+	width: 100%;
+	height: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.productSoldOutText {
+	color: var(--color-white);
+	font-family: "KyivTypeSerif", serif;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
 .productContainer {
 	display: flex;
 	flex-direction: column;

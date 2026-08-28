@@ -32,6 +32,7 @@ const AdminHomePage: React.FC = () => {
 		})();
 	}, []);
 
+	const productHandler = () => navigate("/admin/admin-products");
 	const orderHandler = () => navigate("/admin/actual-order");
 	const archivedOrderHandler = () => navigate("/admin/archived-order");
 	const deliverySettingsHandler = () => navigate("/admin/delivery-settings");
@@ -65,6 +66,7 @@ const AdminHomePage: React.FC = () => {
 			menuItems={[{ label: "Exit", action: logoutAdmin }]}
 		>
 			<div className="adminHomeContent">
+				<AdminLineLink text={"Products"} onPress={productHandler} />
 				<AdminLineLink
 					text={`Orders (${activeOrders.length})`}
 					onPress={orderHandler}

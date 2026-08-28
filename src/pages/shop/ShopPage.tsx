@@ -5,18 +5,18 @@ import { useProductStore } from "../../store/useProductStore";
 import ProductCardSkeleton from "../../components/productCardSkeleton/ProductCardSkeleton";
 import ProductPhoto from "./components/productPhoto/ProductPhoto";
 import ProductInfo from "./components/productInfo/ProductInfo";
-import gothicBg from "../../assets/images/gothicBg.png";
-import ritualsBg from "../../assets/images/ritualsBg.png";
-import wallartBg from "../../assets/images/wallartBg.png";
-import vintageBg from "../../assets/images/vintageBg.png";
+// import gothicBg from "../../assets/images/gothicBg.png";
+// import ritualsBg from "../../assets/images/ritualsBg.png";
+// import wallartBg from "../../assets/images/wallartBg.png";
+// import vintageBg from "../../assets/images/vintageBg.png";
 import "./shopPage.css";
 
-const backgrounds = {
-	Gothic: gothicBg,
-	Rituals: ritualsBg,
-	"Wall Art": wallartBg,
-	Vintage: vintageBg,
-};
+// const backgrounds = {
+// 	Gothic: gothicBg,
+// 	Rituals: ritualsBg,
+// 	"Wall Art": wallartBg,
+// 	Vintage: vintageBg,
+// };
 
 const ShopPage: React.FC = () => {
 	const { refreshLocation } = useCurrencyStore();
@@ -90,13 +90,23 @@ const ShopPage: React.FC = () => {
 			<div className="productContainer">
 				{filteredProducts.map((item, index) => {
 					return (
-						<img
-							key={index}
-							src={item.previewImage.url}
-							alt={item.name}
-							className="productImage"
+						<div
+							key={item.id}
+							className="productWrapper"
 							onClick={() => openProductHandler(item)}
-						/>
+						>
+							{item.soldOut && (
+								<div className="productSoldOutContainer">
+									<p className="productSoldOutText">Sold Out</p>
+								</div>
+							)}
+							<img
+								key={index}
+								src={item.previewImage.url}
+								alt={item.name}
+								className="productImage"
+							/>
+						</div>
 					);
 				})}
 			</div>

@@ -28,6 +28,8 @@ import ProtectedAdminRoute from "./pages/admin/components/ProtectedAdminRoute";
 import AdminPinPage from "./pages/admin/admin-pin/AdminPinPage";
 import AdminHomePage from "./pages/admin/admin-home/AdminHomePage";
 import AdminActualOrder from "./pages/admin/admin-actual-order/AdminActualOrder";
+import AdminProductsPage from "./pages/admin/admin-products/AdminProductsPage";
+import AdminSelectedProduct from "./pages/admin/admin-selected-product/AdminSelectedProduct";
 import AdminArchivedOrder from "./pages/admin/admin-archived-order/AdminArchivedOrder";
 import AdminOrderPage from "./pages/admin/admin-order/AdminOrderPage";
 import AdminDeliverySettings from "./pages/admin/admin-delivery-settings/AdminDeliverySettings";
@@ -63,6 +65,11 @@ const AppRoutes: React.FC = () => {
 				<Routes>
 					<Route path="/admin-pin" element={<AdminPinPage />} />
 					<Route path="/admin/actual-order" element={<AdminActualOrder />} />
+					<Route path="/admin/admin-products" element={<AdminProductsPage />} />
+					<Route
+						path="/admin/admin-selected-product/:documentId"
+						element={<AdminSelectedProduct />}
+					/>
 					<Route
 						path="/admin/archived-order"
 						element={<AdminArchivedOrder />}
